@@ -20,7 +20,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(db.CategoryNews.ToList());
         }
 
-        // GET: admin/categorynews/Details/5
+        // GET: admin/categorynews/Details/id
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -57,7 +57,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(categoryNew);
         }
 
-        // GET: admin/categorynews/Edit/5
+        // GET: admin/categorynews/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -72,7 +72,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(categoryNew);
         }
 
-        // POST: admin/categorynews/Edit/5
+        // POST: admin/categorynews/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CNewsID,CNewsName,CreatedDate")] CategoryNew categoryNew)
@@ -87,7 +87,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(categoryNew);
         }
 
-        // GET: admin/categorynews/Delete/5
+        // GET: admin/categorynews/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -102,7 +102,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(categoryNew);
         }
 
-        // POST: admin/categorynews/Delete/5
+        // POST: admin/categorynews/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -10,110 +10,103 @@ using langfvn.Models;
 
 namespace langfvn.Areas.admin.Controllers
 {
-    public class KindOfNewsController : Controller
+    public class PlacesController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
 
-        // GET: admin/KindOfNews
+        // GET: admin/Places
         public ActionResult Index()
         {
-            var kindOfNews = db.KindOfNews.Include(k => k.CategoryNew);
-            return View(kindOfNews.ToList());
+            return View(db.Places.ToList());
         }
 
-        // GET: admin/KindOfNews/Details/id
+        // GET: admin/Places/Details/id
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KindOfNew kindOfNew = db.KindOfNews.Find(id);
-            if (kindOfNew == null)
+            Place place = db.Places.Find(id);
+            if (place == null)
             {
                 return HttpNotFound();
             }
-            return View(kindOfNew);
+            return View(place);
         }
 
-        // GET: admin/KindOfNews/Create
+        // GET: admin/Places/Create
         public ActionResult Create()
         {
-            ViewBag.CNewsID = new SelectList(db.CategoryNews, "CNewsID", "CNewsName");
             return View();
         }
 
-        // POST: admin/KindOfNews/Create
+        // POST: admin/Places/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KonID,CNewsID,KonName,CreatedDate")] KindOfNew kindOfNew)
+        public ActionResult Create([Bind(Include = "PlaceID,PlaceName")] Place place)
         {
             if (ModelState.IsValid)
             {
-                kindOfNew.CreatedDate = DateTime.Now;
-                db.KindOfNews.Add(kindOfNew);
+                db.Places.Add(place);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CNewsID = new SelectList(db.CategoryNews, "CNewsID", "CNewsName", kindOfNew.CNewsID);
-            return View(kindOfNew);
+            return View(place);
         }
 
-        // GET: admin/KindOfNews/Edit/id
+        // GET: admin/Places/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KindOfNew kindOfNew = db.KindOfNews.Find(id);
-            if (kindOfNew == null)
+            Place place = db.Places.Find(id);
+            if (place == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CNewsID = new SelectList(db.CategoryNews, "CNewsID", "CNewsName", kindOfNew.CNewsID);
-            return View(kindOfNew);
+            return View(place);
         }
 
-        // POST: admin/KindOfNews/Edit/id
+        // POST: admin/Places/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KonID,CNewsID,KonName,CreatedDate")] KindOfNew kindOfNew)
+        public ActionResult Edit([Bind(Include = "PlaceID,PlaceName")] Place place)
         {
             if (ModelState.IsValid)
             {
-                kindOfNew.CreatedDate = DateTime.Now;
-                db.Entry(kindOfNew).State = EntityState.Modified;
+                db.Entry(place).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CNewsID = new SelectList(db.CategoryNews, "CNewsID", "CNewsName", kindOfNew.CNewsID);
-            return View(kindOfNew);
+            return View(place);
         }
 
-        // GET: admin/KindOfNews/Delete/id
+        // GET: admin/Places/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KindOfNew kindOfNew = db.KindOfNews.Find(id);
-            if (kindOfNew == null)
+            Place place = db.Places.Find(id);
+            if (place == null)
             {
                 return HttpNotFound();
             }
-            return View(kindOfNew);
+            return View(place);
         }
 
-        // POST: admin/KindOfNews/Delete/id
+        // POST: admin/Places/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            KindOfNew kindOfNew = db.KindOfNews.Find(id);
-            db.KindOfNews.Remove(kindOfNew);
+            Place place = db.Places.Find(id);
+            db.Places.Remove(place);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

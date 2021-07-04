@@ -1,41 +1,32 @@
-﻿@model langfvn.Models.CategoryNew
+﻿@model langfvn.Models.Place
 
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h3>QUẢN LÝ THỂ LOẠI TIN</h3>
+<h3>QUẢN LÝ KHU VỰC</h3>
 <div>
     <i class="fas fa-undo-alt"></i>
-    <a href="/admin/categorynews">Quay về danh sách thể loại tin</a>
+    <a href="/admin/places">Quay về danh sách khu vực</a>
 </div>
 <div class="card shadow mb-4 mt-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark">XÓA THỂ LOẠI TIN #@Model.CNewsID</h6>
+        <h6 class="m-0 font-weight-bold text-dark">XÓA KHU VỰC #@Model.PlaceID</h6>
     </div>
     <div class="card-body">
         <div>
             <dl class="dl-horizontal">
                 <dt>
-                    ID
+                    Khu vực
                 </dt>
+
                 <dd>
-                    @Html.DisplayFor(model => model.CNewsID)
+                    @Html.DisplayFor(model => model.PlaceName)
                 </dd>
-                <dt>
-                    Thể loại tin
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CNewsName)
-                </dd>
-                <dt>
-                    Ngày khởi tạo
-                </dt>
-                <dd>
-                    @Html.DisplayFor(model => model.CreatedDate)
-                </dd>
+
             </dl>
+
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
@@ -48,5 +39,3 @@
         </div>
     </div>
 </div>
-
-
