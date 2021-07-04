@@ -1,13 +1,40 @@
-﻿@model IEnumerable<langfvn.Models.KindOfNew>
-
+﻿@using langfvn.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<KindOfNew>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <style>
-    a {
+    .pagination li {
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+    .pagination .PagedList-skipToNext, .pagination .PagedList-skipToPrevious {
+        font-size: 16px;
+        border: none;
+    }
+
+    .pagination a {
+        padding: 6px 14px;
+        display: block;
         color: #000;
+    }
+
+    .pagination li:hover:not(li.active) a {
+        text-decoration: none;
+        border-radius: 5px;
+        background-color: #7f7f7f;
+        color: #fff;
+    }
+
+    .pagination li.active {
+        background-color: #070d1b;
+        color: #fff;
     }
 </style>
 
@@ -71,6 +98,11 @@
                     }
                 </tbody>
             </table>
+            <div class="col-md-12">
+                <div class="pagination d-flex justify-content-center">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                </div>
+            </div>
         </div>
     </div>
 </div>
