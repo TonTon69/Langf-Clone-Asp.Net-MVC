@@ -1,0 +1,70 @@
+﻿@model IEnumerable<langfvn.Models.CategoryNew>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    a {
+        color: #000;
+    }
+</style>
+
+<h1 class="h3 mb-2 text-gray-800">QUẢN LÝ THỂ LOẠI TIN</h1>
+<div class="d-flex mb-4">
+    <a href="/admin/categorynews/create" class="btn btn-dark">
+        <i class="fas fa-plus"></i>
+        Thêm mới môn học
+    </a>
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH THỂ LOẠI TIN</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            Thể loại
+                        </th>
+                        <th>
+                            Ngày khởi tạo
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CNewsID)
+                            </td>
+                            <td style="text-transform: uppercase">
+                                @Html.DisplayFor(modelItem => item.CNewsName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit","CategoryNews",new { id = item.CNewsID })" class="btn btn-primary">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("Details","CategoryNews",new { id = item.CNewsID })" class="btn btn-secondary">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                <a href="@Url.Action("Delete","CategoryNews",new { id = item.CNewsID })" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

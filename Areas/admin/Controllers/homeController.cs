@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace langfvn.Areas.admin.Controllers
 {
-    public class homeController : Controller
+    public class HomeController : Controller
     {
         // GET: admin/home
-        public ActionResult index()
+        public ActionResult Index()
         {
             return View();
         }
