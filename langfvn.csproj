@@ -118,10 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\homeController.cs" />
+    <Compile Include="Areas\camnang\camnangAreaRegistration.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -141,6 +143,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\admin\Views\web.config" />
     <Content Include="Areas\admin\Views\home\index.cshtml" />
+    <Content Include="Areas\camnang\Views\web.config" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -169,6 +172,10 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Data\" />
     <Folder Include="Areas\admin\Views\Shared\" />
+    <Folder Include="Areas\camnang\Controllers\" />
+    <Folder Include="Areas\camnang\Data\" />
+    <Folder Include="Areas\camnang\Views\Shared\" />
+    <Folder Include="Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
