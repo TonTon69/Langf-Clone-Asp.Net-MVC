@@ -18,7 +18,7 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/KindOfNews
         public ActionResult Index(int? page)
         {
-            int pageSize = 5;
+            int pageSize = 6;
             int pageNumber = (page ?? 1);
 
             var kindOfNews = db.KindOfNews.OrderBy(k => k.KonID);
