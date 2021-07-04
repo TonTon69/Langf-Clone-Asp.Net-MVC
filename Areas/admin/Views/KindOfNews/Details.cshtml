@@ -1,0 +1,56 @@
+﻿@model langfvn.Models.KindOfNew
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>QUẢN LÝ LOẠI TIN</h3>
+<div>
+    <i class="fas fa-undo-alt"></i>
+    <a href="/admin/kindofnews">Quay về danh sách loại tin</a>
+</div>
+<div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">CHI TIẾT LOẠI TIN #@Model.KonID</h6>
+    </div>
+    <div class="card-body">
+        <div>
+            <dl class="dl-horizontal">
+                <dt>
+                    ID
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.KonID)
+                </dd>
+
+                <dt>
+                    Thể loại tin
+                </dt>
+
+                <dd style="text-transform: uppercase">
+                    @Html.DisplayFor(model => model.CategoryNew.CNewsName)
+                </dd>
+
+                <dt>
+                    Loại tin
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.KonName)
+                </dd>
+
+                <dt>
+                    Ngày khởi tạo
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
+
+            </dl>
+        </div>
+    </div>
+</div>
+
