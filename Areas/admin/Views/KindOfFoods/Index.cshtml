@@ -1,0 +1,95 @@
+﻿@using langfvn.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<KindOfFood>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">QUẢN LÝ LOẠI MÓN ĂN</h1>
+<div class="d-flex mb-4">
+    <a href="/admin/kindoffoods/create" class="btn btn-dark">
+        <i class="fas fa-plus"></i>
+        Thêm mới loại món ăn
+    </a>
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH LOẠI MÓN ĂN</h6>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            @using (Html.BeginForm("index", "kindoffoods", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" value="@ViewBag.CurrentFilter" class="form-control" name="search" size="25" placeholder="Tìm kiếm..." />
+                </div>
+            }
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            Thể loại món
+                        </th>
+                        <th>
+                            Cửa hàng
+                        </th>
+                        <th>
+                            Loại món
+                        </th>
+                        <th>
+                            Ngày khởi tạo
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KofID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CategoryFood.CFoodName)
+                            </td>
+                            <td style="text-transform: uppercase">
+                                @Html.DisplayFor(modelItem => item.Store.StoreName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.KofName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CreatedDate)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("edit","kindoffoods",new { id = item.KofID })" class="btn btn-primary">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("details","kindoffoods",new { id = item.KofID })" class="btn btn-secondary">
+                                    <i class="far fa-eye"></i>
+                                </a>
+                                <a href="@Url.Action("delete","kindoffoods",new { id = item.KofID })" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="col-md-12">
+                <div class="pagination d-flex justify-content-center">
+                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
