@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using langfvn.Models;
+using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
@@ -15,10 +16,12 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Stores
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var stores = db.Stores.Include(s => s.Place);
-            return View(stores.ToList());
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            var stores = db.Stores.OrderBy(s => s.StoreID);
+            return View(stores.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: admin/Stores/Details/id
@@ -44,8 +47,6 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // POST: admin/Stores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317id98.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "StoreID,PlaceID,StoreName,Address,Image,NoteDiscount")] Store store)
@@ -78,8 +79,6 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // POST: admin/Stores/Edit/id
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317id98.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StoreID,PlaceID,StoreName,Address,Image,NoteDiscount")] Store store)

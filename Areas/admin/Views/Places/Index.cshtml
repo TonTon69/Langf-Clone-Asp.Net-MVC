@@ -1,5 +1,6 @@
-﻿@model IEnumerable<langfvn.Models.Place>
-
+﻿@using langfvn.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Place>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -53,6 +54,11 @@
                     }
                 </tbody>
             </table>
+            <div class="col-md-12">
+                <div class="pagination d-flex justify-content-center">
+                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page }))
+                </div>
+            </div>
         </div>
     </div>
 </div>

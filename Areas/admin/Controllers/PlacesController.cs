@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using langfvn.Models;
+using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
@@ -15,9 +16,11 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Places
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.Places.ToList());
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(db.Places.OrderBy(s => s.PlaceID).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: admin/Places/Details/id

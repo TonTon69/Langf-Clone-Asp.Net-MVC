@@ -68,7 +68,7 @@
             </table>
             <div class="col-md-12">
                 <div class="pagination d-flex justify-content-center">
-                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }))
+                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page }))
                 </div>
             </div>
         </div>
