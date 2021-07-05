@@ -5,66 +5,64 @@
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Store</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.StoreID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PlaceID, "PlaceID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("PlaceID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PlaceID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StoreName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StoreName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StoreName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Address, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NoteDiscount, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NoteDiscount, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NoteDiscount, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
+<h3>QUẢN LÝ CỬA HÀNG</h3>
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    <i class="fas fa-undo-alt"></i>
+    <a href="/admin/stores">Quay về danh sách cửa hàng</a>
+</div>
+<div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">CHỈNH SỬA CỬA HÀNG #@Model.StoreID</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.StoreID)
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.PlaceID, "Khu vực", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("PlaceID", null, htmlAttributes: new { @class = "form-control", required = "required" })
+                        @Html.ValidationMessageFor(model => model.PlaceID, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.StoreName, "Tên cửa hàng", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.StoreName, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.StoreName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Address, "Địa chỉ", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Image, "Ảnh", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.NoteDiscount, "Ghi chú ưu đãi", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.NoteDiscount, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.ValidationMessageFor(model => model.NoteDiscount, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <input type="submit" value="Lưu lại" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>
