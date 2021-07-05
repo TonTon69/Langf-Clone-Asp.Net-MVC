@@ -26,7 +26,6 @@ namespace langfvn.Models
         [StringLength(250)]
         public string Address { get; set; }
 
-        [Column(TypeName = "text")]
         public string Image { get; set; }
 
         [StringLength(250)]

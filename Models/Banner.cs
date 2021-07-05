@@ -11,10 +11,8 @@ namespace langfvn.Models
     {
         public int BannerID { get; set; }
 
-        [Column(TypeName = "text")]
         public string Image { get; set; }
 
-        [Column(TypeName = "text")]
         public string Description { get; set; }
     }
 }

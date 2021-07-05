@@ -18,7 +18,6 @@ namespace langfvn.Models
 
         public decimal? FoodPrice { get; set; }
 
-        [Column(TypeName = "text")]
         public string Description { get; set; }
 
         public virtual KindOfFood KindOfFood { get; set; }

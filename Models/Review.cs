@@ -15,10 +15,8 @@ namespace langfvn.Models
 
         public int StoreID { get; set; }
 
-        [Column(TypeName = "text")]
         public string Content { get; set; }
 
-        [Column(TypeName = "text")]
         public string Image { get; set; }
 
         public int? Star { get; set; }

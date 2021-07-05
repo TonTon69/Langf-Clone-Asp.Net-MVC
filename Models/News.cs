@@ -17,10 +17,8 @@ namespace langfvn.Models
         [StringLength(250)]
         public string Title { get; set; }
 
-        [Column(TypeName = "text")]
         public string Content { get; set; }
 
-        [Column(TypeName = "text")]
         public string Image { get; set; }
 
         public int? TotalView { get; set; }

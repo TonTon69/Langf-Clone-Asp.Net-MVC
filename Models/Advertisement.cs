@@ -15,7 +15,6 @@ namespace langfvn.Models
         [StringLength(250)]
         public string AdTitle { get; set; }
 
-        [Column(TypeName = "text")]
         public string Image { get; set; }
 
         public bool? Visible { get; set; }

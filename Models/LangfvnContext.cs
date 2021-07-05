@@ -67,10 +67,6 @@ namespace langfvn.Models
                 .Property(e => e.Image)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Banner>()
-                .Property(e => e.Description)
-                .IsUnicode(false);
-
             modelBuilder.Entity<CategoryFood>()
                 .Property(e => e.Image)
                 .IsUnicode(false);
@@ -89,10 +85,6 @@ namespace langfvn.Models
                 .Property(e => e.FoodPrice)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Food>()
-                .Property(e => e.Description)
-                .IsUnicode(false);
-
             modelBuilder.Entity<KindOfFood>()
                 .HasMany(e => e.Foods)
                 .WithRequired(e => e.KindOfFood)
@@ -102,10 +94,6 @@ namespace langfvn.Models
                 .HasMany(e => e.News)
                 .WithRequired(e => e.KindOfNew)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<News>()
-                .Property(e => e.Content)
-                .IsUnicode(false);
 
             modelBuilder.Entity<News>()
                 .Property(e => e.Image)
@@ -129,10 +117,6 @@ namespace langfvn.Models
                 .HasMany(e => e.Stores)
                 .WithRequired(e => e.Place)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Review>()
-                .Property(e => e.Content)
-                .IsUnicode(false);
 
             modelBuilder.Entity<Review>()
                 .Property(e => e.Image)
