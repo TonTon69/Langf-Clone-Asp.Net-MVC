@@ -1,4 +1,4 @@
-﻿namespace langfvn.Models
+namespace langfvn.Models
 {
     using System;
     using System.Collections.Generic;

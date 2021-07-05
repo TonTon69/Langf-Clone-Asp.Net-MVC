@@ -27,6 +27,9 @@
                             Thể loại món
                         </th>
                         <th>
+                            Ảnh
+                        </th>
+                        <th>
                             Ngày khởi tạo
                         </th>
                         <th></th>
@@ -41,6 +44,9 @@
                             </td>
                             <td style="text-transform: uppercase">
                                 @Html.DisplayFor(modelItem => item.CFoodName)
+                            </td>
+                            <td>
+                                <img src="@item.Image" width="65" height="65" style="object-fit:cover" />
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.CreatedDate)

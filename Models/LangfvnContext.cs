@@ -72,6 +72,10 @@ namespace langfvn.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<CategoryFood>()
+                .Property(e => e.Image)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CategoryFood>()
                 .HasMany(e => e.KindOfFoods)
                 .WithRequired(e => e.CategoryFood)
                 .WillCascadeOnDelete(false);

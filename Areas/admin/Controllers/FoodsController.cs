@@ -7,112 +7,111 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using langfvn.Models;
-using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
-    public class CategoryFoodsController : Controller
+    public class FoodsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
 
-        // GET: admin/CategoryFoods
-        public ActionResult Index(int? page)
+        // GET: admin/Foods
+        public ActionResult Index()
         {
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
-            var categoryFood = db.CategoryFoods.OrderBy(k => k.CFoodID);
-            return View(categoryFood.ToPagedList(pageNumber, pageSize));
+            var foods = db.Foods.Include(f => f.KindOfFood);
+            return View(foods.ToList());
         }
 
-        // GET: admin/CategoryFoods/Details/id
+        // GET: admin/Foods/Details/id
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CategoryFood categoryFood = db.CategoryFoods.Find(id);
-            if (categoryFood == null)
+            Food food = db.Foods.Find(id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(categoryFood);
+            return View(food);
         }
 
-        // GET: admin/CategoryFoods/Create
+        // GET: admin/Foods/Create
         public ActionResult Create()
         {
+            ViewBag.KofID = new SelectList(db.KindOfFoods, "KofID", "KofName");
             return View();
         }
 
-        // POST: admin/CategoryFoods/Create
+        // POST: admin/Foods/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CFoodID,CFoodName,Image,CreatedDate")] CategoryFood categoryFood)
+        public ActionResult Create([Bind(Include = "FoodID,KofID,FoodName,FoodPrice,Description")] Food food)
         {
             if (ModelState.IsValid)
             {
-                categoryFood.CreatedDate = DateTime.Now;
-                db.CategoryFoods.Add(categoryFood);
+                db.Foods.Add(food);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(categoryFood);
+            ViewBag.KofID = new SelectList(db.KindOfFoods, "KofID", "KofName", food.KofID);
+            return View(food);
         }
 
-        // GET: admin/CategoryFoods/Edit/id
+        // GET: admin/Foods/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CategoryFood categoryFood = db.CategoryFoods.Find(id);
-            if (categoryFood == null)
+            Food food = db.Foods.Find(id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(categoryFood);
+            ViewBag.KofID = new SelectList(db.KindOfFoods, "KofID", "KofName", food.KofID);
+            return View(food);
         }
 
-        // POST: admin/CategoryFoods/Edit/id
+        // POST: admin/Foods/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CFoodID,CFoodName,Image,CreatedDate")] CategoryFood categoryFood)
+        public ActionResult Edit([Bind(Include = "FoodID,KofID,FoodName,FoodPrice,Description")] Food food)
         {
             if (ModelState.IsValid)
             {
-                categoryFood.CreatedDate = DateTime.Now;
-                db.Entry(categoryFood).State = EntityState.Modified;
+                db.Entry(food).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(categoryFood);
+            ViewBag.KofID = new SelectList(db.KindOfFoods, "KofID", "KofName", food.KofID);
+            return View(food);
         }
 
-        // GET: admin/CategoryFoods/Delete/id
+        // GET: admin/Foods/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CategoryFood categoryFood = db.CategoryFoods.Find(id);
-            if (categoryFood == null)
+            Food food = db.Foods.Find(id);
+            if (food == null)
             {
                 return HttpNotFound();
             }
-            return View(categoryFood);
+            return View(food);
         }
 
-        // POST: admin/CategoryFoods/Delete/id
+        // POST: admin/Foods/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CategoryFood categoryFood = db.CategoryFoods.Find(id);
-            db.CategoryFoods.Remove(categoryFood);
+            Food food = db.Foods.Find(id);
+            db.Foods.Remove(food);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
