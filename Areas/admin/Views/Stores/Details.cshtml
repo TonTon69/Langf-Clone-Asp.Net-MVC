@@ -1,0 +1,59 @@
+﻿@model langfvn.Models.Store
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Store</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Place.PlaceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Place.PlaceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StoreName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoreName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NoteDiscount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NoteDiscount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StoreID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -139,6 +139,7 @@
     <Compile Include="Areas\admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\admin\Controllers\KindOfNewsController.cs" />
     <Compile Include="Areas\admin\Controllers\PlacesController.cs" />
+    <Compile Include="Areas\admin\Controllers\StoresController.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1871,6 +1872,11 @@
     <Content Include="Areas\admin\Views\Places\Details.cshtml" />
     <Content Include="Areas\admin\Views\Places\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Places\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Stores\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Stores\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Stores\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Stores\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Stores\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
