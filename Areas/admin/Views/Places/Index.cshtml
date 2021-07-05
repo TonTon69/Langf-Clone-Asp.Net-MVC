@@ -39,13 +39,13 @@
                                 @Html.DisplayFor(modelItem => item.PlaceName)
                             </td>
                             <td>
-                                <a href="@Url.Action("Edit","Places",new { id = item.PlaceID })" class="btn btn-primary">
+                                <a href="@Url.Action("edit","places",new { id = item.PlaceID })" class="btn btn-primary">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <a href="@Url.Action("Details","Places",new { id = item.PlaceID })" class="btn btn-secondary">
+                                <a href="@Url.Action("details","places",new { id = item.PlaceID })" class="btn btn-secondary">
                                     <i class="far fa-eye"></i>
                                 </a>
-                                <a href="@Url.Action("Delete","Places",new { id = item.PlaceID })" class="btn btn-danger">
+                                <a href="@Url.Action("delete","places",new { id = item.PlaceID })" class="btn btn-danger">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                             </td>

@@ -45,13 +45,13 @@
                                 @Html.DisplayFor(modelItem => item.CreatedDate)
                             </td>
                             <td>
-                                <a href="@Url.Action("Edit","CategoryNews",new { id = item.CNewsID })" class="btn btn-primary">
+                                <a href="@Url.Action("edit","categorynews",new { id = item.CNewsID })" class="btn btn-primary">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <a href="@Url.Action("Details","CategoryNews",new { id = item.CNewsID })" class="btn btn-secondary">
+                                <a href="@Url.Action("details","categorynews",new { id = item.CNewsID })" class="btn btn-secondary">
                                     <i class="far fa-eye"></i>
                                 </a>
-                                <a href="@Url.Action("Delete","CategoryNews",new { id = item.CNewsID })" class="btn btn-danger">
+                                <a href="@Url.Action("delete","categorynews",new { id = item.CNewsID })" class="btn btn-danger">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                             </td>

@@ -167,6 +167,7 @@
     <Content Include="Content\admin\css\sb-admin-2.css" />
     <Content Include="Content\admin\css\sb-admin-2.min.css" />
     <Content Include="Content\admin\css\style.css" />
+    <Content Include="Content\admin\img\langf.png" />
     <Content Include="Content\admin\img\logo.png" />
     <Content Include="Content\admin\img\undraw_posting_photo.svg" />
     <Content Include="Content\admin\img\undraw_profile.svg" />

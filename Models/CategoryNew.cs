@@ -17,7 +17,6 @@
         [Key]
         public int CNewsID { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string CNewsName { get; set; }
 

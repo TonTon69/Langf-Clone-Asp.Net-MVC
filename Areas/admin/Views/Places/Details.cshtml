@@ -15,17 +15,13 @@
         <h6 class="m-0 font-weight-bold text-dark">CHI TIẾT KHU VỰC #@Model.PlaceID</h6>
     </div>
     <div class="card-body">
-        <div>
-            <dl class="dl-horizontal">
-                <dt>
-                    Khu vực
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.PlaceName)
-                </dd>
-
-            </dl>
-        </div>
+        <dl class="dl-horizontal">
+            <dt>
+                Khu vực:
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.PlaceName)
+            </dd>
+        </dl>
     </div>
 </div>

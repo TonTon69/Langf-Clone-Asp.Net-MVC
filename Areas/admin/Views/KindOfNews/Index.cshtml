@@ -52,13 +52,13 @@
                                 @Html.DisplayFor(modelItem => item.CreatedDate)
                             </td>
                             <td>
-                                <a href="@Url.Action("Edit","KindOfNews",new { id = item.KonID })" class="btn btn-primary">
+                                <a href="@Url.Action("edit","kindofnews",new { id = item.KonID })" class="btn btn-primary">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <a href="@Url.Action("Details","KindOfNews",new { id = item.KonID })" class="btn btn-secondary">
+                                <a href="@Url.Action("details","kindofnews",new { id = item.KonID })" class="btn btn-secondary">
                                     <i class="far fa-eye"></i>
                                 </a>
-                                <a href="@Url.Action("Delete","KindOfNews",new { id = item.KonID })" class="btn btn-danger">
+                                <a href="@Url.Action("delete","kindofnews",new { id = item.KonID })" class="btn btn-danger">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
                             </td>
