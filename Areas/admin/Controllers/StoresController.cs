@@ -16,11 +16,17 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Stores
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string search)
         {
+            ViewBag.CurrentFilter = search;
+            var stores = from s in db.Stores select s;
+            if (!string.IsNullOrEmpty(search))
+            {
+                stores = stores.Where(s => s.StoreName.Contains(search) || s.Address.Contains(search) || s.Place.PlaceName.Contains(search));
+            }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            var stores = db.Stores.OrderBy(s => s.StoreID);
+            stores = stores.OrderBy(s => s.StoreID);
             return View(stores.ToPagedList(pageNumber, pageSize));
         }
 

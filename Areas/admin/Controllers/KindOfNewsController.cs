@@ -16,12 +16,17 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/KindOfNews
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string search)
         {
+            ViewBag.CurrentFilter = search;
+            var kindOfNews = from k in db.KindOfNews select k;
+            if (!string.IsNullOrEmpty(search))
+            {
+                kindOfNews = kindOfNews.Where(k => k.CategoryNew.CNewsName.Contains(search) || k.KonName.Contains(search));
+            }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-
-            var kindOfNews = db.KindOfNews.OrderBy(k => k.KonID);
+            kindOfNews = kindOfNews.OrderBy(k => k.KonID);
             return View(kindOfNews.ToPagedList(pageNumber, pageSize));
         }
 

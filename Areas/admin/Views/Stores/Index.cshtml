@@ -18,6 +18,19 @@
         <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH CỬA HÀNG</h6>
     </div>
     <div class="card-body">
+        <div class="form-group">
+            @using (Html.BeginForm("index", "stores", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" value="@ViewBag.CurrentFilter" class="form-control" name="search" size="50" placeholder="Tìm kiếm..." />
+                </div>
+            }
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
