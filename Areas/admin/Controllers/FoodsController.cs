@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using langfvn.Models;
+using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
@@ -15,25 +16,18 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Foods
-        public ActionResult Index()
+        public ActionResult Index(int? page, string search)
         {
-            var foods = db.Foods.Include(f => f.KindOfFood);
-            return View(foods.ToList());
-        }
-
-        // GET: admin/Foods/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
+            ViewBag.CurrentFilter = search;
+            var foods = from f in db.Foods select f;
+            if (!string.IsNullOrEmpty(search))
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                foods = foods.Where(f => f.KindOfFood.KofName.Contains(search) || f.FoodName.Contains(search));
             }
-            Food food = db.Foods.Find(id);
-            if (food == null)
-            {
-                return HttpNotFound();
-            }
-            return View(food);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            foods = foods.OrderBy(k => k.FoodID);
+            return View(foods.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: admin/Foods/Create

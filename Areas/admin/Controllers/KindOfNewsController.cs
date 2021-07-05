@@ -30,21 +30,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(kindOfNews.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: admin/KindOfNews/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KindOfNew kindOfNew = db.KindOfNews.Find(id);
-            if (kindOfNew == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kindOfNew);
-        }
-
         // GET: admin/KindOfNews/Create
         public ActionResult Create()
         {

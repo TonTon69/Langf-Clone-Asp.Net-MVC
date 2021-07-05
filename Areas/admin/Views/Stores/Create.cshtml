@@ -50,7 +50,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         @Html.LabelFor(model => model.NoteDiscount, "Ghi chú ưu đãi", htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.NoteDiscount, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                        @Html.EditorFor(model => model.NoteDiscount, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.NoteDiscount, "", new { @class = "text-danger" })
                     </div>
                 </div>

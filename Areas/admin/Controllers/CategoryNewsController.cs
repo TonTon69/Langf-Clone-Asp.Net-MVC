@@ -20,21 +20,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(db.CategoryNews.ToList());
         }
 
-        // GET: admin/categorynews/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CategoryNew categoryNew = db.CategoryNews.Find(id);
-            if (categoryNew == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categoryNew);
-        }
-
         // GET: admin/categorynews/Create
         public ActionResult Create()
         {

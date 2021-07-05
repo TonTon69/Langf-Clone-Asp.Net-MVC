@@ -30,21 +30,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(stores.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: admin/Stores/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Store store = db.Stores.Find(id);
-            if (store == null)
-            {
-                return HttpNotFound();
-            }
-            return View(store);
-        }
-
         // GET: admin/Stores/Create
         public ActionResult Create()
         {

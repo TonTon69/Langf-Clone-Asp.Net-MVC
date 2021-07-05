@@ -23,21 +23,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(db.Places.OrderBy(s => s.PlaceID).ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: admin/Places/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Place place = db.Places.Find(id);
-            if (place == null)
-            {
-                return HttpNotFound();
-            }
-            return View(place);
-        }
-
         // GET: admin/Places/Create
         public ActionResult Create()
         {

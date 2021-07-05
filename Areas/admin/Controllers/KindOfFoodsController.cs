@@ -30,21 +30,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(kindOfFoods.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: admin/KindOfFoods/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KindOfFood kindOfFood = db.KindOfFoods.Find(id);
-            if (kindOfFood == null)
-            {
-                return HttpNotFound();
-            }
-            return View(kindOfFood);
-        }
-
         // GET: admin/KindOfFoods/Create
         public ActionResult Create()
         {

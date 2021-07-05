@@ -24,21 +24,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(categoryFood.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: admin/CategoryFoods/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            CategoryFood categoryFood = db.CategoryFoods.Find(id);
-            if (categoryFood == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categoryFood);
-        }
-
         // GET: admin/CategoryFoods/Create
         public ActionResult Create()
         {
