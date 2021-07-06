@@ -7,8 +7,10 @@
 
 <h3>QUẢN LÝ LOẠI TIN</h3>
 <div>
-    <i class="fas fa-undo-alt"></i>
-    <a href="/admin/kindofnews">Quay về danh sách loại tin</a>
+    <a href="/admin/kindofnews" class="btn btn-success">
+        <i class="fas fa-undo-alt"></i>
+        Quay về danh sách loại tin
+    </a>
 </div>
 <div class="card shadow mb-4 mt-4">
     <div class="card-header py-3">
@@ -25,7 +27,7 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.CNewsID, "Thể loại tin", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         @Html.DropDownList("CNewsID", null, htmlAttributes: new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.CNewsID, "", new { @class = "text-danger" })
                     </div>

@@ -1,0 +1,252 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000000;
+    background-color: #fff;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #9b0f0f;
+    font-weight: 600;
+}
+a,
+a:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.dark {
+    color: #f1f1f1;
+}
+.is-larger {
+    font-size: 1.3em;
+}
+.is-full-height {
+    min-height: 550px;
+    height: 80vh;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.banner {
+    position: relative;
+    background-color: #446084;
+    width: 100%;
+    min-height: 30px;
+}
+
+.banner .bg {
+    background-image: url(".././img/home-bg.jpg");
+    background-size: cover;
+}
+
+.banner .bg.fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    -webkit-transition: opacity 0.6s, -webkit-transform 0.3s;
+    transition: opacity 0.6s, -webkit-transform 0.3s;
+    -o-transition: transform 0.3s, opacity 0.6s;
+    transition: transform 0.3s, opacity 0.6s;
+    transition: transform 0.3s, opacity 0.6s, -webkit-transform 0.3s;
+    pointer-events: none;
+}
+
+.banner .overlay {
+    background-color: rgba(223, 141, 141, 0.8);
+}
+
+.banner-layers .text-inner h2 {
+    font-size: 4em;
+    font-weight: 600;
+    color: #fff;
+}
+
+.banner-layers .text-inner p {
+    font-size: 1.2em;
+    margin-bottom: 2rem;
+}
+
+.banner-layers .text-inner a {
+    border-radius: 15px;
+    border: 2px solid #f1f1f1;
+    font-weight: 600;
+    padding: 0.5em 1.2em;
+    line-height: 1.6;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.banner-layers .text-inner a:hover {
+    background-color: #fff;
+    color: #666;
+}
+
+.service h2 {
+    color: #9b0f0f;
+    font-weight: 600;
+}
+
+.service h3 {
+    color: #9b0f0f;
+    font-weight: 600;
+}
+
+.service p {
+    font-size: 0.9em;
+}
+
+.service .desc {
+    padding: 0.4em 0;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #808080;
+}
+
+.service img {
+    width: 476px;
+    height: 357px;
+    object-fit: cover;
+}
+
+.service .is-underline,
+.section-content .quote .is-underline {
+    position: relative;
+    color: #9b0f0f;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+}
+.service .is-underline {
+    font-size: 0.97em;
+}
+.service .is-underline::after,
+.section-content .quote .is-underline::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 1px;
+    left: 50%;
+    bottom: -10px;
+    transition: all 0.4s ease-in-out;
+}
+.service .link,
+.section-content .quote {
+    display: inline-block;
+}
+.service .link:hover .is-underline::after,
+.section-content .quote:hover .is-underline::before {
+    left: 0;
+    width: 100%;
+    background-color: #9b0f0f;
+}
+
+/* service-price */
+
+.service-price .title h2,
+.service-written h3 {
+    color: #9b0f0f;
+    font-weight: 600;
+}
+
+.service-written {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: rgb(246, 247, 251);
+}
+
+.service-written h3 {
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #ececec;
+}
+
+.service-written h3 i {
+    opacity: 0.6;
+}
+
+.service-written .row-collapse .is-border {
+    border-bottom: 1px solid rgb(228, 228, 228);
+}
+
+.service-written .col-md-9 .row-collapse .is-border:last-child {
+    border-bottom: none;
+}
+
+.service-written .row-collapse .is-border.bg {
+    background-color: #fff;
+}
+
+.service-written .row-collapse .is-border.bg p {
+    font-weight: 400;
+}
+
+.service-written .row-collapse .is-border .bg-contact {
+    display: block;
+    background-color: #aa0b0b;
+    border-radius: 5px;
+    color: #fff;
+    margin: 20px;
+}
+
+.service-written .row-collapse .is-border .sample p {
+    color: #aa0b0b;
+    font-weight: 600;
+}
+
+.service-written .row-collapse .is-border p {
+    padding: 1.2rem 0;
+    margin: 0;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.service-written .row-collapse .dark {
+    background-color: #aa0b0b;
+    border-radius: 15px;
+}
+
+.service-written .row-collapse .dark h6 {
+    line-height: 1.05;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+.service-written .row-collapse .dark p {
+    margin: 10.5px;
+}

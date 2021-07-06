@@ -18,6 +18,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/Stores
         public ActionResult Index(int? page, string search)
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             ViewBag.CurrentFilter = search;
             var stores = from s in db.Stores select s;
             if (!string.IsNullOrEmpty(search))
@@ -46,6 +50,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Stores.Add(store);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới cửa hàng thành công";
                 return RedirectToAction("Index");
             }
 
@@ -78,6 +83,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Entry(store).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Cập nhật cửa hàng thành công";
                 return RedirectToAction("Index");
             }
             ViewBag.PlaceID = new SelectList(db.Places, "PlaceID", "PlaceName", store.PlaceID);
@@ -107,6 +113,7 @@ namespace langfvn.Areas.admin.Controllers
             Store store = db.Stores.Find(id);
             db.Stores.Remove(store);
             db.SaveChanges();
+            TempData["success"] = "Xóa cửa hàng thành công";
             return RedirectToAction("Index");
         }
 

@@ -11,6 +11,7 @@ using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
+    //[Authorize(Roles = "Admin")]
     public class AccountsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
@@ -18,6 +19,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/Accounts
         public ActionResult Index(int? page, string search)
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             ViewBag.CurrentFilter = search;
             var accounts = from a in db.Accounts select a;
             if (!string.IsNullOrEmpty(search))
@@ -31,42 +36,11 @@ namespace langfvn.Areas.admin.Controllers
             return View(accounts.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: admin/Accounts/Details/id
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
-            {
-                return HttpNotFound();
-            }
-            return View(account);
-        }
-
         // GET: admin/Accounts/Create
         public ActionResult Create()
         {
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
             return View();
-        }
-
-        // POST: admin/Accounts/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserID,FullName,Email,Password,Phone,Address,Unit,RoleID")] Account account)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Accounts.Add(account);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
-            return View(account);
         }
 
         // GET: admin/Accounts/Edit/id
@@ -94,6 +68,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Cập nhật người dùng thành công";
                 return RedirectToAction("Index");
             }
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
@@ -123,6 +98,7 @@ namespace langfvn.Areas.admin.Controllers
             Account account = db.Accounts.Find(id);
             db.Accounts.Remove(account);
             db.SaveChanges();
+            TempData["success"] = "Xóa người dùng thành công";
             return RedirectToAction("Index");
         }
 

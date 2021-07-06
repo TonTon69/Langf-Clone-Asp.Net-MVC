@@ -18,6 +18,19 @@
         Thêm mới banner
     </a>
 </div>
+@if (ViewBag.SuccessMsg != null)
+{
+    <div id="alertMsg" class="alert alert-success" role="alert">
+        <strong>@ViewBag.SuccessMsg</strong>
+    </div>
+}
+@section ScriptAlertSuccess{
+    <script>
+        setTimeout(() => {
+            $('#alertMsg').fadeOut('slow');
+        }, 3000)
+    </script>
+}
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH BANNER</h6>

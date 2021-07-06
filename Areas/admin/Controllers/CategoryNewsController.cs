@@ -17,6 +17,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/categorynews
         public ActionResult Index()
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             return View(db.CategoryNews.ToList());
         }
 
@@ -36,6 +40,7 @@ namespace langfvn.Areas.admin.Controllers
                 categoryNew.CreatedDate = DateTime.Now;
                 db.CategoryNews.Add(categoryNew);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới thể loại tin thành công";
                 return RedirectToAction("Index");
             }
 
@@ -67,6 +72,7 @@ namespace langfvn.Areas.admin.Controllers
                 categoryNew.CreatedDate = DateTime.Now;
                 db.Entry(categoryNew).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Cập nhật thể loại tin thành công";
                 return RedirectToAction("Index");
             }
             return View(categoryNew);
@@ -95,6 +101,7 @@ namespace langfvn.Areas.admin.Controllers
             CategoryNew categoryNew = db.CategoryNews.Find(id);
             db.CategoryNews.Remove(categoryNew);
             db.SaveChanges();
+            TempData["success"] = "Xóa thể loại tin thành công";
             return RedirectToAction("Index");
         }
 

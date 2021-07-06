@@ -17,6 +17,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/Advertisements
         public ActionResult Index()
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             return View(db.Advertisements.ToList());
         }
 
@@ -35,6 +39,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Advertisements.Add(advertisement);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới quảng cáo thành công";
                 return RedirectToAction("Index");
             }
 
@@ -65,6 +70,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Entry(advertisement).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Cập nhật quảng cáo thành công";
                 return RedirectToAction("Index");
             }
             return View(advertisement);
@@ -93,6 +99,7 @@ namespace langfvn.Areas.admin.Controllers
             Advertisement advertisement = db.Advertisements.Find(id);
             db.Advertisements.Remove(advertisement);
             db.SaveChanges();
+            TempData["success"] = "Xóa quảng cáo thành công";
             return RedirectToAction("Index");
         }
 

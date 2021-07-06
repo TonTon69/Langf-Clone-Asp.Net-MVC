@@ -1,0 +1,23 @@
+@media (max-width: 739px) {
+    .header .nav-bars-btn {
+        display: block;
+        margin-right: 10px;
+        transform: translateY(2px);
+        -webkit-filter: brightness(0) invert(1);
+        filter: brightness(0) invert(1);
+    }
+    .header .nav-pc,
+    .header .gap,
+    .header .icon-wrap {
+        display: none;
+    }
+    .header .search .container .input-group {
+        z-index: 9;
+    }
+    .dishes .content .item {
+        width: 50%;
+    }
+    .swiper-slide {
+        width: 200px !important;
+    }
+}

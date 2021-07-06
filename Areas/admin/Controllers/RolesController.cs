@@ -17,6 +17,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/Roles
         public ActionResult Index()
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             return View(db.Roles.ToList());
         }
 
@@ -35,6 +39,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Roles.Add(role);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới role thành công";
                 return RedirectToAction("Index");
             }
 
@@ -65,6 +70,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Entry(role).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Cập nhật role thành công";
                 return RedirectToAction("Index");
             }
             return View(role);
@@ -93,6 +99,7 @@ namespace langfvn.Areas.admin.Controllers
             Role role = db.Roles.Find(id);
             db.Roles.Remove(role);
             db.SaveChanges();
+            TempData["success"] = "Xóa role thành công";
             return RedirectToAction("Index");
         }
 

@@ -18,6 +18,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/KindOfFoods
         public ActionResult Index(int? page, string search)
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             ViewBag.CurrentFilter = search;
             var kindOfFoods = from k in db.KindOfFoods select k;
             if (!string.IsNullOrEmpty(search))
@@ -48,6 +52,7 @@ namespace langfvn.Areas.admin.Controllers
                 kindOfFood.CreatedDate = DateTime.Now;
                 db.KindOfFoods.Add(kindOfFood);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới loại món ăn thành công";
                 return RedirectToAction("Index");
             }
 
@@ -83,6 +88,7 @@ namespace langfvn.Areas.admin.Controllers
                 kindOfFood.CreatedDate = DateTime.Now;
                 db.Entry(kindOfFood).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Câp nhật loại món ăn thành công";
                 return RedirectToAction("Index");
             }
             ViewBag.CFoodID = new SelectList(db.CategoryFoods, "CFoodID", "CFoodName", kindOfFood.CFoodID);
@@ -113,6 +119,7 @@ namespace langfvn.Areas.admin.Controllers
             KindOfFood kindOfFood = db.KindOfFoods.Find(id);
             db.KindOfFoods.Remove(kindOfFood);
             db.SaveChanges();
+            TempData["success"] = "Xóa loại món ăn thành công";
             return RedirectToAction("Index");
         }
 

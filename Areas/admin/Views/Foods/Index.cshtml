@@ -20,10 +20,23 @@
         Thêm mới món ăn
     </a>
     <a href="/admin/stores" class="btn btn-success">
-        <i class="fas fa-plus"></i>
+        <i class="fas fa-undo-alt"></i>
         Quay về quản lý cửa hàng
     </a>
 </div>
+@if (ViewBag.SuccessMsg != null)
+{
+    <div id="alertMsg" class="alert alert-success" role="alert">
+        <strong>@ViewBag.SuccessMsg</strong>
+    </div>
+}
+@section ScriptAlertSuccess{
+    <script>
+        setTimeout(() => {
+            $('#alertMsg').fadeOut('slow');
+        }, 3000)
+    </script>
+}
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH MÓN ĂN</h6>

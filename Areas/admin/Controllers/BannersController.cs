@@ -17,6 +17,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/Banners
         public ActionResult Index()
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             return View(db.Banners.ToList());
         }
 
@@ -35,6 +39,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Banners.Add(banner);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới banner thành công";
                 return RedirectToAction("Index");
             }
 
@@ -65,6 +70,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Entry(banner).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Cập nhật banner thành công";
                 return RedirectToAction("Index");
             }
             return View(banner);
@@ -93,6 +99,7 @@ namespace langfvn.Areas.admin.Controllers
             Banner banner = db.Banners.Find(id);
             db.Banners.Remove(banner);
             db.SaveChanges();
+            TempData["success"] = "Xóa banner thành công";
             return RedirectToAction("Index");
         }
 

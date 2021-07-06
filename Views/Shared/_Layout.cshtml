@@ -1,42 +1,198 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cẩm nang Làng Đại Học</title>
+    <link rel="icon" href="./assets/img/logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous"
+          referrerpolicy="no-referrer" />
+    <!-- swiper -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet"
+          href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/Content/main/css/style.css" />
+    <link rel="stylesheet" href="~/Content/main/css/responsive.css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div class="app">
+        <div class="header">
+            <div class="navbar">
+                <div class="container">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="./assets/img/logo.png"
+                                 alt="logo"
+                                 height="40" />
+                        </a>
+                    </div>
+                    <nav class="nav-pc">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">tin tức</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">ăn chơi sinh viên</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="gap"></div>
+                    <div class="icon-wrap pc">
+                        <a href="login.html">
+                            <img src="./assets/img/login.png" width="25" />
+                        </a>
+                    </div>
+                    <!-- mobile -->
+                    <label for="nav-mobile-input" class="nav-bars-btn">
+                        <img src="./assets/img/menu.svg" width="25" />
+                    </label>
+                    <input type="checkbox"
+                           hidden
+                           class="nav-mobile-input"
+                           id="nav-mobile-input" />
+                    <label for="nav-mobile-input"
+                           class="nav-overlay"></label>
+                    <nav class="nav-mobile">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">tin tức</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">ăn chơi sinh viên</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login.html">
+                                    <img src="./assets/img/login.png"
+                                         width="25" />
+                                </a>
+                            </li>
+                        </ul>
+                        <label for="nav-mobile-input"
+                               class="nav-mobile-close">
+                            <img src="./assets/img/cancel.svg" width="20" />
+                        </label>
+                    </nav>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
+            <div class="banner">
+                <div class="bg"></div>
+                <div class="overlay"></div>
+            </div>
+            <div class="search">
+                <div class="left"></div>
+                <div class="container">
+                    <div class="input-group">
+                        <input class="form-control"
+                               type="text"
+                               placeholder="TÌM KIẾM MỌI THỨ..." />
+                        <div class="input-group-icon">
+                            <button type="button" class="btn btn-secondary">
+                                <img src="./assets/img/search.png" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="right"></div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        <footer class="font-small">
+            <div class="container text-center text-md-left mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            ton ton
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; border-color: #fff" />
+                        <p>Công ty Cổ phần Công nghệ TonTon</p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            sản phẩm
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; border-color: #fff" />
+                        <p><a href="">Trang chủ</a></p>
+                        <p><a href="">Cơm hàng quán</a></p>
+                        <p><a href="">Cơm mẹ người ta nấu</a></p>
+                        <p><a href="">Tin tức</a></p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            liên kết
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; border-color: #fff" />
+                        <p><a href="">Facebook</a></p>
+                    </div>
+                    <div class="
+                                col-md-4 col-lg-3 col-xl-3
+                                mx-auto
+                                mb-md-0 mb-4
+                            ">
+                        <h6 class="text-uppercase font-weight-bold">
+                            liên hệ
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto"
+                            style="width: 60px; border-color: #fff" />
+                        <p>
+                            <i class="fa fa-home mr-2"></i>
+                            Phòng I.007, Khu Công nghệ Phần mềm, Linh Trung,
+                            Thủ Đức
+                        </p>
+                        <p>
+                            <i class="fa fa-home mr-2"></i>
+                            Ký túc xá khu B ĐHQG TPHCM, Đông Hòa Dĩ An, Bình
+                            Dương
+                        </p>
+                        <p>
+                            <i class="fa fa-envelope mr-2"></i>
+                            hoanghuynh0609@gmail.com
+                        </p>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center pb-3">
+                    COPYRIGHT © 2021 - TON TON
+                </div>
+            </div>
         </footer>
+        <div class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- swiperjs -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script type="text/javascript" src="~/Content/main/js/main.js"></script>
 </body>
 </html>

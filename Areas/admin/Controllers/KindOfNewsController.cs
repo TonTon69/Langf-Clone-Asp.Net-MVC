@@ -18,6 +18,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/KindOfNews
         public ActionResult Index(int? page, string search)
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             ViewBag.CurrentFilter = search;
             var kindOfNews = from k in db.KindOfNews select k;
             if (!string.IsNullOrEmpty(search))
@@ -47,6 +51,7 @@ namespace langfvn.Areas.admin.Controllers
                 kindOfNew.CreatedDate = DateTime.Now;
                 db.KindOfNews.Add(kindOfNew);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới loại tin thành công";
                 return RedirectToAction("Index");
             }
 
@@ -80,6 +85,7 @@ namespace langfvn.Areas.admin.Controllers
                 kindOfNew.CreatedDate = DateTime.Now;
                 db.Entry(kindOfNew).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Chỉnh sửa loại tin thành công";
                 return RedirectToAction("Index");
             }
             ViewBag.CNewsID = new SelectList(db.CategoryNews, "CNewsID", "CNewsName", kindOfNew.CNewsID);
@@ -109,6 +115,7 @@ namespace langfvn.Areas.admin.Controllers
             KindOfNew kindOfNew = db.KindOfNews.Find(id);
             db.KindOfNews.Remove(kindOfNew);
             db.SaveChanges();
+            TempData["success"] = "Xóa loại tin thành công";
             return RedirectToAction("Index");
         }
 

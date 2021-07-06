@@ -18,6 +18,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/Places
         public ActionResult Index(int? page)
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             return View(db.Places.OrderBy(s => s.PlaceID).ToPagedList(pageNumber, pageSize));
@@ -38,6 +42,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Places.Add(place);
                 db.SaveChanges();
+                TempData["success"] = "Thêm mới khu vực thành công";
                 return RedirectToAction("Index");
             }
 
@@ -68,6 +73,7 @@ namespace langfvn.Areas.admin.Controllers
             {
                 db.Entry(place).State = EntityState.Modified;
                 db.SaveChanges();
+                TempData["success"] = "Cập nhật khu vực thành công";
                 return RedirectToAction("Index");
             }
             return View(place);
@@ -96,6 +102,7 @@ namespace langfvn.Areas.admin.Controllers
             Place place = db.Places.Find(id);
             db.Places.Remove(place);
             db.SaveChanges();
+            TempData["success"] = "Xóa khu vực thành công";
             return RedirectToAction("Index");
         }
 
