@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AdvertisementsController.cs" />
     <Compile Include="Areas\admin\Controllers\BannersController.cs" />
     <Compile Include="Areas\admin\Controllers\CategoryFoodsController.cs" />
     <Compile Include="Areas\admin\Controllers\CategoryNewsController.cs" />
@@ -1892,7 +1893,6 @@
     <Content Include="Areas\admin\Views\KindOfFoods\Index.cshtml" />
     <Content Include="Areas\admin\Views\Banners\Create.cshtml" />
     <Content Include="Areas\admin\Views\Banners\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\Banners\Details.cshtml" />
     <Content Include="Areas\admin\Views\Banners\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Banners\Index.cshtml" />
     <Content Include="Areas\admin\Views\Reviews\Create.cshtml" />
@@ -1900,6 +1900,10 @@
     <Content Include="Areas\admin\Views\Reviews\Details.cshtml" />
     <Content Include="Areas\admin\Views\Reviews\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Reviews\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Advertisements\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Advertisements\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Advertisements\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Advertisements\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

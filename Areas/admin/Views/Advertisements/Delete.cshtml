@@ -1,0 +1,60 @@
+﻿@model langfvn.Models.Advertisement
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h3>QUẢN LÝ QUẢNG CÁO</h3>
+<div>
+    <i class="fas fa-undo-alt"></i>
+    <a href="/admin/advertisements">Quay về danh sách quảng cáo</a>
+</div>
+<div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">XÓA QUẢNG CÁO #@Model.AdID</h6>
+    </div>
+    <div class="card-body">
+        <div class="form-group row align-items-center mb-0">
+            <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">ID</label>
+            <div class="col-sm-10">
+                @Html.DisplayFor(model => model.AdID)
+            </div>
+        </div>
+        <div class="form-group row align-items-center mb-0">
+            <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Tiêu đề</label>
+            <div class="col-sm-10">
+                @Html.DisplayFor(model => model.AdTitle)
+            </div>
+        </div>
+        <div class="form-group row align-items-center mb-0">
+            <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Ảnh</label>
+            <div class="col-sm-10">
+                <img src="@Model.Image" width="450" height="200" style="object-fit:cover" />
+            </div>
+        </div>
+        <div class="form-group row align-items-center mb-0">
+            <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Trạng thái</label>
+            <div class="col-sm-10">
+                @if (@Model.Visible == true)
+                {
+                    @String.Format("Hiện")
+                }
+                else
+                {
+                    @String.Format("Ẩn")
+                }
+            </div>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <p class="text-danger">Bạn có chắc chắc muốn xóa?</p>
+                <input type="submit" value="Xóa" class="btn btn-danger" />
+            </div>
+        }
+    </div>
+</div>

@@ -10,88 +10,88 @@ using langfvn.Models;
 
 namespace langfvn.Areas.admin.Controllers
 {
-    public class BannersController : Controller
+    public class AdvertisementsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
 
-        // GET: admin/Banners
+        // GET: admin/Advertisements
         public ActionResult Index()
         {
-            return View(db.Banners.ToList());
+            return View(db.Advertisements.ToList());
         }
 
-        // GET: admin/Banners/Create
+        // GET: admin/Advertisements/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: admin/Banners/Create
+        // POST: admin/Advertisements/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BannerID,Image,Description")] Banner banner)
+        public ActionResult Create([Bind(Include = "AdID,AdTitle,Image,Visible")] Advertisement advertisement)
         {
             if (ModelState.IsValid)
             {
-                db.Banners.Add(banner);
+                db.Advertisements.Add(advertisement);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(banner);
+            return View(advertisement);
         }
 
-        // GET: admin/Banners/Edit/id
+        // GET: admin/Advertisements/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
+            Advertisement advertisement = db.Advertisements.Find(id);
+            if (advertisement == null)
             {
                 return HttpNotFound();
             }
-            return View(banner);
+            return View(advertisement);
         }
 
-        // POST: admin/Banners/Edit/id
+        // POST: admin/Advertisements/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BannerID,Image,Description")] Banner banner)
+        public ActionResult Edit([Bind(Include = "AdID,AdTitle,Image,Visible")] Advertisement advertisement)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(banner).State = EntityState.Modified;
+                db.Entry(advertisement).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(banner);
+            return View(advertisement);
         }
 
-        // GET: admin/Banners/Delete/id
+        // GET: admin/Advertisements/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Banner banner = db.Banners.Find(id);
-            if (banner == null)
+            Advertisement advertisement = db.Advertisements.Find(id);
+            if (advertisement == null)
             {
                 return HttpNotFound();
             }
-            return View(banner);
+            return View(advertisement);
         }
 
-        // POST: admin/Banners/Delete/id
+        // POST: admin/Advertisements/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Banner banner = db.Banners.Find(id);
-            db.Banners.Remove(banner);
+            Advertisement advertisement = db.Advertisements.Find(id);
+            db.Advertisements.Remove(advertisement);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
