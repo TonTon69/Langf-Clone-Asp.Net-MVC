@@ -1,0 +1,55 @@
+﻿@model IEnumerable<langfvn.Models.Banner>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">QUẢN LÝ BANNER</h1>
+<div class="d-flex mb-4">
+    <a href="/admin/banners/create" class="btn btn-dark">
+        <i class="fas fa-plus"></i>
+        Thêm mới banner
+    </a>
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH BANNER</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            Ảnh
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BannerID)
+                            </td>
+                            <td>
+                                <img src="@item.Image" width="650" height="200" style="object-fit:cover" />
+                            </td>
+                            <td>
+                                <a href="@Url.Action("edit","banners",new { id = item.BannerID })" class="btn btn-primary">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("delete","banners",new { id = item.BannerID })" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
