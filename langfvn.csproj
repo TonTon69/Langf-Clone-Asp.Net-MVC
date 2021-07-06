@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -124,10 +132,25 @@
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\homeController.cs" />
     <Compile Include="Areas\camnang\camnangAreaRegistration.cs" />
+    <Compile Include="Areas\camnang\Controllers\HomeController.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Advertisement.cs" />
+    <Compile Include="Models\Banner.cs" />
+    <Compile Include="Models\CategoryFood.cs" />
+    <Compile Include="Models\CategoryNew.cs" />
+    <Compile Include="Models\Food.cs" />
+    <Compile Include="Models\KindOfFood.cs" />
+    <Compile Include="Models\KindOfNew.cs" />
+    <Compile Include="Models\LangfvnContext.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Place.cs" />
+    <Compile Include="Models\Review.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Store.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -135,6 +158,110 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\camnang\css\cam-nang.css" />
+    <Content Include="Content\camnang\css\responsive.css" />
+    <Content Include="Content\camnang\css\style.css" />
+    <Content Include="Content\camnang\img\123.png" />
+    <Content Include="Content\camnang\img\7529529.png" />
+    <Content Include="Content\camnang\img\A3-300x224.png" />
+    <Content Include="Content\camnang\img\A7-1-300x200.png" />
+    <Content Include="Content\camnang\img\an-vat.svg" />
+    <Content Include="Content\camnang\img\AY3.jpg" />
+    <Content Include="Content\camnang\img\Ảnh-chụp-Màn-hình-2020-11-19-lúc-16.23.55-2048x1370.png" />
+    <Content Include="Content\camnang\img\Ảnh-chụp-Màn-hình-2020-11-24-lúc-18.01.39-300x183.png" />
+    <Content Include="Content\camnang\img\B1-300x225.jpg" />
+    <Content Include="Content\camnang\img\bangvan-4.jpg" />
+    <Content Include="Content\camnang\img\bangvang-1.png" />
+    <Content Include="Content\camnang\img\bangvang-2.jpg" />
+    <Content Include="Content\camnang\img\bangvang-3.jpg" />
+    <Content Include="Content\camnang\img\banner-on-top.png" />
+    <Content Include="Content\camnang\img\bottom-banner.png" />
+    <Content Include="Content\camnang\img\btnnext.png" />
+    <Content Include="Content\camnang\img\btnprivious.png" />
+    <Content Include="Content\camnang\img\bun-mi.svg" />
+    <Content Include="Content\camnang\img\C1-300x290.png" />
+    <Content Include="Content\camnang\img\cancel.svg" />
+    <Content Include="Content\camnang\img\chay.svg" />
+    <Content Include="Content\camnang\img\com.svg" />
+    <Content Include="Content\camnang\img\content-wrting.png" />
+    <Content Include="Content\camnang\img\cover.jpg" />
+    <Content Include="Content\camnang\img\default-cover.png" />
+    <Content Include="Content\camnang\img\delivery.png" />
+    <Content Include="Content\camnang\img\dich-vu-marketing.png" />
+    <Content Include="Content\camnang\img\e-member.png" />
+    <Content Include="Content\camnang\img\G9.jpg" />
+    <Content Include="Content\camnang\img\hai-san.svg" />
+    <Content Include="Content\camnang\img\Hằng-Thiện-1-300x225.jpeg" />
+    <Content Include="Content\camnang\img\iconepage2.png" />
+    <Content Include="Content\camnang\img\iconpage3.jpg" />
+    <Content Include="Content\camnang\img\iconpage4.png" />
+    <Content Include="Content\camnang\img\KTX-về-dêm.jpg" />
+    <Content Include="Content\camnang\img\langf.png" />
+    <Content Include="Content\camnang\img\lau.svg" />
+    <Content Include="Content\camnang\img\logo-partner-1.png" />
+    <Content Include="Content\camnang\img\logo-partner-2.png" />
+    <Content Include="Content\camnang\img\logo-partner-3.png" />
+    <Content Include="Content\camnang\img\logo-partner-4.jpg" />
+    <Content Include="Content\camnang\img\logopage1.png" />
+    <Content Include="Content\camnang\img\logopage2.jpeg" />
+    <Content Include="Content\camnang\img\logopage3.png" />
+    <Content Include="Content\camnang\img\logopage4.jpeg" />
+    <Content Include="Content\camnang\img\logopage5.png" />
+    <Content Include="Content\camnang\img\logopage6.png" />
+    <Content Include="Content\camnang\img\logopage7.png" />
+    <Content Include="Content\camnang\img\logopage8.jpg" />
+    <Content Include="Content\camnang\img\logopage9.jpg" />
+    <Content Include="Content\camnang\img\logo_busmap.png" />
+    <Content Include="Content\camnang\img\Logo_LV.png" />
+    <Content Include="Content\camnang\img\Logo_Meete.png" />
+    <Content Include="Content\camnang\img\Logo_Tea-Lux.png" />
+    <Content Include="Content\camnang\img\Logo_Thanh-Huong.png" />
+    <Content Include="Content\camnang\img\Logo_Xinh-spa.png" />
+    <Content Include="Content\camnang\img\menu.svg" />
+    <Content Include="Content\camnang\img\new2.png" />
+    <Content Include="Content\camnang\img\new3.png" />
+    <Content Include="Content\camnang\img\new4.png" />
+    <Content Include="Content\camnang\img\news1.jpg" />
+    <Content Include="Content\camnang\img\news1.png" />
+    <Content Include="Content\camnang\img\page1.png" />
+    <Content Include="Content\camnang\img\page2.png" />
+    <Content Include="Content\camnang\img\page3.png" />
+    <Content Include="Content\camnang\img\page4.png" />
+    <Content Include="Content\camnang\img\review1.jpg" />
+    <Content Include="Content\camnang\img\review2.jpg" />
+    <Content Include="Content\camnang\img\review3.jpg" />
+    <Content Include="Content\camnang\img\review4.jpg" />
+    <Content Include="Content\camnang\img\review5.png" />
+    <Content Include="Content\camnang\img\review6.jpg" />
+    <Content Include="Content\camnang\img\review7.jpg" />
+    <Content Include="Content\camnang\img\review8.png" />
+    <Content Include="Content\camnang\img\search.png" />
+    <Content Include="Content\camnang\img\sinh-to.svg" />
+    <Content Include="Content\camnang\img\slide-1.png" />
+    <Content Include="Content\camnang\img\slide-2.jpg" />
+    <Content Include="Content\camnang\img\slide-3.png" />
+    <Content Include="Content\camnang\img\slide-4.png" />
+    <Content Include="Content\camnang\img\store1.jpeg" />
+    <Content Include="Content\camnang\img\store2.png" />
+    <Content Include="Content\camnang\img\store3.jpeg" />
+    <Content Include="Content\camnang\img\store4.jpeg" />
+    <Content Include="Content\camnang\img\thit-nuong.svg" />
+    <Content Include="Content\camnang\img\tra.svg" />
+    <Content Include="Content\camnang\img\trai-cay.svg" />
+    <Content Include="Content\camnang\img\truyenma1.jpg" />
+    <Content Include="Content\camnang\img\truyenma2.jpg" />
+    <Content Include="Content\camnang\img\truyenma3.jpg" />
+    <Content Include="Content\camnang\img\truyenma4.png" />
+    <Content Include="Content\camnang\img\ungdung1.png" />
+    <Content Include="Content\camnang\img\ungdung2.png" />
+    <Content Include="Content\camnang\img\ungdung3.png" />
+    <Content Include="Content\camnang\img\ungdung4.png" />
+    <Content Include="Content\camnang\img\ungdung5.png" />
+    <Content Include="Content\camnang\img\Unipass-300x192.jpeg" />
+    <Content Include="Content\camnang\img\user.svg" />
+    <Content Include="Content\camnang\img\V4-1-300x169.jpg" />
+    <Content Include="Content\camnang\img\Web-Design-PNG-Picture.png" />
+    <Content Include="Content\camnang\js\main.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -144,6 +271,23 @@
     <Content Include="Areas\admin\Views\web.config" />
     <Content Include="Areas\admin\Views\home\index.cshtml" />
     <Content Include="Areas\camnang\Views\web.config" />
+    <Content Include="Areas\camnang\Views\Shared\_LayoutCamNang.cshtml" />
+    <Content Include="Areas\camnang\Views\home\Index.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Banner.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_PartnerLogo.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Question_KTX.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_MenuHeader.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_MenuHeaderCon.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Question_Food.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Question_Need.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Question_Fun.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Question_Lake.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Question_Discount.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_LangStory.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_HandBook.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_GhostStory.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_LangReview.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_ReviewFood.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -172,11 +316,8 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Data\" />
     <Folder Include="Areas\admin\Views\Shared\" />
-    <Folder Include="Areas\camnang\Controllers\" />
     <Folder Include="Areas\camnang\Data\" />
-    <Folder Include="Areas\camnang\Views\Shared\" />
     <Folder Include="Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

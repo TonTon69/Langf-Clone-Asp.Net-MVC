@@ -1,0 +1,29 @@
+﻿@model IEnumerable<langfvn.Models.Store>
+
+<h2 style="text-align: center">
+    <strong>
+        <span style="font-size: 140%; font-weight: 600 !important">
+            ĐỐI TÁC CỦA
+            LANGF.VN
+        </span>
+    </strong>
+</h2>
+<div class="swiper-container">
+    <div class="swiper-wrapper" style="height: 175px; width: 105px">
+        @foreach (var item in Model)
+        {
+            <div class="swiper-slide">
+                <a href=""></a>
+                <img src="@item.Image"  style="border-radius: 50%; height: 5rem" />
+            </div>
+        }
+    </div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <!-- Devide -->
+    <div class="text-center">
+        <div class="is-devider clearfix" style="max-width: 250px; background-color: rgb(155, 15, 15)">
+        </div>
+    </div>
+    <!-- End Devide -->
+</div>

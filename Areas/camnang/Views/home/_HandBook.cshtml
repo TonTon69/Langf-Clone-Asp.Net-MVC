@@ -1,0 +1,29 @@
+﻿@model IEnumerable<langfvn.Models.News>
+
+@foreach (var item in Model)
+{
+    <div class="col col-md-3 col-top" style="height: fit-content">
+        <div class="col-inner-news">
+            <div class="box box-bounce text-center">
+                <a href="#">
+                    <div class="box-images" style="border-radius: 4%;">
+                        <img src="@item.Image">
+                    </div>
+                    <div class="box-texts text-center">
+                        <div class="box-texts-inner">
+                            <p class="cat-label text-uppercase op-7">@item.KindOfNew.KonName</p>
+                            <h5 class="post-title">
+                                @item.Title
+                            </h5>
+                            <div class="post-meta">@item.CreatedDate.ToString("MMM d, yyyy")</div>
+                            <div class="is-divider"></div>
+                            <p class="from-blog">
+                                @item.Content
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+}

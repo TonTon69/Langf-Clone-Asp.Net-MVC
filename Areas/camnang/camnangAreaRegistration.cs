@@ -17,7 +17,7 @@ namespace langfvn.Areas.camnang
             context.MapRoute(
                 "camnang_default",
                 "camnang/{controller}/{action}/{id}",
-                new { action = "index", id = UrlParameter.Optional }
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
