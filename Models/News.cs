@@ -17,6 +17,7 @@ namespace langfvn.Models
         [StringLength(250)]
         public string Title { get; set; }
 
+        [Column(TypeName = "ntext")]
         public string Content { get; set; }
 
         public string Image { get; set; }

@@ -145,13 +145,13 @@
     <Compile Include="Areas\admin\Controllers\KindOfNewsController.cs" />
     <Compile Include="Areas\admin\Controllers\PlacesController.cs" />
     <Compile Include="Areas\admin\Controllers\ReviewsController.cs" />
+    <Compile Include="Areas\admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\admin\Controllers\StoresController.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
-    <Compile Include="Models\AccPer.cs" />
     <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\CategoryFood.cs" />
@@ -161,11 +161,9 @@
     <Compile Include="Models\KindOfNew.cs" />
     <Compile Include="Models\LangfvnContext.cs" />
     <Compile Include="Models\News.cs" />
-    <Compile Include="Models\Permission.cs" />
-    <Compile Include="Models\PermissionDetail.cs" />
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\Review.cs" />
-    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1904,6 +1902,10 @@
     <Content Include="Areas\admin\Views\Advertisements\Delete.cshtml" />
     <Content Include="Areas\admin\Views\Advertisements\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Advertisements\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Roles\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

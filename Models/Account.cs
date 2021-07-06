@@ -12,7 +12,6 @@ namespace langfvn.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Account()
         {
-            AccPers = new HashSet<AccPer>();
             News = new HashSet<News>();
             Reviews = new HashSet<Review>();
         }
@@ -38,8 +37,9 @@ namespace langfvn.Models
         [StringLength(50)]
         public string Unit { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AccPer> AccPers { get; set; }
+        public int RoleID { get; set; }
+
+        public virtual Role Role { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<News> News { get; set; }
