@@ -1,0 +1,104 @@
+﻿@model IEnumerable<langfvn.Models.Account>
+
+@{
+    ViewBag.Title = "ProfileAdmin";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>HỒ SƠ ADMIN</h2>
+<div class="mb-4">
+    <a href="/admin/accounts" class="btn btn-success">
+        <i class="fas fa-undo-alt"></i>
+        Quay về danh sách người dùng
+    </a>
+</div>
+<div class="row">
+    <div class="card shadow mb-4 col-md-8 p-0" style="margin-left: 10px">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-dark">THÔNG TIN</h6>
+        </div>
+        <div class="card-body">
+            @foreach (var item in Model)
+            {
+                <div class="form-group row align-items-center mb-0">
+                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Họ và tên</label>
+                    <div class="col-sm-10">
+                        @Html.DisplayFor(model => item.FullName)
+                    </div>
+                </div>
+                <div class="form-group row align-items-center mb-0">
+                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Email</label>
+                    <div class="col-sm-10">
+                        @Html.DisplayFor(model => item.Email)
+                    </div>
+                </div>
+                <div class="form-group row align-items-center mb-0">
+                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Số điện thoại</label>
+                    <div class="col-sm-10">
+                        @Html.DisplayFor(model => item.Phone)
+                    </div>
+                </div>
+                <div class="form-group row align-items-center mb-0">
+                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Địa chỉ</label>
+                    <div class="col-sm-10">
+                        @Html.DisplayFor(model => item.Address)
+                    </div>
+                </div>
+                <div class="form-group row align-items-center mb-0">
+                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Trường/Đơn vị</label>
+                    <div class="col-sm-10">
+                        @Html.DisplayFor(model => item.Unit)
+                    </div>
+                </div>
+                <div class="form-group row align-items-center mb-0">
+                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Role</label>
+                    <div class="col-sm-10">
+                        @Html.DisplayFor(model => item.Role.RoleName)
+                    </div>
+                </div>
+                <a href="@Url.Action("edit","accounts",new { id = item.UserID })" class="btn btn-primary mt-4 mb-4">
+                    Cập nhật thông tin
+                </a>
+            }
+
+        </div>
+    </div>
+    <div class="card shadow mb-4 col-md-3 ml-4">
+        <div class="card-body position-relative text-center">
+            @foreach (var item in Model)
+            {
+                <div class="img-admin shadow">
+                    <img src="~/Content/admin/img/admin.svg" width="80" height="80" />
+                </div>
+                <h6 class="mt-5 pt-5">CEO / CO-FOUNDER</h6>
+                <h5 class="text-dark font-weight-bold">@item.FullName</h5>
+                <p class="mt-4 mb-4 text-justify">
+                    Đừng bao giờ học để thành công, hãy học vì sự ưu tú cho bản thân mình.
+                    Đừng chạy theo thành công, hãy theo đuổi sự ưu tú.
+                    Khi đó, thành công sẽ theo đuổi bạn.
+                </p>
+                <a class="btn btn-success pl-4 pr-4" style="border-radius: 25px">Follow</a>
+            }
+        </div>
+    </div>
+</div>
+<style>
+    .img-admin {
+        position: absolute;
+        top: -14%;
+        left: 23%;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-color: #111;
+    }
+
+        .img-admin img {
+            color: #fff;
+            -webkit-filter: brightness(0) invert(1);
+            filter: brightness(0) invert(1);
+            transform: translate(4px, 30px);
+        }
+</style>
+
+

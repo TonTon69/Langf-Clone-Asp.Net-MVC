@@ -32,8 +32,15 @@ namespace langfvn.Areas.admin.Controllers
             }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            accounts = accounts.OrderBy(s => s.UserID);
+            accounts = accounts.Where(s => s.Role.RoleName != "Admin").OrderBy(s => s.UserID);
             return View(accounts.ToPagedList(pageNumber, pageSize));
+        }
+
+        // GET: admin/Accounts/ProfileAdmin
+        public ActionResult ProfileAdmin()
+        {
+            var accountsAdmin = db.Accounts.Where(a => a.Role.RoleName == "Admin").ToList();
+            return View(accountsAdmin);
         }
 
         // GET: admin/Accounts/Create

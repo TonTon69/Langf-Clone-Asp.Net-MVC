@@ -23,6 +23,11 @@
     <link href="~/Content/admin/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="~/Content/admin/css/style.css" rel="stylesheet">
 
+    <style>
+        button.close, button.close:focus {
+            outline: none;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -105,11 +110,20 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/admin/accounts">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                   aria-expanded="true" aria-controls="collapseFour">
                     <i class="fas fa-user-cog"></i>
                     <span>Người dùng</span>
                 </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/admin/accounts">Danh sách</a>
+                        <a class="collapse-item" href="/admin/accounts/profileadmin">Hồ sơ admin</a>
+                    </div>
+                </div>
             </li>
+           
             <li class="nav-item">
                 <a class="nav-link" href="/admin/roles">
                     <i class="fas fa-user-shield"></i>
