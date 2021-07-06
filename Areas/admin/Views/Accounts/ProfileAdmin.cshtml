@@ -68,7 +68,7 @@
             @foreach (var item in Model)
             {
                 <div class="img-admin shadow">
-                    <img src="~/Content/admin/img/admin.svg" width="80" height="80" />
+                    <i class="fas fa-user-shield"></i>
                 </div>
                 <h6 class="mt-5 pt-5">CEO / CO-FOUNDER</h6>
                 <h5 class="text-dark font-weight-bold">@item.FullName</h5>
@@ -93,11 +93,10 @@
         background-color: #111;
     }
 
-        .img-admin img {
+        .img-admin i {
+            font-size: 75px;
             color: #fff;
-            -webkit-filter: brightness(0) invert(1);
-            filter: brightness(0) invert(1);
-            transform: translate(4px, 30px);
+            transform: translate(6px, 30px);
         }
 </style>
 
