@@ -1,5 +1,6 @@
-﻿@model IEnumerable<langfvn.Models.Account>
-
+﻿@using langfvn.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Account>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -12,6 +13,19 @@
         <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH NGƯỜI DÙNG</h6>
     </div>
     <div class="card-body">
+        <div class="form-group">
+            @using (Html.BeginForm("index", "accounts", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" value="@ViewBag.CurrentFilter" class="form-control" name="search" size="50" placeholder="Tìm kiếm..." />
+                </div>
+            }
+        </div>
         <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
@@ -75,6 +89,11 @@
                     }
                 </tbody>
             </table>
+            <div class="col-md-12">
+                <div class="pagination d-flex justify-content-center">
+                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page }))
+                </div>
+            </div>
         </div>
     </div>
 </div>

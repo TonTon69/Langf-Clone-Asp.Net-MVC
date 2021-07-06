@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using langfvn.Models;
+using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
@@ -15,10 +16,19 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Accounts
-        public ActionResult Index()
+        public ActionResult Index(int? page, string search)
         {
-            var accounts = db.Accounts.Include(a => a.Role);
-            return View(accounts.ToList());
+            ViewBag.CurrentFilter = search;
+            var accounts = from a in db.Accounts select a;
+            if (!string.IsNullOrEmpty(search))
+            {
+                accounts = accounts.Where(a => a.FullName.Contains(search) || a.Email.Contains(search) || a.Phone.Contains(search)
+                || a.Address.Contains(search) || a.Unit.Contains(search) || a.Role.RoleName.Contains(search));
+            }
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            accounts = accounts.OrderBy(s => s.UserID);
+            return View(accounts.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: admin/Accounts/Details/id
