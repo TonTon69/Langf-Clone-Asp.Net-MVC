@@ -31,8 +31,6 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // GET: admin/Stores/Create
-
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.PlaceID = new SelectList(db.Places, "PlaceID", "PlaceName");

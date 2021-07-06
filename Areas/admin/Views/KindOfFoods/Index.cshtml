@@ -7,10 +7,20 @@
 }
 
 <h1 class="h3 mb-2 text-gray-800">QUẢN LÝ LOẠI MÓN ĂN</h1>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Hãy nhập thông tin để tạo loại món ăn mới</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
 <div class="d-flex mb-4">
-    <a href="/admin/kindoffoods/create" class="btn btn-dark">
+    <a href="/admin/kindoffoods/create" class="btn btn-dark mr-2">
         <i class="fas fa-plus"></i>
         Thêm mới loại món ăn
+    </a>
+    <a href="/admin/foods" class="btn btn-success">
+        <i class="fas fa-plus"></i>
+        Thêm món ăn cho cửa hàng
     </a>
 </div>
 <div class="card shadow mb-4">
@@ -48,7 +58,7 @@
                         <th>
                             Ngày khởi tạo
                         </th>
-                        <th></th>
+                        <th>Tác vụ</th>
                     </tr>
                 </thead>
                 <tbody>

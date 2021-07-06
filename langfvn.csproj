@@ -135,6 +135,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\AccountsController.cs" />
     <Compile Include="Areas\admin\Controllers\AdvertisementsController.cs" />
     <Compile Include="Areas\admin\Controllers\BannersController.cs" />
     <Compile Include="Areas\admin\Controllers\CategoryFoodsController.cs" />
@@ -1906,6 +1907,11 @@
     <Content Include="Areas\admin\Views\Roles\Delete.cshtml" />
     <Content Include="Areas\admin\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Roles\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

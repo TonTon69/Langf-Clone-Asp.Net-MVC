@@ -1,0 +1,73 @@
+﻿@model IEnumerable<langfvn.Models.Account>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 class="h3 mb-2 text-gray-800">QUẢN LÝ NGƯỜI DÙNG</h1>
+<div class="d-flex mb-4">
+    <a href="/admin/accounts/create" class="btn btn-dark">
+        <i class="fas fa-plus"></i>
+        Thêm mới người dùng
+    </a>
+</div>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH ROLE</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>
+                            Tên role
+                        </th>
+                        <th>
+                            Mô tả
+                        </th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role.RoleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Unit)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("edit","roles",new { id = item.RoleID })" class="btn btn-primary">
+                                <i class="far fa-edit"></i>
+                            </a>
+                            <a href="@Url.Action("delete","roles",new { id = item.RoleID })" class="btn btn-danger">
+                                <i class="far fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
