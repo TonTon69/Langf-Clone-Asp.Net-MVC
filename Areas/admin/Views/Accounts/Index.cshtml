@@ -6,15 +6,10 @@
 }
 
 <h1 class="h3 mb-2 text-gray-800">QUẢN LÝ NGƯỜI DÙNG</h1>
-<div class="d-flex mb-4">
-    <a href="/admin/accounts/create" class="btn btn-dark">
-        <i class="fas fa-plus"></i>
-        Thêm mới người dùng
-    </a>
-</div>
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH ROLE</h6>
+        <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH NGƯỜI DÙNG</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -23,10 +18,22 @@
                     <tr>
                         <th>ID</th>
                         <th>
-                            Tên role
+                            Họ và tên
                         </th>
                         <th>
-                            Mô tả
+                            Email
+                        </th>
+                        <th>
+                            Số điện thoại
+                        </th>
+                        <th>
+                            Địa chỉ
+                        </th>
+                        <th>
+                            Trường/Đơn vị
+                        </th>
+                        <th>
+                            Role
                         </th>
                         <th>Tác vụ</th>
                     </tr>
@@ -34,37 +41,37 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Role.RoleName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.FullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Password)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Phone)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Address)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Unit)
-                        </td>
-                        <td>
-                            <a href="@Url.Action("edit","roles",new { id = item.RoleID })" class="btn btn-primary">
-                                <i class="far fa-edit"></i>
-                            </a>
-                            <a href="@Url.Action("delete","roles",new { id = item.RoleID })" class="btn btn-danger">
-                                <i class="far fa-trash-alt"></i>
-                            </a>
-                        </td>
-                    </tr>
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.UserID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Phone)
+                            </td>
+                            <td style="width: 300px">
+                                @Html.DisplayFor(modelItem => item.Address)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Unit)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Role.RoleName)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("edit","accounts",new { id = item.UserID })" class="btn btn-primary">
+                                    <i class="far fa-edit"></i>
+                                </a>
+                                <a href="@Url.Action("delete","accounts",new { id = item.UserID })" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
                     }
                 </tbody>
             </table>

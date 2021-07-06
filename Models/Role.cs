@@ -18,6 +18,7 @@ namespace langfvn.Models
         public int RoleID { get; set; }
 
         [StringLength(50)]
+        [Index(IsUnique = true)]
         public string RoleName { get; set; }
 
         [StringLength(250)]
