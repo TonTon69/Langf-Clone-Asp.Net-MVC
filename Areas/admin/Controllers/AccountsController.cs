@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using langfvn.Models;
@@ -43,13 +45,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(accountsAdmin);
         }
 
-        // GET: admin/Accounts/Create
-        public ActionResult Create()
-        {
-            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName");
-            return View();
-        }
-
         // GET: admin/Accounts/Edit/id
         public ActionResult Edit(int? id)
         {
@@ -73,6 +68,7 @@ namespace langfvn.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                account.Password = GetMD5(account.Password);
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["success"] = "Cập nhật người dùng thành công";
@@ -116,6 +112,21 @@ namespace langfvn.Areas.admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        //create a string MD5
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+            }
+            return byte2String;
         }
     }
 }

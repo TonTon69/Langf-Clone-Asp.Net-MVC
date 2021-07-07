@@ -25,7 +25,7 @@ namespace langfvn.Models
         [StringLength(100)]
         public string Email { get; set; }
 
-        [StringLength(30)]
+        [StringLength(100)]
         public string Password { get; set; }
 
         [StringLength(10)]
