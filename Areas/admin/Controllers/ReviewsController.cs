@@ -21,21 +21,6 @@ namespace langfvn.Areas.admin.Controllers
             return View(reviews.ToList());
         }
 
-        // GET: admin/Reviews/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Review review = db.Reviews.Find(id);
-            if (review == null)
-            {
-                return HttpNotFound();
-            }
-            return View(review);
-        }
-
         // GET: admin/Reviews/Create
         public ActionResult Create()
         {
@@ -45,8 +30,6 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // POST: admin/Reviews/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ReviewID,UserID,StoreID,Content,Image,Star")] Review review)
@@ -63,7 +46,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(review);
         }
 
-        // GET: admin/Reviews/Edit/5
+        // GET: admin/Reviews/Edit/id
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,9 +63,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(review);
         }
 
-        // POST: admin/Reviews/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: admin/Reviews/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ReviewID,UserID,StoreID,Content,Image,Star")] Review review)
@@ -98,7 +79,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(review);
         }
 
-        // GET: admin/Reviews/Delete/5
+        // GET: admin/Reviews/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +94,7 @@ namespace langfvn.Areas.admin.Controllers
             return View(review);
         }
 
-        // POST: admin/Reviews/Delete/5
+        // POST: admin/Reviews/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

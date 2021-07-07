@@ -2479,7 +2479,6 @@
     <Content Include="Areas\admin\Views\Banners\Index.cshtml" />
     <Content Include="Areas\admin\Views\Reviews\Create.cshtml" />
     <Content Include="Areas\admin\Views\Reviews\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\Reviews\Details.cshtml" />
     <Content Include="Areas\admin\Views\Reviews\Edit.cshtml" />
     <Content Include="Areas\admin\Views\Reviews\Index.cshtml" />
     <Content Include="Areas\admin\Views\Advertisements\Create.cshtml" />
