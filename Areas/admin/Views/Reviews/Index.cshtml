@@ -1,58 +1,93 @@
-﻿@model IEnumerable<langfvn.Models.Review>
-
+﻿@using langfvn.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<Review>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h1 class="h3 mb-2 text-gray-800">QUẢN LÝ REVIEW</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Account.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Store.StoreName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Content)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Image)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Star)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Store.StoreName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Star)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ReviewID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ReviewID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ReviewID })
-        </td>
-    </tr>
+@if (ViewBag.SuccessMsg != null)
+{
+    <div id="alertMsg" class="alert alert-success" role="alert">
+        <strong>@ViewBag.SuccessMsg</strong>
+    </div>
 }
-
-</table>
+@section ScriptAlertSuccess{
+    <script>
+        setTimeout(() => {
+            $('#alertMsg').fadeOut('slow');
+        }, 3000)
+    </script>
+}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">DANH SÁCH REVIEW</h6>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            @using (Html.BeginForm("index", "reviews", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" value="@ViewBag.CurrentFilter" class="form-control" name="search" size="50" placeholder="Tìm kiếm..." />
+                </div>
+            }
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Người dùng</th>
+                        <th>Nội dung</th>
+                        <th>Review cửa hàng</th>
+                        <th>Ảnh</th>
+                        <th>Số sao</th>
+                        <th>Tác vụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ReviewID)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Account.FullName)
+                            </td>
+                            <td style="width: 500px">
+                                @Html.DisplayFor(modelItem => item.Content)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Store.StoreName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Image)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Star)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("delete","reviews",new { id = item.ReviewID })" class="btn btn-danger">
+                                    <i class="far fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="col-md-12">
+                <div class="pagination d-flex justify-content-center">
+                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
