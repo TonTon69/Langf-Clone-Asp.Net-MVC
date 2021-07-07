@@ -22,12 +22,12 @@ namespace langfvn.Areas.admin.Controllers
             {
                 ViewBag.SuccessMsg = TempData["success"];
             }
-            ViewBag.CurrentFilter = search;
             var news = from n in db.News select n;
+            ViewBag.CurrentFilter = search;
             if (!string.IsNullOrEmpty(search))
             {
-                news = news.Where(s => s.Title.Contains(search) || s.KindOfNew.KonName.Contains(search)
-                || s.KindOfNew.CategoryNew.CNewsName.Contains(search) || s.Content.Contains(search));
+                news = news.Where(n => n.Title.Contains(search) || n.Content.Contains(search) 
+                || n.KindOfNew.KonName.Contains(search) || n.KindOfNew.CategoryNew.CNewsName.Contains(search));
             }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
