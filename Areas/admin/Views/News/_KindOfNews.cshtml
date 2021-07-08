@@ -1,0 +1,23 @@
+﻿@model IEnumerable<langfvn.Models.KindOfNew>
+
+
+<div class="dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle active" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span id="show">Filter</span>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        @foreach (var item in Model)
+        {
+            <a class="dropdown-item" href="@Url.Action("index","news",new { page=1, kindofnews = @item.KonID})">@item.KonName</a>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('#show').text($('#default').text());
+        $('.dropdown-menu .dropdown-item').click(function () {
+            $('#show').text($(this).text());
+        });
+    </script>
+}

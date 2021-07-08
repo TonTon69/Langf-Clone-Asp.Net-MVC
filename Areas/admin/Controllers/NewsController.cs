@@ -16,7 +16,7 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/News
-        public ActionResult Index(int? page, string search)
+        public ActionResult Index(int? page, string search, int? kindofnews)
         {
             if (TempData["success"] != null)
             {
@@ -24,15 +24,31 @@ namespace langfvn.Areas.admin.Controllers
             }
             var news = from n in db.News select n;
             ViewBag.CurrentFilter = search;
+            ViewBag.KonID = new SelectList(db.KindOfNews, "KonID", "KonName");
             if (!string.IsNullOrEmpty(search))
             {
-                news = news.Where(n => n.Title.Contains(search) || n.Content.Contains(search) 
+                news = news.Where(n => n.Title.Contains(search) || n.Content.Contains(search)
                 || n.KindOfNew.KonName.Contains(search) || n.KindOfNew.CategoryNew.CNewsName.Contains(search));
             }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            news = news.OrderBy(s => s.NewsID);
-            return View(news.ToPagedList(pageNumber, pageSize));
+            if (kindofnews != null)
+            {
+                ViewBag.kindofnews = kindofnews;
+                news = news.OrderBy(s => s.NewsID).Where(s => s.KonID == kindofnews);
+                return View(news.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                news = news.OrderBy(s => s.NewsID);
+                return View(news.ToPagedList(pageNumber, pageSize));
+            }
+
+        }
+
+        public PartialViewResult KindOfNews()
+        {
+            return PartialView("_KindOfNews", db.KindOfNews.ToList());
         }
 
         // GET: admin/News/Details/id
