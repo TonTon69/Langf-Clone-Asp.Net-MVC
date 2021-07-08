@@ -1,4 +1,4 @@
-namespace langfvn.Models
+﻿namespace langfvn.Models
 {
     using System;
     using System.Collections.Generic;
@@ -26,9 +26,11 @@ namespace langfvn.Models
         public string Email { get; set; }
 
         [StringLength(100)]
+        [MinLength(6, ErrorMessage = "Mật khẩu phải ít nhất 6 kí tự")]
         public string Password { get; set; }
 
         [StringLength(10)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Số điện thoại không hợp lệ")]
         public string Phone { get; set; }
 
         [StringLength(250)]
