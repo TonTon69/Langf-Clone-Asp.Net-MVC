@@ -1,0 +1,10 @@
+﻿@model IEnumerable<langfvn.Models.News>
+
+
+<p>| Bài viết liên quan:</p>
+<ul>
+    @foreach (var item in Model)
+    {
+        <li><a href="">@item.Title</a></li>
+    }
+</ul>

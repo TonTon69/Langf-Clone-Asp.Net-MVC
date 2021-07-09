@@ -1162,6 +1162,10 @@ div.slide .btn-outline-light {
     letter-spacing: .05em;
 }
 
+.entry-category:hover a {
+    color: #aa0b0b;
+}
+
 .is-devider-news {
     height: 3px;
     display: block;
@@ -1201,10 +1205,26 @@ div.slide .btn-outline-light {
     }
 
 .entry-content {
-    padding-top: 1.5em;
-    padding-bottom: 1.5em;
+    padding: 1.5em;
 }
+
+    .entry-content li {
+        margin-left: 1.3em;
+    }
+
+    .entry-content a{
+        color: #1e73be;
+        font-weight: bolder;
+    }
 
 .box-shadow-1 {
     box-shadow: 0 1px 3px -2px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+}
+
+.fb_iframe_widget_fluid_desktop {
+    margin: 15px 47px 30px 47px;
+}
+
+.related-post > p {
+    margin-bottom: 1.3em;
 }

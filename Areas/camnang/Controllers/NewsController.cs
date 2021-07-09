@@ -50,11 +50,18 @@ namespace langfvn.Areas.camnang.Controllers
         public ActionResult Details(int? id)
         {
             News news = db.News.Find(id);
-            if(news == null)
+            if (news == null)
             {
                 return HttpNotFound();
             }
             return View(news);
+        }
+
+        //Bài viết liên quan
+        public PartialViewResult RelatedPosts(int id)
+        {
+            var relatedPost = db.News.Where(x => x.NewsID != id && x.KonID == id).Take(3).ToList();
+            return PartialView("_RelatedPosts", relatedPost);
         }
     }
 }
