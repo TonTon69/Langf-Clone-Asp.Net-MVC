@@ -1,0 +1,22 @@
+﻿@model IEnumerable<langfvn.Models.Place>
+
+<select class="custom-select" onchange="location = this.value;">
+    <option value="" selected>Lọc cửa hàng theo</option>
+    @foreach (var item in Model)
+    {
+        <option value="@Url.Action("index","stores",new { page=1, khu_vuc = @item.PlaceName})">@item.PlaceName</option>
+    }
+</select>
+
+<style>
+    .custom-select {
+        border-radius: unset;
+        border: 1px solid #ededed !important;
+        padding: 6px 30px 6px 20px !important;
+    }
+
+        .custom-select:focus {
+            outline: 0 !important;
+            box-shadow: 0 0 0 0.2rem rgb(165 128 109 / 25%) !important;
+        }
+</style>
