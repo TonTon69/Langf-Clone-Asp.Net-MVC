@@ -16,7 +16,7 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/News
-        public ActionResult Index(int? page, string search, int? kindofnews)
+        public ActionResult Index(int? page, string search, string loai_tin)
         {
             if (TempData["success"] != null)
             {
@@ -32,10 +32,10 @@ namespace langfvn.Areas.admin.Controllers
             }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            if (kindofnews != null)
+            if (loai_tin != null)
             {
-                ViewBag.kindofnews = kindofnews;
-                news = news.OrderBy(s => s.NewsID).Where(s => s.KonID == kindofnews);
+                ViewBag.kindofnews = loai_tin;
+                news = news.OrderBy(s => s.NewsID).Where(s => s.KindOfNew.KonName == loai_tin);
                 return View(news.ToPagedList(pageNumber, pageSize));
             }
             else
