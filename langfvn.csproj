@@ -2525,7 +2525,7 @@
     <Content Include="Areas\admin\Views\Home\_CountNews.cshtml" />
     <Content Include="Areas\admin\Views\Home\_CountUser.cshtml" />
     <Content Include="Areas\admin\Views\Home\_CountStore.cshtml" />
-    <Content Include="Areas\admin\Views\Home\_CountFood.cshtml" />
+    <Content Include="Areas\admin\Views\Home\_CountView.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

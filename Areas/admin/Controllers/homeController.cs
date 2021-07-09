@@ -42,11 +42,11 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // Đếm số lượng món ăn
-        public PartialViewResult CountFood()
+        public PartialViewResult CountView()
         {
-            var countFood = db.Foods.Count();
-            ViewBag.CountFood = countFood;
-            return PartialView("_CountFood", countFood);
+            var countView = 1;
+            ViewBag.CountView = countView;
+            return PartialView("_CountView", countView);
         }
     }
 }
