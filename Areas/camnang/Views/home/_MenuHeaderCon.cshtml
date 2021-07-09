@@ -2,5 +2,5 @@
 
 @foreach (var item in Model)
 {
-    <a href="">@item.KonName</a>
+    <a href="@Url.Action("index", "news", new {category = @item.CategoryNew.CNewsName, kon = item.KonName})">@item.KonName</a>
 }

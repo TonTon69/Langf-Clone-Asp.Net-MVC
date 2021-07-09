@@ -1,0 +1,50 @@
+﻿@using langfvn.Models
+@using PagedList.Mvc
+@model PagedList.PagedList<News>
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Areas/camnang/Views/Shared/_LayoutNews.cshtml";
+}
+<div class="container">
+    <div class="row">
+       
+            <div class="content">
+                @{
+                    Html.RenderAction("SlideNews", "News");
+                }
+                <div class="content-top mt-5">
+                    <div class="row">
+
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-xs-12 col-sm-12 col-md-4" style="padding: 0">
+                                <a href="@Url.Action("Details", "news", new { id =item.NewsID})">
+                                    <div class="card mb-4"
+                                         style="width: 16rem">
+                                        <img height="145"
+                                             class="card-img-top"
+                                             src="@item.Image" />
+                                        <div class="card-body text-center">
+                                            <h5 class="card-title">
+                                                @item.Title
+                                            </h5>
+                                            <div class="is-divider"></div>
+                                            <p class="card-text">
+                                                @item.Content
+                                            </p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="pagination d-flex justify-content-center">
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, category = ViewBag.categorynews, kon = ViewBag.kindOfNews }))
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,269 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Quicksand", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #000000;
+    background-color: #fff;
+}
+a,
+a:hover {
+    text-decoration: none;
+    color: #000000;
+}
+.header {
+    -webkit-box-shadow: 1px 1px 10px rgb(0 0 0 / 15%);
+    box-shadow: 1px 1px 10px rgb(0 0 0 / 15%);
+}
+.header-top {
+    width: 100%;
+    height: 35px;
+    /* z-index: 30;
+    position: relative; */
+    background-color: #aa0b0b;
+    /* background-size: cover;
+    background-position: 50% 0;
+    -webkit-transition: background-color .3s, opacity .3s;
+    -o-transition: background-color .3s, opacity .3s;
+    transition: background-color .3s, opacity .3s; */
+}
+
+.header-top {
+    float: left;
+}
+.header-top-left ul,
+li {
+    list-style: none;
+    text-transform: uppercase;
+    float: left;
+    font-size: 13px;
+    line-height: 35px;
+}
+.header-top-right {
+    float: right;
+    padding-right: 0px;
+}
+.social-icons a {
+    margin-right: 5px;
+    font-size: 20px;
+    line-height: 35px; /*hiệu ứng này dùng để làm gì v*/
+}
+.social-icons {
+    margin-right: 0px;
+}
+ul.menu > li {
+    display: inline-block;
+    margin-right: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    position: relative; /*thằng này là cha*/
+}
+ul.menu > li a:hover {
+    display: block;
+    background-color: #ffdab9;
+    text-decoration: none;
+    transition: 0.5s;
+    border-radius: 10%;
+    color: black;
+    text-decoration: underline 2px;
+}
+.menu a {
+    color: #828282;
+}
+div.menu {
+    padding-top: 30px;
+}
+ul.menu > li > ul.sub-menu {
+    position: absolute; /*thằng này là con nó đi với z-index ở phía dưới á;*/
+    top: 0;
+    background-color: #f2e8e8;
+    padding-left: 5px;
+    width: 100px;
+    visibility: hidden;
+    z-index: 99999;
+    opacity: 0;
+    pointer-events: none;
+    transition: all ease-in 0.2s;
+}
+ul.menu > li > ul.sub-menu li {
+    display: block;
+}
+ul.menu > li:hover ul {
+    visibility: visible;
+    pointer-events: all;
+    top: 40px;
+    opacity: 1;
+}
+
+ul.menu > li::before {
+    content: "";
+    display: block;
+    padding: 12px;
+    width: 100px;
+    position: absolute;
+    bottom: -6px;
+}
+
+section.main-content {
+    margin-top: 30px;
+}
+div.post {
+    margin-left: 5px;
+    box-shadow: 0 0 10px 2px #c7c7c7, 0 0 10px 2px #b1b1b0,
+        2px 0 5px 4px #b0e0e6;
+}
+div.post img {
+    width: 100%;
+    height: 250px;
+}
+
+div.slides {
+    position: relative; /*đây là thằng cha*/
+}
+div.slide img {
+    height: 500px;
+    width: 100%;
+    object-fit: cover;
+}
+div.slide .carousel-caption {
+    text-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+}
+div.slide .cat-label {
+    color: #f1f1f1;
+    font-size: 0.6em;
+    opacity: 0.7;
+    line-height: 1.2;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+div.slide .post-title {
+    line-height: 1.3;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+div.slide .from_the_blog_excerpt {
+    color: #f1f1f1;
+    font-size: 0.9em;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+div.slide .btn-outline-light {
+    font-size: 0.7em;
+    font-weight: bolder;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    border-radius: 0;
+    border: 2px solid #fff;
+    padding: 4px 14px;
+}
+div.slide .btn-outline-light:hover {
+    color: #fff;
+    background-color: #aa0b0b;
+    border-color: #9b0f0f;
+}
+
+div.post-sidebar img {
+    width: 100%;
+    height: 100%;
+}
+div.sidebar-top img {
+    width: 100%;
+    height: 135px;
+    object-fit: cover;
+}
+div.sidebar-top span,
+div.sidebar-bottom h2.title {
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+div.sidebar-top .is-divider,
+div.sidebar-bottom .is-divider,
+div.content-top .is-divider {
+    height: 2.5px;
+    display: block;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 0.4em 0 1em;
+    width: 100%;
+    max-width: 40px;
+}
+div.sidebar-bottom img {
+    object-fit: cover;
+    border: 1px #cccccc solid;
+    padding: 3px;
+    -webkit-box-shadow: 0 1px 2px rgb(0 0 0 / 40%);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgb(0 0 0 / 40%);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+div.sidebar-bottom h6 {
+    font-weight: 600;
+    display: block;
+    text-decoration: none;
+    line-height: 1.1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+div.content-top .card {
+    -webkit-box-shadow: 0 1px 3px -2px rgb(0 0 0 / 12%),
+        0 1px 2px rgb(0 0 0 / 24%);
+    box-shadow: 0 1px 3px -2px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%);
+}
+div.content-top .card-img-top {
+    object-fit: cover;
+}
+div.content-top .card-title {
+    line-height: 1.3;
+    margin-top: -0.5em;
+    margin-bottom: 0.1em;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #9b0f0f;
+}
+div.content-top .is-divider {
+    margin-left: auto;
+    margin-right: auto;
+}
+div.content-top .card-text {
+    font-size: 0.9em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+div.footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    background-color: #aa0b0b;
+    color: white;
+    width: 100%;
+    height: 100%;
+}
+div.footer span {
+    text-decoration: underline 2px;
+}
+.fit-footer li {
+    font-size: 15px;
+}

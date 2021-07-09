@@ -52,6 +52,12 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -133,6 +139,7 @@
     <Compile Include="Areas\admin\Controllers\homeController.cs" />
     <Compile Include="Areas\camnang\camnangAreaRegistration.cs" />
     <Compile Include="Areas\camnang\Controllers\HomeController.cs" />
+    <Compile Include="Areas\camnang\Controllers\NewsController.cs" />
     <Compile Include="Controllers\homeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,6 +166,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\camnang\css\cam-nang.css" />
+    <Content Include="Content\camnang\css\news.css" />
     <Content Include="Content\camnang\css\responsive.css" />
     <Content Include="Content\camnang\css\style.css" />
     <Content Include="Content\camnang\img\123.png" />
@@ -262,6 +270,7 @@
     <Content Include="Content\camnang\img\V4-1-300x169.jpg" />
     <Content Include="Content\camnang\img\Web-Design-PNG-Picture.png" />
     <Content Include="Content\camnang\js\main.js" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -288,6 +297,10 @@
     <Content Include="Areas\camnang\Views\home\_GhostStory.cshtml" />
     <Content Include="Areas\camnang\Views\home\_LangReview.cshtml" />
     <Content Include="Areas\camnang\Views\home\_ReviewFood.cshtml" />
+    <Content Include="Areas\camnang\Views\Shared\_LayoutNews.cshtml" />
+    <Content Include="Areas\camnang\Views\News\Index.cshtml" />
+    <Content Include="Areas\camnang\Views\News\_SlideNews.cshtml" />
+    <Content Include="Areas\camnang\Views\News\Details.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

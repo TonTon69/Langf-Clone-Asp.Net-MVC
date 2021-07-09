@@ -10,7 +10,7 @@
         @foreach (var item in Model)
         {
             <li class="dropdown">
-                <a href="" class="dropbtn">@item.CNewsName</a>
+                <a href="@Url.Action("index", "news",new { category = @item.CNewsName})" class="dropbtn">@item.CNewsName</a> 
                 <i id="icon-angel-down" class="fas fa-angle-down"></i>
                 <div class="dropdown-content">
                     @{
