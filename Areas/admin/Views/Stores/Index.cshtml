@@ -52,6 +52,9 @@
                     </div>
                     <input type="text" value="@ViewBag.CurrentFilter" class="form-control" name="search" size="50" placeholder="Tìm kiếm..." />
                 </div>
+                <div class="form-group col-md-3">
+                    @{Html.RenderAction("Places", "Stores");}
+                </div>
             }
         </div>
         <div class="table-responsive">

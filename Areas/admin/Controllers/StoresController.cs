@@ -16,7 +16,7 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Stores
-        public ActionResult Index(int? page, string search)
+        public ActionResult Index(int? page, string search, string khu_vuc)
         {
             if (TempData["success"] != null)
             {
@@ -30,8 +30,21 @@ namespace langfvn.Areas.admin.Controllers
             }
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            stores = stores.OrderBy(s => s.StoreID);
-            return View(stores.ToPagedList(pageNumber, pageSize));
+            if (khu_vuc != null)
+            {
+                stores = stores.OrderBy(s => s.StoreID).Where(s => s.Place.PlaceName == khu_vuc);
+                return View(stores.ToPagedList(pageNumber, pageSize));
+            }
+            else
+            {
+                stores = stores.OrderBy(s => s.StoreID);
+                return View(stores.ToPagedList(pageNumber, pageSize));
+            }
+        }
+
+        public PartialViewResult Places()
+        {
+            return PartialView("_Places", db.Places.ToList());
         }
 
         // GET: admin/Stores/Create

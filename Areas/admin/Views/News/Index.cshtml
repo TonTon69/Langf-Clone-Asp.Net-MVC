@@ -40,14 +40,17 @@
         <div class="form-group">
             @using (Html.BeginForm("index", "news", FormMethod.Get, new { @class = "form-inline" }))
             {
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">
-                        <i class="fas fa-search"></i>
-                    </span>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <i class="fas fa-search"></i>
+                        </span>
+                    </div>
+                    <input type="text" value="@ViewBag.CurrentFilter" class="form-control" name="search" size="50" placeholder="Tìm kiếm..." />
                 </div>
-                <input type="text" value="@ViewBag.CurrentFilter" class="form-control" name="search" size="50" placeholder="Tìm kiếm..." />
-            </div>
+                <div class="form-group col-md-3">
+                    @{Html.RenderAction("KindOfNews", "News");}
+                </div>
             }
         </div>
         <div class="table-responsive">
@@ -116,9 +119,23 @@
             </table>
             <div class="col-md-12">
                 <div class="pagination d-flex justify-content-center">
-                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page }))
+                    @Html.PagedListPager(Model, page => Url.Action("index", new { page = page, kindofnews = ViewBag.kindofnews }))
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams);
+            const myParam = urlParams.get('loai_tin');
+            console.log(myParam);
+            if (myParam !== null) {
+                document.getElementById(myParam).setAttribute('selected', true);
+            }
+        })
+    </script>
+}
