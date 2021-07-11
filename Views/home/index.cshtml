@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@{Html.RenderAction("Ad", "Home");}
+
 <section class="news">
     <div class="container-fluid">
         <a href="">
@@ -2601,4 +2603,16 @@
         </div>
     </div>
 </section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(".ad-overlay").css("display", "block");
+                $("#carouselAd").css("opacity", "1");
+                $("#carouselAd .carousel-item")[0].classList.add('active');
+            }, 10000);
+        })
+    </script>
+}
 
