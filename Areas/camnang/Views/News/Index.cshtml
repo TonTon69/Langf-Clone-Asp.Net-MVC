@@ -7,44 +7,44 @@
 }
 <div class="container">
     <div class="row">
-       
-            <div class="content">
-                @{
-                    Html.RenderAction("SlideNews", "News");
-                }
-                <div class="content-top mt-5">
-                    <div class="row">
 
-                        @foreach (var item in Model)
-                        {
-                            <div class="col-xs-12 col-sm-12 col-md-4" style="padding: 0">
-                                <a href="@Url.Action("details", "news", new { id =item.NewsID})">
-                                    <div class="card mb-4"
-                                         style="width: 16rem">
-                                        <img height="145"
-                                             class="card-img-top"
-                                             src="@item.Image" />
-                                        <div class="card-body text-center">
-                                            <h5 class="card-title">
-                                                @item.Title
-                                            </h5>
-                                            <div class="is-divider"></div>
-                                            <p class="card-text">
-                                                @item.Content
-                                            </p>
-                                        </div>
+        <div class="content">
+            @{
+                Html.RenderAction("SlideNews", "News");
+            }
+            <div class="content-top mt-5">
+                <div class="row">
+
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-xs-12 col-sm-12 col-md-4" style="padding: 0">
+                            <a href="@Url.Action("details", "news", new { id = item.NewsID, name = item.Title})">
+                                <div class="card mb-4"
+                                     style="width: 15rem">
+                                    <img height="145"
+                                         class="card-img-top"
+                                         src="@item.Image" />
+                                    <div class="card-body text-center">
+                                        <h5 class="card-title">
+                                            @item.Title
+                                        </h5>
+                                        <div class="is-divider-news"></div>
+                                        <p class="card-text">
+                                            @item.Content
+                                        </p>
                                     </div>
-                                </a>
-                            </div>
-                        }
-
-                    </div>
-                    <div class="pagination d-flex justify-content-center">
-                        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, category = ViewBag.categorynews, kon = ViewBag.kindOfNews }))
-                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
 
                 </div>
+                <div class="pagination d-flex justify-content-center">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page, category = ViewBag.categorynews, kon = ViewBag.kindOfNews }))
+                </div>
+
             </div>
         </div>
     </div>
+</div>
 

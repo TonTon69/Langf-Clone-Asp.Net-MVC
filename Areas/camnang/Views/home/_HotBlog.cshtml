@@ -2,20 +2,23 @@
 
 @foreach (var item in Model)
 {
-    <div class="col col-md-3 col-top" style="height: fit-content">
+    <div class="col col-md-3 col-top">
         <div class="col-inner-news">
             <div class="box box-bounce text-center">
-                <a href="@Url.Action("details", "news",  new { id = item.NewsID, name = item.Title})">
+                <a href="@Url.Action("details", "news", new { id = item.NewsID, name = item.Title})">
                     <div class="box-images" style="border-radius: 4%;">
                         <img src="@item.Image">
                     </div>
                     <div class="box-texts text-center">
                         <div class="box-texts-inner">
-                            <p class="cat-label text-uppercase op-7">@item.KindOfNew.KonName</p>
+                            <p class="cat-label text-uppercase op-7">Làng Review</p>
                             <h5 class="post-title">
-                                @item.Title
+                                <span>[@item.Account.FullName ] - </span>
+                                <span>
+                                    @item.Title
+                                </span>
                             </h5>
-                            <div class="post-meta">@item.CreatedDate.ToString("MMM d, yyyy")</div>
+                            <div class="post-meta">@item.CreatedDate.ToString("MMM d yyyy")</div>
                             <div class="is-divider"></div>
                             <p class="from-blog">
                                 @item.Content

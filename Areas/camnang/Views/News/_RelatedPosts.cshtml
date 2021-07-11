@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<langfvn.Models.News>
 
 
-<p>| Bài viết liên quan:</p>
+<blockquote>Bài viết liên quan:</blockquote>
 <ul>
     @foreach (var item in Model)
     {
-        <li><a href="">@item.Title</a></li>
+        <li><a href="@Url.Action("details", "news", new { id = item.NewsID, name = item.Title})">@item.Title</a></li>
     }
 </ul>

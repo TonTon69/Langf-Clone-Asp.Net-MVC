@@ -302,6 +302,8 @@
     <Content Include="Areas\camnang\Views\News\_SlideNews.cshtml" />
     <Content Include="Areas\camnang\Views\News\Details.cshtml" />
     <Content Include="Areas\camnang\Views\News\_RelatedPosts.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_HotBlog.cshtml" />
+    <Content Include="Areas\camnang\Views\News\_HotBlogNews.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

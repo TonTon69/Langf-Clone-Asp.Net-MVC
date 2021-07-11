@@ -2,15 +2,15 @@
 <div class="menu text-uppercase">
     <ul class="nav">
         <li>
-            <a href="">Giới thiệu</a>
+            <a href="" id="gioithieu">Giới thiệu</a>
         </li>
         <li>
-            <a href="">Khuyến mãi</a>
+            <a class="khuyenmai" href="" id="khuyenmai">Khuyến mãi</a>
         </li>
         @foreach (var item in Model)
         {
-            <li class="dropdown">
-                <a href="@Url.Action("index", "news",new { category = @item.CNewsName})" class="dropbtn">@item.CNewsName</a> 
+            <li id="dropdown" class="dropdown">
+                <a class="dropbtn" href="@Url.Action("index", "news",new { category = @item.CNewsName})" id="@item.CNewsName">@item.CNewsName</a>
                 <i id="icon-angel-down" class="fas fa-angle-down"></i>
                 <div class="dropdown-content">
                     @{
@@ -26,3 +26,4 @@
         </li>
     </ul>
 </div>
+

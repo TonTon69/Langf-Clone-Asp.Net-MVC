@@ -33,6 +33,13 @@ namespace langfvn.Areas.camnang.Controllers
             return PartialView("_PartnerLogo", db.Stores.ToList());
         }
 
+        //Partial Hot Blog
+        public PartialViewResult HotBlog()
+        {
+            var hotBlog = db.News.OrderByDescending(x => x.TotalView).Take(8).ToList();
+            return PartialView("_HotBlog", hotBlog);
+        }
+
 
         //Partial Question_KTX
         public PartialViewResult Question_KTX()

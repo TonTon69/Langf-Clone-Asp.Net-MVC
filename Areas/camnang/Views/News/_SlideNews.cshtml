@@ -16,14 +16,14 @@
     <div class="carousel-inner">
         @foreach (var item in Model)
         {
-            <div class="carousel-item">x
-                <a href="#">
+            <div class="carousel-item">
+                <a href="@Url.Action("details", "news",  new { id = item.NewsID, name = item.Title})">
                     <img class="d-block w-100" src="@item.Image" />
                     <div class="carousel-caption d-none d-md-block">
                         <span class="cat-label">
                             @item.KindOfNew.KonName 
                         </span>
-                        <h5 class="post-title">
+                        <h5 class="post-title-1">
                             @item.Title
                         </h5>
                         <p class="from_the_blog_excerpt">

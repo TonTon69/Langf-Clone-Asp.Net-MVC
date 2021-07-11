@@ -2,6 +2,7 @@
 using PagedList;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -47,21 +48,32 @@ namespace langfvn.Areas.camnang.Controllers
 
 
         //Chi tiết 1 bài viết
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, string name)
         {
             News news = db.News.Find(id);
             if (news == null)
             {
                 return HttpNotFound();
             }
+            var count = db.News.SingleOrDefault(x => x.NewsID == id);
+            count.TotalView++;
+            db.News.AddOrUpdate(count);
+            db.SaveChanges();
             return View(news);
         }
 
         //Bài viết liên quan
         public PartialViewResult RelatedPosts(int id)
         {
-            var relatedPost = db.News.Where(x => x.NewsID != id && x.KonID == id).Take(3).ToList();
+            var relatedPost = db.News.OrderByDescending(x => Guid.NewGuid()).Where(x => x.NewsID != id && x.KonID == id).Take(3).ToList();
             return PartialView("_RelatedPosts", relatedPost);
+        }
+
+        //Partial Hot Blog
+        public PartialViewResult HotBlogNews()
+        {
+            var hotBlog = db.News.OrderByDescending(x => x.TotalView).Take(10).ToList();
+            return PartialView("_HotBlogNews", hotBlog);
         }
     }
 }

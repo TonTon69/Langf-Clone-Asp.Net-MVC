@@ -32,7 +32,7 @@
             @Model.Content
         </p>
         @{
-            Html.RenderAction("RelatedPosts", "News");
+            Html.RenderAction("RelatedPosts", "News", new { id = Model.KonID});
         }
     </div>
 
