@@ -10,12 +10,10 @@
         @foreach (var item in Model)
         {
             <div class="carousel-item">
-                <img src="@item.Image" />
+                <a href="@item.AdUrl">
+                    <img src="@item.Image" />
+                </a>
             </div>
         }
     </div>
 </div>
-
-<style>
-    
-</style>

@@ -20,12 +20,14 @@ namespace langfvn.Models
         public virtual DbSet<Food> Foods { get; set; }
         public virtual DbSet<KindOfFood> KindOfFoods { get; set; }
         public virtual DbSet<KindOfNew> KindOfNews { get; set; }
+        public virtual DbSet<Langf> Langfs { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<Place> Places { get; set; }
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<View> Views { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -50,6 +52,10 @@ namespace langfvn.Models
                 .HasMany(e => e.Reviews)
                 .WithRequired(e => e.Account)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Advertisement>()
+                .Property(e => e.AdUrl)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Advertisement>()
                 .Property(e => e.Image)
@@ -86,6 +92,22 @@ namespace langfvn.Models
                 .HasMany(e => e.News)
                 .WithRequired(e => e.KindOfNew)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Langf>()
+                .Property(e => e.FanpageFB)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Langf>()
+                .Property(e => e.GroupFB)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Langf>()
+                .Property(e => e.Phone)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Langf>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
 
             modelBuilder.Entity<News>()
                 .Property(e => e.Image)

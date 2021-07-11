@@ -37,6 +37,12 @@
             </div>
         </div>
         <div class="form-group row align-items-center mb-0">
+            <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Liên kết</label>
+            <div class="col-sm-10">
+                @Html.DisplayFor(model => model.AdUrl)
+            </div>
+        </div>
+        <div class="form-group row align-items-center mb-0">
             <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Trạng thái</label>
             <div class="col-sm-10">
                 @if (@Model.Visible == true)

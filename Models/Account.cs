@@ -33,6 +33,7 @@
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Số điện thoại không hợp lệ")]
         public string Phone { get; set; }
 
+
         [StringLength(250)]
         public string Address { get; set; }
 

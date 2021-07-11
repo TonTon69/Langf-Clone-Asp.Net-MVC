@@ -171,6 +171,7 @@
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\KindOfFood.cs" />
     <Compile Include="Models\KindOfNew.cs" />
+    <Compile Include="Models\Langf.cs" />
     <Compile Include="Models\LangfvnContext.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Place.cs" />
@@ -178,6 +179,7 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\View.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

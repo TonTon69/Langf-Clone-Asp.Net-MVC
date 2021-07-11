@@ -15,6 +15,8 @@ namespace langfvn.Models
         [StringLength(250)]
         public string AdTitle { get; set; }
 
+        public string AdUrl { get; set; }
+
         public string Image { get; set; }
 
         public bool? Visible { get; set; }

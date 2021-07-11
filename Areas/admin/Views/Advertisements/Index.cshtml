@@ -41,15 +41,10 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>
-                            Tiêu đề
-                        </th>
-                        <th>
-                            Ảnh
-                        </th>
-                        <th>
-                            Trạng thái
-                        </th>
+                        <th>Tiêu đề</th>
+                        <th>Ảnh</th>
+                        <th>Liên kết</th>
+                        <th>Trạng thái</th>
                         <th>Tác vụ</th>
                     </tr>
                 </thead>
@@ -65,6 +60,16 @@
                             </td>
                             <td>
                                 <img src="@item.Image" width="450" height="200" style="object-fit:cover" />
+                            </td>
+                            <td>
+                                @if (item.AdUrl.Length <= 20)
+                                {
+                                    @Html.DisplayFor(modelItem => item.AdUrl)
+                                }
+                                else
+                                {
+                                    @(item.AdUrl.ToString().Substring(0, 20) + "...")
+                                }
                             </td>
                             <td>
                                 @if (@item.Visible == true)

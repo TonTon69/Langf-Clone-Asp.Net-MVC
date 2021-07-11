@@ -33,7 +33,7 @@ namespace langfvn.Areas.admin.Controllers
         // POST: admin/Advertisements/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "AdID,AdTitle,Image,Visible")] Advertisement advertisement)
+        public ActionResult Create([Bind(Include = "AdID,AdTitle,AdUrl,Image,Visible")] Advertisement advertisement)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +64,7 @@ namespace langfvn.Areas.admin.Controllers
         // POST: admin/Advertisements/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "AdID,AdTitle,Image,Visible")] Advertisement advertisement)
+        public ActionResult Edit([Bind(Include = "AdID,AdTitle,AdUrl,Image,Visible")] Advertisement advertisement)
         {
             if (ModelState.IsValid)
             {
