@@ -158,6 +158,7 @@
     <Compile Include="Areas\admin\Controllers\ReviewsController.cs" />
     <Compile Include="Areas\admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\admin\Controllers\StoresController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -183,9 +184,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\admin\css\login.css" />
     <Content Include="Content\admin\css\sb-admin-2.css" />
     <Content Include="Content\admin\css\sb-admin-2.min.css" />
     <Content Include="Content\admin\css\style.css" />
+    <Content Include="Content\admin\img\login.png" />
     <Content Include="Content\admin\img\langf.png" />
     <Content Include="Content\admin\img\logo.png" />
     <Content Include="Content\admin\img\undraw_posting_photo.svg" />
@@ -2530,6 +2533,25 @@
     <Content Include="Areas\admin\Views\Home\_CountView.cshtml" />
     <Content Include="Areas\admin\Views\News\_KindOfNews.cshtml" />
     <Content Include="Areas\admin\Views\Stores\_Places.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\Login.cshtml" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-Black.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-BlackItalic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-Bold.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-BoldItalic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-ExtraBold.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-ExtraBoldItalic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-ExtraLight.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-ExtraLightItalic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-Italic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-Light.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-LightItalic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-Medium.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-MediumItalic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-Regular.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-SemiBold.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-SemiBoldItalic.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-Thin.ttf" />
+    <Content Include="Content\admin\fonts\poppins\Poppins-ThinItalic.ttf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2554,6 +2576,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\_Ad.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

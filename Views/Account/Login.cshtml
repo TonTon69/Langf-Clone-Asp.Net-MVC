@@ -1,0 +1,157 @@
+﻿@model langfvn.Models.Account
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="login">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-md-5 col-12" style="margin: auto">
+                <nav class="mt-4 mb-4">
+                    <div class="nav nav-tabs"
+                         id="nav-tab"
+                         role="tablist">
+                        <a class="nav-item nav-link active"
+                           id="nav-login-tab"
+                           data-toggle="tab"
+                           href="#nav-login"
+                           role="tab"
+                           aria-controls="nav-login"
+                           aria-selected="true">Đăng nhập</a>
+                        <a class="nav-item nav-link"
+                           id="nav-register-tab"
+                           data-toggle="tab"
+                           href="#nav-register"
+                           role="tab"
+                           aria-controls="nav-register"
+                           aria-selected="false">Tạo tài khoản</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active"
+                         id="nav-login"
+                         role="tabpanel"
+                         aria-labelledby="nav-login-tab">
+                        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <input type="email" name="email"
+                                       class="form-control"
+                                       placeholder="Email"
+                                       required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password"
+                                       class="form-control"
+                                       placeholder="Mật khẩu"
+                                       required />
+                            </div>
+                            <div class="text-center">
+                                <button type="submit"
+                                        class="btn btn-secondary">
+                                    Đăng nhập
+                                </button>
+                            </div>
+                        }
+                        <hr />
+                        <div class="text-center">hoặc</div>
+                        <hr />
+                        <div class="form-group text-center">
+                            <a href=""
+                               class="btn btn-danger mr-2"
+                               style="
+                                                background-color: #db4437;
+                                                border-color: #db4437;
+                                            ">
+                                <i class="fab fa-google"></i>
+                                Google
+                            </a>
+                            <a href=""
+                               class="btn btn-primary ml-2"
+                               style="
+                                                background-color: #3b5998;
+                                                border-color: #3b5998;
+                                            ">
+                                <i class="fab fa-facebook-f"></i>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade"
+                         id="nav-register"
+                         role="tabpanel"
+                         aria-labelledby="nav-register-tab">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <input type="email"
+                                       class="form-control"
+                                       placeholder="Email"
+                                       required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password"
+                                       class="form-control"
+                                       id="password"
+                                       placeholder="Mật khẩu"
+                                       required />
+                            </div>
+                            <div class="form-group">
+                                <input type="password"
+                                       class="form-control"
+                                       id="re-password"
+                                       placeholder="Nhập lại mật khẩu"
+                                       required />
+                            </div>
+                            <div class="text-center">
+                                <button type="submit"
+                                        class="btn btn-secondary">
+                                    Tạo tài khoản
+                                </button>
+                            </div>
+                        }
+                        <hr />
+                        <div class="text-center">hoặc</div>
+                        <hr />
+                        <div class="form-group text-center">
+                            <a href=""
+                               class="btn btn-danger mr-2"
+                               style="
+                                                background-color: #db4437;
+                                                border-color: #db4437;
+                                            ">
+                                <i class="fab fa-google"></i>
+                                Google
+                            </a>
+                            <a href=""
+                               class="btn btn-primary ml-2"
+                               style="
+                                                background-color: #3b5998;
+                                                border-color: #3b5998;
+                                            ">
+                                <i class="fab fa-facebook-f"></i>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .navbar {
+        background-color: #aa0b0b;
+    }
+
+    .banner, .search {
+        display: none;
+    }
+</style>

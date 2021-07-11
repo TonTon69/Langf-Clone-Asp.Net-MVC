@@ -136,5 +136,38 @@ namespace langfvn.Areas.admin.Controllers
             }
             return byte2String;
         }
+
+        //login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string email, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var f_password = GetMD5(password);
+                Account ad = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(f_password)).FirstOrDefault();
+                var checkRole = db.Accounts.FirstOrDefault(c => c.Role.RoleName != "Member");
+
+                if (ad != null)
+                {
+                    if (checkRole != null)
+                    {
+                        Session["AdId"] = ad.UserID;
+                        Session["FullName"] = ad.FullName;
+                        return RedirectToAction("index", "home");
+                    }
+                }
+                else
+                {
+                    ViewBag.errorLogin = "Email đăng nhập hoặc mật khẩu không đúng";
+                }
+            }
+            return View();
+        }
     }
 }

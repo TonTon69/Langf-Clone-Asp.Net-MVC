@@ -19,7 +19,7 @@ namespace langfvn.Controllers
 
         public PartialViewResult Ad()
         {
-            return PartialView("_Ad", db.Advertisements.ToList());
+            return PartialView("_Ad", db.Advertisements.Where(x => x.Visible == true).ToList());
         }
 
     }

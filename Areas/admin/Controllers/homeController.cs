@@ -44,8 +44,7 @@ namespace langfvn.Areas.admin.Controllers
         // Đếm số lượng món ăn
         public PartialViewResult CountView()
         {
-            var countView = 1;
-            ViewBag.CountView = countView;
+            var countView = db.Views.ToList();
             return PartialView("_CountView", countView);
         }
     }
