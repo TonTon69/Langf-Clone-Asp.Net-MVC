@@ -39,10 +39,18 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // GET: admin/Accounts/ProfileAdmin
-        public ActionResult ProfileAdmin()
+        public ActionResult ProfileAdmin(int? id)
         {
-            var accountsAdmin = db.Accounts.Where(a => a.Role.RoleName == "Admin").ToList();
-            return View(accountsAdmin);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account acc = db.Accounts.Find(id);
+            if (acc == null)
+            {
+                return HttpNotFound();
+            }
+            return View(acc);
         }
 
         // GET: admin/Accounts/Edit/id
@@ -168,6 +176,11 @@ namespace langfvn.Areas.admin.Controllers
                 }
             }
             return View();
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("login", "accounts");
         }
     }
 }

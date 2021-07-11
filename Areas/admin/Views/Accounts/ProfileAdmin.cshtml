@@ -1,4 +1,4 @@
-﻿@model IEnumerable<langfvn.Models.Account>
+﻿@model langfvn.Models.Account
 
 @{
     ViewBag.Title = "ProfileAdmin";
@@ -18,49 +18,45 @@
             <h6 class="m-0 font-weight-bold text-dark">THÔNG TIN</h6>
         </div>
         <div class="card-body">
-            @foreach (var item in Model)
-            {
-                <div class="form-group row align-items-center mb-0">
-                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Họ và tên</label>
-                    <div class="col-sm-10">
-                        @Html.DisplayFor(model => item.FullName)
-                    </div>
+            <div class="form-group row align-items-center mb-0">
+                <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Họ và tên</label>
+                <div class="col-sm-10">
+                    @Html.DisplayFor(model => model.FullName)
                 </div>
-                <div class="form-group row align-items-center mb-0">
-                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Email</label>
-                    <div class="col-sm-10">
-                        @Html.DisplayFor(model => item.Email)
-                    </div>
+            </div>
+            <div class="form-group row align-items-center mb-0">
+                <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Email</label>
+                <div class="col-sm-10">
+                    @Html.DisplayFor(model => model.Email)
                 </div>
-                <div class="form-group row align-items-center mb-0">
-                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Số điện thoại</label>
-                    <div class="col-sm-10">
-                        @Html.DisplayFor(model => item.Phone)
-                    </div>
+            </div>
+            <div class="form-group row align-items-center mb-0">
+                <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Số điện thoại</label>
+                <div class="col-sm-10">
+                    @Html.DisplayFor(model => model.Phone)
                 </div>
-                <div class="form-group row align-items-center mb-0">
-                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Địa chỉ</label>
-                    <div class="col-sm-10">
-                        @Html.DisplayFor(model => item.Address)
-                    </div>
+            </div>
+            <div class="form-group row align-items-center mb-0">
+                <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Địa chỉ</label>
+                <div class="col-sm-10">
+                    @Html.DisplayFor(model => model.Address)
                 </div>
-                <div class="form-group row align-items-center mb-0">
-                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Trường/Đơn vị</label>
-                    <div class="col-sm-10">
-                        @Html.DisplayFor(model => item.Unit)
-                    </div>
+            </div>
+            <div class="form-group row align-items-center mb-0">
+                <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Trường/Đơn vị</label>
+                <div class="col-sm-10">
+                    @Html.DisplayFor(model => model.Unit)
                 </div>
-                <div class="form-group row align-items-center mb-0">
-                    <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Role</label>
-                    <div class="col-sm-10">
-                        @Html.DisplayFor(model => item.Role.RoleName)
-                    </div>
+            </div>
+            <div class="form-group row align-items-center mb-0">
+                <label for="staticEmail" class="col-sm-2 col-form-label font-weight-bold">Role</label>
+                <div class="col-sm-10">
+                    @Html.DisplayFor(model => model.Role.RoleName)
                 </div>
-                <a href="@Url.Action("edit","accounts",new { id = item.UserID })" class="btn btn-primary mt-4 mb-4">
-                    Cập nhật thông tin
-                </a>
-            }
-
+            </div>
+            <a href="@Url.Action("edit","accounts",new { id = @Model.UserID })" class="btn btn-primary mt-4 mb-4">
+                Cập nhật thông tin
+            </a>
         </div>
     </div>
     <div class="card shadow mb-4 col-md-3 ml-4">
