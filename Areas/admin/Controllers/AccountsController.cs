@@ -41,6 +41,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/Accounts/ProfileAdmin
         public ActionResult ProfileAdmin(int? id)
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -67,12 +71,13 @@ namespace langfvn.Areas.admin.Controllers
             }
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
             return View(account);
+
         }
 
         // POST: admin/Accounts/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserID,FullName,Email,Password,Phone,Address,Unit,RoleID")] Account account)
+        public ActionResult Edit(Account account)
         {
             if (ModelState.IsValid)
             {
@@ -177,6 +182,39 @@ namespace langfvn.Areas.admin.Controllers
             }
             return View();
         }
+
+        public ActionResult Update(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account account = db.Accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
+            return View(account);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Update(Account account)
+        {
+            if (ModelState.IsValid)
+            {
+                account.Password = GetMD5(account.Password);
+                db.Entry(account).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["success"] = "Cập nhật thông tin thành công";
+                return RedirectToAction("profileadmin", "accounts", new { id = account.UserID });
+            }
+            ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
+            return View(account);
+        }
+
         public ActionResult Logout()
         {
             Session.Clear();

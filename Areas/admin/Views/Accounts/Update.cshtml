@@ -1,0 +1,87 @@
+﻿@model langfvn.Models.Account
+
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>HỒ SƠ ADMIN</h3>
+
+<div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-dark">CẬP NHẬT THÔNG TIN</h6>
+    </div>
+    <div class="card-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.UserID)
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.FullName, "Họ và tên", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Password, "Mật khẩu", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        @Html.LabelFor(model => model.Phone, "Số điện thoại", htmlAttributes: new { @class = "control-label" })
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                        @if (ViewBag.ErrorPhone != null)
+                        {
+                            <span class="text-danger">@ViewBag.ErrorPhone</span>
+                        }
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-8">
+                        @Html.LabelFor(model => model.Address, "Địa chỉ", htmlAttributes: new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Address, 3, 50, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.Unit, "Trường/Đơn vị", htmlAttributes: new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Unit, 3, 50, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Unit, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-2">
+                        @Html.LabelFor(model => model.RoleID, "Role", htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownList("RoleID", null, htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.RoleID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2">
+                        <input type="submit" value="Lưu lại" class="btn btn-primary" onclick='deleteDisabledBtn(this.form)' />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        function deleteDisabledBtn(form) {
+            $("[disabled]").removeAttr('disabled');
+        }
+    </script>
+}

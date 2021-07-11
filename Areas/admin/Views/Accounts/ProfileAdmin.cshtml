@@ -5,13 +5,20 @@
     Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1 class="h3 mb-2 text-gray-800">HỒ SƠ ADMIN</h1>
-<div class="mb-4">
-    <a href="/admin/accounts" class="btn btn-success">
-        <i class="fas fa-undo-alt"></i>
-        Quay về danh sách người dùng
-    </a>
-</div>
+<h1 class="h3 mb-2 text-gray-800 mb-4">HỒ SƠ ADMIN</h1>
+@if (ViewBag.SuccessMsg != null)
+{
+    <div id="alertMsg" class="alert alert-success" role="alert">
+        <strong>@ViewBag.SuccessMsg</strong>
+    </div>
+}
+@section ScriptAlertSuccess{
+    <script>
+        setTimeout(() => {
+            $('#alertMsg').fadeOut('slow');
+        }, 3000)
+    </script>
+}
 <div class="row">
     <div class="card shadow mb-4 col-md-8 p-0" style="margin-left: 10px">
         <div class="card-header py-3">
@@ -54,7 +61,7 @@
                     @Html.DisplayFor(model => model.Role.RoleName)
                 </div>
             </div>
-            <a href="@Url.Action("edit","accounts",new { id = @Model.UserID })" class="btn btn-primary mt-4 mb-4">
+            <a href="@Url.Action("update","accounts",new { id = @Model.UserID })" class="btn btn-primary mt-4 mb-4">
                 Cập nhật thông tin
             </a>
         </div>
