@@ -154,7 +154,7 @@ namespace langfvn.Areas.admin.Controllers
             if (ModelState.IsValid)
             {
                 var f_password = GetMD5(password);
-                Account ad = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(f_password) && x.Role.RoleName != "Member").FirstOrDefault();
+                var ad = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(f_password) && x.Role.RoleName != "Member").FirstOrDefault();
                 if (ad != null)
                 {
                     Session["AdId"] = ad.UserID;
@@ -200,32 +200,38 @@ namespace langfvn.Areas.admin.Controllers
             return View(account);
         }
 
-        public ActionResult ChangePassword(int? id)
+        public ActionResult ChangePassword()
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Account account = db.Accounts.Find(id);
-            if (account == null)
-            {
-                return HttpNotFound();
-            }
-            return View(account);
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //Account account = db.Accounts.Find(id);
+            //if (account == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(account);
+            return View();
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ChangePassword(Account account)
+        public ActionResult ChangePassword(ChangePasswordViewModel account)
         {
-            if (ModelState.IsValid)
+            var oldPass = GetMD5(account.OldPassword);
+            var checkPass = db.Accounts.Where(x => x.Password == oldPass && x.Email == account.Email).FirstOrDefault();
+            if (checkPass != null)
             {
-                account.Password = GetMD5(account.Password);
-                db.Entry(account).State = EntityState.Modified;
+                checkPass.Password = GetMD5(account.NewPassword);
                 db.SaveChanges();
                 TempData["success"] = "Cập nhật mật khẩu mới thành công";
-                return RedirectToAction("profileadmin", "accounts", new { id = account.UserID });
+                return RedirectToAction("profileadmin", "accounts", new { id = checkPass.UserID });
+            }
+            else
+            {
+                ViewBag.Error = "Mật khẩu hoặc email đăng nhập không đúng";
             }
             return View(account);
         }

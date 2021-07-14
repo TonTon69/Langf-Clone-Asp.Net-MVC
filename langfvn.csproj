@@ -168,6 +168,7 @@
     <Compile Include="Models\Banner.cs" />
     <Compile Include="Models\CategoryFood.cs" />
     <Compile Include="Models\CategoryNew.cs" />
+    <Compile Include="Models\ChangePasswordViewModel.cs" />
     <Compile Include="Models\CustomRoleProvider.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\KindOfFood.cs" />
