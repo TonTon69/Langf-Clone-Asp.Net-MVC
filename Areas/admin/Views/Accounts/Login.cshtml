@@ -36,7 +36,7 @@
                 @using (Html.BeginForm("Login", "Accounts", FormMethod.Post, new { @class = "login100-form" }))
                 {
                     @Html.AntiForgeryToken()
-
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <span class="login100-form-title">
                         Admin Login
                     </span>
@@ -47,6 +47,7 @@
                         <span class="symbol-input100">
                             <i class="fa fa-envelope" aria-hidden="true"></i>
                         </span>
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="wrap-input100">

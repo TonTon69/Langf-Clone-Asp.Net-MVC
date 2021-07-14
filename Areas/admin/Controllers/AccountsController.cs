@@ -81,19 +81,11 @@ namespace langfvn.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var checkPhone = db.Accounts.FirstOrDefault(x => x.Phone == account.Phone);
-                if (checkPhone != null)
-                {
-                    ViewBag.ErrorPhone = "Số điện thoại này đã tồn tại";
-                }
-                else
-                {
-                    account.Password = GetMD5(account.Password);
-                    db.Entry(account).State = EntityState.Modified;
-                    db.SaveChanges();
-                    TempData["success"] = "Cập nhật người dùng thành công";
-                    return RedirectToAction("Index");
-                }
+                account.Password = GetMD5(account.Password);
+                db.Entry(account).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["success"] = "Cập nhật người dùng thành công";
+                return RedirectToAction("Index");
             }
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
             return View(account);

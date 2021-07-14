@@ -14,6 +14,10 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/home
         public ActionResult Index()
         {
+            if (Session["AdId"] == null)
+            {
+                return RedirectToAction("login", "accounts");
+            }
             return View();
         }
 
