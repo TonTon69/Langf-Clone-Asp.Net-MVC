@@ -2553,6 +2553,7 @@
     <Content Include="Content\admin\fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="Content\admin\fonts\poppins\Poppins-ThinItalic.ttf" />
     <Content Include="Areas\admin\Views\Accounts\Update.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\ChangePassword.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

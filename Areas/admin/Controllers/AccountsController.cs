@@ -81,7 +81,6 @@ namespace langfvn.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                account.Password = GetMD5(account.Password);
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["success"] = "Cập nhật người dùng thành công";
@@ -155,17 +154,12 @@ namespace langfvn.Areas.admin.Controllers
             if (ModelState.IsValid)
             {
                 var f_password = GetMD5(password);
-                Account ad = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(f_password)).FirstOrDefault();
-                var checkRole = db.Accounts.FirstOrDefault(c => c.Role.RoleName != "Member");
-
+                Account ad = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(f_password) && x.Role.RoleName != "Member").FirstOrDefault();
                 if (ad != null)
                 {
-                    if (checkRole != null)
-                    {
-                        Session["AdId"] = ad.UserID;
-                        Session["FullName"] = ad.FullName;
-                        return RedirectToAction("index", "home");
-                    }
+                    Session["AdId"] = ad.UserID;
+                    Session["FullName"] = ad.FullName;
+                    return RedirectToAction("index", "home");
                 }
                 else
                 {
@@ -197,13 +191,42 @@ namespace langfvn.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                account.Password = GetMD5(account.Password);
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["success"] = "Cập nhật thông tin thành công";
                 return RedirectToAction("profileadmin", "accounts", new { id = account.UserID });
             }
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
+            return View(account);
+        }
+
+        public ActionResult ChangePassword(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Account account = db.Accounts.Find(id);
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+            return View(account);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePassword(Account account)
+        {
+            if (ModelState.IsValid)
+            {
+                account.Password = GetMD5(account.Password);
+                db.Entry(account).State = EntityState.Modified;
+                db.SaveChanges();
+                TempData["success"] = "Cập nhật mật khẩu mới thành công";
+                return RedirectToAction("profileadmin", "accounts", new { id = account.UserID });
+            }
             return View(account);
         }
 
