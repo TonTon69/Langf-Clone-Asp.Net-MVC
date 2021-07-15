@@ -3,7 +3,7 @@
 @foreach (var item in Model)
 {
     <div class="col col-md-3 col-top">
-        <div class="col-inner-news">
+        <div class="col-inner-news" style="background-color: #fff">
             <div class="box box-bounce text-center">
                 <a href="@Url.Action("details", "news", new { id = item.NewsID, name = item.Title})">
                     <div class="box-images" style="border-radius: 4%;">

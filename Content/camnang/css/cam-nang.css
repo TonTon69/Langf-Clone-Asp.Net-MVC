@@ -1286,3 +1286,109 @@ div.sidebar-bottom img {
     width: 100%;
     max-width: 30px;
 }
+
+
+/*Search Box*/
+.nav-overplay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.container-overplay {
+    left: 0;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+}
+
+.content-overplay {
+    position: relative;
+    top: 50%;
+    transform: translateY(-100%);
+}
+
+label {
+    cursor: pointer;
+}
+
+.nav-input:checked ~ .nav-overplay {
+    display: block;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.nav-input:checked ~ .content-overplay {
+    transform: translateY(100%);
+    display: none;
+}
+
+.nav-input:checked ~ body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+#search-lightbox {
+    font-size: 1.5em;
+    margin: 0 auto;
+    max-width: 600px;
+    color: #f1f1f1;
+}
+
+.searchform-wrapper {
+    color: #fff;
+    width: 100%;
+}
+
+.is-lagre {
+    font-size: 1.15em;
+}
+
+.dark {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.09);
+    color: #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 99px;
+}
+
+.search-field {
+    width: 90%;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none;
+    height: 70px;
+}
+
+[type="search"] {
+    outline-style: none;
+}
+
+input:not([type="submit"]) {
+    color: #fff;
+}
+
+input::placeholder {
+    color: #fff;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ux-search-submit {
+    color: currentColor !important;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none;
+    margin-right: 20px;
+    cursor: pointer;
+}
