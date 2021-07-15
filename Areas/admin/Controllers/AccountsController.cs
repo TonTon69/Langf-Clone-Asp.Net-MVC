@@ -194,7 +194,7 @@ namespace langfvn.Areas.admin.Controllers
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
                 TempData["success"] = "Cập nhật thông tin thành công";
-                return RedirectToAction("profileadmin", "accounts", new { id = account.UserID });
+                return RedirectToAction("profileadmin", "accounts", new { id = Session["AdID"] });
             }
             ViewBag.RoleID = new SelectList(db.Roles, "RoleID", "RoleName", account.RoleID);
             return View(account);
@@ -202,16 +202,6 @@ namespace langfvn.Areas.admin.Controllers
 
         public ActionResult ChangePassword()
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //Account account = db.Accounts.Find(id);
-            //if (account == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(account);
             return View();
         }
 
@@ -227,7 +217,7 @@ namespace langfvn.Areas.admin.Controllers
                 checkPass.Password = GetMD5(account.NewPassword);
                 db.SaveChanges();
                 TempData["success"] = "Cập nhật mật khẩu mới thành công";
-                return RedirectToAction("profileadmin", "accounts", new { id = checkPass.UserID });
+                return RedirectToAction("profileadmin", "accounts", new { id = Session["AdID"] });
             }
             else
             {

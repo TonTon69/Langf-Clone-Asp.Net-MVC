@@ -99,6 +99,9 @@
                                 <a href="@Url.Action("edit","accounts",new { id = item.UserID })" class="btn btn-primary">
                                     <i class="far fa-edit"></i>
                                 </a>
+                                <a href="@Url.Action("changepassword","accounts")" class="btn btn-secondary">
+                                    <i class="fas fa-key"></i>
+                                </a>
                                 <a href="@Url.Action("delete","accounts",new { id = item.UserID })" class="btn btn-danger">
                                     <i class="far fa-trash-alt"></i>
                                 </a>
