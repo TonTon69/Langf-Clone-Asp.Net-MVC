@@ -1,0 +1,41 @@
+﻿@model langfvn.Models.News
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/camnang/Views/Shared/_LayoutNews.cshtml";
+}
+
+<div class="col-lg-9 box-shadow-1">
+    <header class="entry-header" style="position: unset">
+        <div class="entry-header-text text-center">
+            <h6 class="entry-category is-xsmall text-uppercase">
+                <a href="@Url.Action("index", "news" , new {category=@Model.KindOfNew.CategoryNew.CNewsName})"> @Model.KindOfNew.CategoryNew.CNewsName,</a>
+                <a href="@Url.Action("index", "news" , new {category=@Model.KindOfNew.CategoryNew.CNewsName, kon=Model.KindOfNew.KonName})">@Model.KindOfNew.KonName</a>
+            </h6>
+            <h1 class="entry-title">
+                @Model.Title
+            </h1>
+            <div class="is-devider-news"></div>
+            <div class="entry-metal text-uppercase is-xsmall" style="letter-spacing: .05em;">
+                <span class="posted-on">đăng tải <a href="@Url.Action("index", "news")">@Model.CreatedDate.ToString("MMM d, yyy") </a></span>
+                <span class="byline">bởi <a href="@Url.Action("index", "news")">@Model.Account.FullName</a></span>
+            </div>
+        </div>
+        <div class="entry-image">
+            <a href="">
+                <img src="@Model.Image" />
+            </a>
+        </div>
+    </header>
+    <div class="entry-content">
+        @Html.Raw(Model.Content)
+       
+        @{
+            Html.RenderAction("RelatedPosts", "News", new { id = Model.KonID});
+        }
+    </div>
+
+    <div class="fb-background" style="position:center !important">
+        <div class="fb-comments" data-href="https://www.facebook.com/langfvn/" data-width="709" data-numposts="5"></div>
+    </div>
+</div>

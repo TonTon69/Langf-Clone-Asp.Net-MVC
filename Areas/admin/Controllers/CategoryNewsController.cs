@@ -10,11 +10,13 @@ using langfvn.Models;
 
 namespace langfvn.Areas.admin.Controllers
 {
+    
     public class CategoryNewsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/categorynews
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             if (TempData["success"] != null)

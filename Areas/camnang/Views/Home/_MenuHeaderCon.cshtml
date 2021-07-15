@@ -1,0 +1,6 @@
+﻿@model IEnumerable<langfvn.Models.KindOfNew>
+
+@foreach (var item in Model)
+{
+    <a href="@Url.Action("index", "news", new {category = @item.CategoryNew.CNewsName, kon = item.KonName})">@item.KonName</a>
+}

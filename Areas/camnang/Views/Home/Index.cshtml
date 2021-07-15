@@ -1,0 +1,911 @@
+﻿
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Areas/camnang/Views/Shared/_LayoutCamNang.cshtml";
+}
+
+<div id="content" role="main" class="content-area">
+    <!--------------------------------------------------- Slide Banner---------------------------------- -->
+    @{
+        Html.RenderAction("Banner", "Home");
+    }
+    <!-- ------------------------------------------------------End Slide Banner----------------------------------------->
+    <!-- -------------------------------------------------------Slider Partner------------------------------ -->
+    @{
+        Html.RenderAction("PartnerLogo", "Home");
+    }
+    <!-- -----------------------------------------End Slide Partner---------------------------- -->
+    <!------------------------------------------------ Bảng vàng----------------------------- -->
+    <div class="section-content">
+        <div class="content">
+            <div class="col small">
+                <div class="col-inner text-center" style="padding-bottom: 45px">
+                    <h2 style="text-align: center">
+                        <strong style="font-size: 170%">BẢNG VÀNG LÀNG ĐẠI HỌC</strong>
+                    </h2>
+                </div>
+                <div class="container">
+                    <div class="row row-small">
+                        <div class="col col-3">
+                            <div class="box text-center">
+                                <!------------------------------------Images bảng vàng 1---------------------- -->
+                                <div class="box-image">
+                                    <a href="">
+                                        <div class="image-zoom">
+                                            <img src="~/Content/main/img/bangvang-1.png" alt="" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-------------------------------- End Images bảng vàng 1----------------------->
+                                <!--------------------------------------- text col------------------------- -->
+                                <div class="box-text text-center">
+                                    <div class="box-text-inner">
+                                        <h4 style="font-weight: 600">
+                                            ĐỆ NHẤT LẨU CHAY 2020
+                                        </h4>
+                                        <p><strong>Lẩu chay Hằng Thiện</strong></p>
+                                    </div>
+                                </div>
+                                <!------------------------------------- end text col------------------------ -->
+                            </div>
+                        </div>
+
+                        <div class="col col-3">
+                            <div class="box text-center">
+                                <!-- Images bảng vàng 2-->
+                                <div class="box-image">
+                                    <a href="">
+                                        <div class="image-zoom">
+                                            <img src="~/Content/main/img/bangvang-2.jpg" alt="" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- End Images bảng vàng -->
+                                <!-- text col -->
+                                <div class="box-text text-center">
+                                    <div class="box-text-inner">
+                                        <h4 style="font-weight: 600">VUA CĂN TIN 2020</h4>
+                                        <p><strong>Căn tin Đại học Quốc Tế</strong></p>
+                                    </div>
+                                </div>
+                                <!-- end text col -->
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="box text-center">
+                                <!-- Images bảng vàng -->
+                                <div class="box-image">
+                                    <a href="">
+                                        <div class="image-zoom">
+                                            <img src="~/Content/main/img/bangvang-3.jpg" alt="" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- End Images bảng vàng -->
+                                <!-- text col -->
+                                <div class="box-text text-center">
+                                    <div class="box-text-inner">
+                                        <h4 style="font-weight: 600">VUA CÀ SỮA 2020</h4>
+                                        <p><strong>Yes Cafe Làng đại học</strong></p>
+                                    </div>
+                                </div>
+                                <!-- end text col -->
+                            </div>
+                        </div>
+                        <div class="col col-3">
+                            <div class="box text-center">
+                                <!-- Images bảng vàng -->
+                                <div class="box-image">
+                                    <a href="">
+                                        <div class="image-zoom">
+                                            <img src="~/Content/main/img/bangvang-4.jpg" alt="" />
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- End Images bảng vàng -->
+                                <!-- text col -->
+                                <div class="box-text text-center">
+                                    <div class="box-text-inner">
+                                        <h4 style="font-weight: 600">VUA XE BUÝT 2021</h4>
+                                        <p><strong>Tuyến Xe buýt Số 33</strong></p>
+                                    </div>
+                                </div>
+                                <!-- end text col -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--------------------------------- Devide------------------------- -->
+        <div class="text-center">
+            <div class="is-devider clearfix" style="max-width: 250px; background-color: rgb(155, 15, 15)">
+            </div>
+        </div>
+        <!----------------------------- End Devide------------------------- -->
+    </div>
+    <!-------------------------------- End bảng vàng ----------------------->
+    <!-----------------------------------Question------------------------ -->
+    <div class="container">
+        <!-- Question inner -->
+        <div class="row">
+            <div class="col col-6 col-divided">
+                <div class="title-container">
+                    <h2 class="section-title">
+                        <b></b>
+                        <span class="section-title-main">
+                            <i class="icon-search fas fa-search"></i>Câu hỏi thường gặp?
+                        </span>
+                        <b></b>
+                        <a href=""> <i class="fas fa-angle-right"></i></a>
+                    </h2>
+                </div>
+                <div id="accordion">
+                    <!----------------Item 1-----------------  -->
+                    <div class="accordion-item">
+                        <a href="" class="accordion-title" data-toggle="collapse" data-target="#collapseOne"
+                           aria-expanded="false" aria-controls="collapseOne">
+                            <button class="toggle" id="sidebarToggle">
+                            </button>
+                            <span>Về ký túc xá</span>
+                        </a>
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                             data-parent="#accordion">
+                            <div class="row accordion-inner">
+                                @{
+                                    Html.RenderAction("Question_KTX", "Home");
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------Item 2-----------------  -->
+                    <div class="accordion-item">
+                        <a href="" class="accordion-title" data-toggle="collapse" data-target="#collapseTwo"
+                           aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="toggle" id="sidebarToggle">
+                            </button>
+                            <span>Ăn gì ở đâu?</span>
+                        </a>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                             data-parent="#accordion">
+                            <div class="row accordion-inner">
+                                @{
+                                    Html.RenderAction("Question_Food", "Home");
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------Item 3-----------------  -->
+                    <div class="accordion-item">
+                        <a href="" class="accordion-title" data-toggle="collapse"
+                           data-target="#collapseThree" aria-expanded="false"
+                           aria-controls="collapseThree">
+                            <button class="toggle" id="sidebarToggle">
+                            </button>
+                            <span>Sinh viên cần gì?</span>
+                        </a>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                             data-parent="#accordion">
+                            <div class="row accordion-inner">
+                                @{
+                                    Html.RenderAction("Question_Need", "Home");
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------Item 4-----------------  -->
+
+                    <div class="accordion-item">
+                        <a href="" class="accordion-title" data-toggle="collapse"
+                           data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <button class="toggle" id="sidebarToggle">
+                            </button>
+                            <span>Làng đại học có gì vui?</span>
+                        </a>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                             data-parent="#accordion">
+                            <div class="row accordion-inner">
+                                @{
+                                    Html.RenderAction("Question_Fun", "Home");
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------Item 5-----------------  -->
+
+                    <div class="accordion-item">
+                        <a href="" class="accordion-title" data-toggle="collapse"
+                           data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <button class="toggle" id="sidebarToggle">
+                            </button>
+                            <span>Sự tích Hồ đá?</span>
+                        </a>
+                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                             data-parent="#accordion">
+                            <div class="row accordion-inner">
+                                @{
+                                    Html.RenderAction("Question_Lake", "Home");
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <!----------------Item 6-----------------  -->
+
+                    <div class="accordion-item">
+                        <a href="" class="accordion-title" data-toggle="collapse" data-target="#collapseSix"
+                           aria-expanded="false" aria-controls="collapseSix">
+                            <button class="toggle" id="sidebarToggle">
+                            </button>
+                            <span>Tuần này có khuyến mãi gì không?</span>
+                        </a>
+                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                             data-parent="#accordion">
+                            <div class="row accordion-inner">
+                                @{
+                                    Html.RenderAction("Question_Discount", "Home");
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!------------------------------ Question Image-------------------- -->
+            <div class="col col-6">
+                <div class="col-inner text-center">
+                    <div class="img-has-hover">
+                        <a href="">
+                            <div class="img-inner">
+                                <img  src="~/Content/main/img/123.png">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- ------------------------End question image-------------------- -->
+        </div>
+    </div>
+    <!---------------------------- End question inner------------------ -->
+    <!-------------------------------- Devide ---------------------------->
+    <div class="text-center">
+        <div class="is-devider clearfix" style="max-width: 250px; background-color: rgb(155, 15, 15)"></div>
+    </div>
+    <!-- ----------------------------End Devide------------------------ -->
+    <!-- ------------------------------News------------------------------ -->
+    <div class="section-news">
+        <div class="content">
+            <div class="col small text-center">
+
+                <!-- -----------------Title NEWS---------------- -->
+                <div class="col-inner text-center" style="padding-bottom: 45px">
+                    <h2 style="text-align: center">
+                        <strong style="font-size: 170%">bài viết nổi bật</strong>
+                    </h2>
+                </div>
+
+                <!-- ------------------------BLog News------------ -->
+                <div class="container">
+                    <div class="row row-small">
+                        @{
+                            Html.RenderAction("HotBlog", "Home");
+                        }
+
+                    </div>
+                </div>
+                <div class="see-more-link">
+                    <a href="@Url.Action("index", "news")" class="button primary is-underline"><span>Xem thêm!</span></a>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------- Devide ---------------------------->
+        <div class="text-center">
+            <div class="is-devider clearfix" style="max-width: 250px; background-color: rgb(155, 15, 15)">
+            </div>
+        </div>
+        <!-- ----------------------------End Devide------------------------ -->
+    </div>
+
+    <!-- ----------------------------------Cẩm nang Sinh Viên-------------------- -->
+    <div class="section-news">
+        <div class="content">
+            <div class="col small text-center">
+
+                <!-- -----------------Title Cẩm nang Sinh Viên---------------- -->
+                <div class="col-inner text-center" style="padding-bottom: 45px">
+                    <h2 style="text-align: center">
+                        <strong style="font-size: 170%">CẨM NANG SINH VIÊN</strong>
+                    </h2>
+                </div>
+
+                <!-- ------------------------BLog Cẩm nang Sinh Viên------------ -->
+                <div class="container">
+                    <div class="row row-small">
+                        @{
+                            Html.RenderAction("HandBook", "Home");
+                        }
+                    </div>
+                </div>
+                <div class="see-more-link">
+                    <a href="@Url.Action("index", "news", new {category = "cẩm nang sinh viên"})" class="button primary is-underline"><span>Xem thêm!</span></a>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------- Devide ---------------------------->
+        <div class="text-center">
+            <div class="is-devider clearfix" style="max-width: 250px; background-color: rgb(155, 15, 15)">
+            </div>
+        </div>
+        <!-- ----------------------------End Devide------------------------ -->
+    </div>
+
+    <!-- ------------------------------Các trang mạng phổ biến--------------------- -->
+    <div class="section-news">
+        <div class="content">
+            <div class="col small text-center">
+
+                <!-- -----------------Title Các trang mạng phổ biến---------------- -->
+                <div class="col-inner text-center" style="padding-bottom: 45px">
+                    <h2 style="text-align: center">
+                        <strong style="font-size: 170%">CÁC TRANG MẠNG XÃ HỘI PHỔ BIẾN</strong>
+                    </h2>
+                </div>
+                <div class="container">
+                    <div class="row row-small">
+                        <div class="col col-md-6">
+                            <div class="col-inner-pages">
+                                <div class="container section-title-container">
+                                    <h2 class="section-title">
+                                        <b></b>
+                                        <span class="title"><i class="far fa-star"></i>GROUP</span>
+                                        <b></b>
+                                        <a href=""><i class="fas fa-angle-right"></i></a>
+                                    </h2>
+                                </div>
+
+                                <div class="row row-pages">
+                                    <div class="col col-sm-12">
+                                        <div class="col-inner-pages">
+                                            <div class="row row-collapse">
+                                                <div class="col col-md-6 col-pages">
+                                                    <div class="col-inner-pages">
+                                                        <div class="box">
+                                                            <div class="box-image-pages">
+                                                                <a href="https://www.facebook.com/groups/906606526100199">
+                                                                    <div>
+                                                                        <img src="~/Content/main/img/page1.png">
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="box-text">
+                                                                <div class="box-text-inner is-small">
+                                                                    <h4>Hội sinh viên Làng đại học</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-6 col-pages">
+                                                    <div class="col-inner-pages">
+                                                        <div class="box">
+                                                            <div class="box-image-pages">
+                                                                <a href="#">
+                                                                    <div>
+                                                                        <img src="~/Content/main/img/page2.png">
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="box-text">
+                                                                <div class="box-text-inner is-small">
+                                                                    <h4>Sinh viên KTX ĐHQG TP.HCM</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row row-pages">
+                                    <div class="col col-sm-12">
+                                        <div class="col-inner-pages">
+                                            <div class="row row-collapse">
+                                                <div class="col col-md-6 col-pages">
+                                                    <div class="col-inner-pages">
+                                                        <div class="box">
+                                                            <div class="box-image-pages">
+                                                                <a href="#">
+                                                                    <div>
+                                                                        <img src="~/Content/main/img/page3.png">
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="box-text">
+                                                                <div class="box-text-inner is-small">
+                                                                    <h4>Hội sinh viên Làng đại học</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-6 col-pages">
+                                                    <div class="col-inner-pages">
+                                                        <div class="box">
+                                                            <div class="box-image-pages">
+                                                                <a href="#">
+                                                                    <div>
+                                                                        <img src="~/Content/main/img/page4.png">
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+
+                                                            <div class="box-text">
+                                                                <div class="box-text-inner is-small">
+                                                                    <h4>Sinh viên KTX ĐHQG TP.HCM</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-6">
+                            <div class="col-inner-pages">
+                                <div class="container section-title-container">
+                                    <h2 class="section-title">
+                                        <b></b>
+                                        <span class="title">
+                                            <i class="fas fa-user"></i>FANPAGE
+                                            OFFICIAL
+                                        </span>
+                                        <b></b>
+                                        <a href=""><i class="fas fa-angle-right"></i></a>
+                                    </h2>
+                                </div>
+                                <div class="row row-pages">
+                                    <div class="col col-sm-12">
+                                        <div class="col-inner-pages">
+                                            <div class="row row-collapse">
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage1.png">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage2.jpeg">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage3.png">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage4.jpeg">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage5.png">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage6.png">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage7.png">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage8.jpg">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col col-md-4">
+                                                    <div class="col-inner text-center">
+                                                        <div class="ux-logo">
+                                                            <a class="ux-logo-link block" href="#"
+                                                               style="padding: 15px;">
+                                                                <img src="~/Content/main/img/logopage9.jpg">
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-12">
+                            <div class="col-inner-pages">
+                                <div class="container section-title-container">
+                                    <h2 class="section-title">
+                                        <b></b>
+                                        <span class="title">
+                                            <i class="fab fa-facebook-f"></i></i>FANPAGE
+                                            CỘNG ĐỒNG
+                                        </span>
+                                        <b></b>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-3">
+                            <div class="col-inner-icon">
+                                <a href="#">
+                                    <div class="icon-box text-center">
+                                        <div class="icon-box-img" style="width: 100px;">
+                                            <div class="icon">
+                                                <div class="icon-inner">
+                                                    <img src="~/Content/main/img/langf.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            <h5 class="text-uppercase">Cẩm nang Làng đại học</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-md-3">
+                            <div class="col-inner-icon">
+                                <a href="#">
+                                    <div class="icon-box text-center">
+                                        <div class="icon-box-img" style="width: 100px;">
+                                            <div class="icon">
+                                                <div class="icon-inner">
+                                                    <img src="~/Content/main/img/iconpage2.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            <h5 class="text-uppercase">KTX ĐHQG CONFESSIONS</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-md-3">
+                            <div class="col-inner-icon">
+                                <a href="#">
+                                    <div class="icon-box text-center">
+                                        <div class="icon-box-img" style="width: 100px;">
+                                            <div class="icon">
+                                                <div class="icon-inner">
+                                                    <img src="~/Content/main/img/iconpage3.jpg" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            <h5 class="text-uppercase">Sinh viên Plus</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col col-md-3">
+                            <div class="col-inner-icon">
+                                <a href="#">
+                                    <div class="icon-box text-center">
+                                        <div class="icon-box-img" style="width: 100px;">
+                                            <div class="icon">
+                                                <div class="icon-inner">
+                                                    <img src="~/Content/main/img/iconpage4.png" alt="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="icon-box-text">
+                                            <h5 class="text-uppercase">UEL Confessions</h5>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="gap" style="display: block; padding: 8px;"></div>
+            <div class="text-center">
+                <div class="is-devider clearfix"
+                     style="max-width: 250px; background-color: rgb(155, 15, 15)"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ------------------------Làng có gì vui?-------------------- -->
+    <div class="section-news">
+        <div class="content">
+            <div class="col small text-center">
+
+                <!-- -----------------Title Làng đại học có gì vui---------------- -->
+                <div class="col-inner text-center" style="padding-bottom: 45px">
+                    <h2 style="text-align: center">
+                        <strong style="font-size: 170%">LÀNG ĐẠI HỌC CÓ GÌ VUI?</strong>
+                    </h2>
+                </div>
+                <div class="container">
+                    <div class="row row-small">
+                        <div class="col col-md-6">
+                            <div class="col-inner-pages">
+                                <div class="container section-title-container">
+                                    <h2 class="section-title">
+                                        <b></b>
+                                        <span class="title"><i class="fas fa-heart"></i>TRUYỆN MA</span>
+                                        <b></b>
+                                        <a href=""><i class="fas fa-angle-right"></i></a>
+                                    </h2>
+                                </div>
+
+                                <div class="row row-small-post" style="position: relative;">
+                                    @{
+                                        Html.RenderAction("GhostStory", "Home");
+                                    }
+                                </div>
+                            </div>
+                            <div class="container-see-more">
+                                <div class="see-more-link">
+                                    <a href="@Url.Action("index", "news", new {category = "làng review", kon = "chuyện ma"})" class="button primary is-underline">
+                                        <span>
+                                            Xem
+                                            thêm!
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-6">
+                            <div class="col-inner-pages">
+                                <div class="container section-title-container">
+                                    <h2 class="section-title">
+                                        <b></b>
+                                        <span class="title">
+                                            <i class="fa fa-shopping-basket"></i>ỨNG DỤNG
+                                            SINH VIÊN
+                                        </span>
+                                        <b></b>
+                                        <a href=""><i class="fas fa-angle-right"></i></a>
+                                    </h2>
+                                </div>
+                                <div class="row row-small">
+                                    <div class="col col-6">
+                                        <div class="box text-center">
+                                            <!------------------------------------Images ứng dụng---------------------- -->
+                                            <div class="box-image image" style="border-radius: 5%;">
+                                                <a href="">
+                                                    <div class="image-zoom">
+                                                        <img src="~/Content/main/img/ungdung1.png" alt="">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!--------------------------------End Images ứng dụng----------------------->
+                                            <!--------------------------------------- text col------------------------- -->
+                                            <div class="box-text text-center">
+                                                <div class="box-text-inner"
+                                                     style="padding: 0 5px; font-size: 15px; opacity: 1;">
+                                                    <p>
+                                                        Unipas - Thẻ xe buýt thông minh dành cho sinh viên
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!------------------------------------- end text col------------------------ -->
+                                        </div>
+                                    </div>
+
+                                    <div class="col col-6">
+                                        <div class="box text-center">
+                                            <!------------------------------------Images ứng dụng---------------------- -->
+                                            <div class="box-image image" style="border-radius: 5%;">
+                                                <a href="">
+                                                    <div class="image-zoom">
+                                                        <img src="~/Content/main/img/ungdung2.png" alt="">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!--------------------------------End Images ứng dụng----------------------->
+                                            <!--------------------------------------- text col------------------------- -->
+                                            <div class="box-text text-center">
+                                                <div class="box-text-inner"
+                                                     style="padding: 0 5px; font-size: 15px; opacity: 1;">
+                                                    <p>Busmap - Bản đồ xe buýt Thành phố</p>
+                                                </div>
+                                            </div>
+                                            <!------------------------------------- end text col------------------------ -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row row-small">
+                                    <div class="col col-6">
+                                        <div class="box text-center">
+                                            <!------------------------------------Images ứng dụng---------------------- -->
+                                            <div class="box-image image" style="border-radius: 5%;">
+                                                <a href="">
+                                                    <div class="image-zoom">
+                                                        <img src="~/Content/main/img/ungdung3.png" alt="">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!--------------------------------End Images ứng dụng----------------------->
+                                            <!--------------------------------------- text col------------------------- -->
+                                            <div class="box-text text-center">
+                                                <div class="box-text-inner"
+                                                     style="padding: 0 5px; font-size: 15px; opacity: 1;">
+                                                    <p>
+                                                        Go VNU - ứng dụng quá giang xe dành cho sinh viên
+                                                        làng đại học
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <!------------------------------------- end text col------------------------ -->
+                                        </div>
+                                    </div>
+                                    <div class="col col-6">
+                                        <div class="box text-center">
+                                            <!------------------------------------Images ứng dụng---------------------- -->
+                                            <div class="box-image image" style="border-radius: 5%;">
+                                                <a href="">
+                                                    <div class="image-zoom">
+                                                        <img src="~/Content/main/img/ungdung4.png" alt="">
+                                                    </div>
+                                                </a>
+                                            </div>
+                                            <!--------------------------------End Images ứng dụng----------------------->
+                                            <!--------------------------------------- text col------------------------- -->
+                                            <div class="box-text text-center">
+                                                <div class="box-text-inner"
+                                                     style="padding: 0 5px; font-size: 15px; opacity: 1;">
+                                                    <p>Metee - Ứng dụng lấy mã khuyến mãi online</p>
+                                                </div>
+                                            </div>
+                                            <!------------------------------------- end text col------------------------ -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="container-see-more2">
+                                <div class="see-more-link">
+                                    <a href="@Url.Action("index", "news", new {category = "tin tức", kon = "công nghệ"})" class="button primary is-underline">
+                                        <span>
+                                            Xem
+                                            thêm!
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-md-12">
+                            <div class="col-inner-pages" style="top: 50px">
+                                <div class="container section-title-container">
+                                    <h2 class="section-title">
+                                        <b></b>
+                                        <span class="title">
+                                            <i class="fas fa-map-marker-alt"></i>LÀNG
+                                            REVIEW
+                                        </span>
+                                        <b></b>
+                                    </h2>
+                                </div>
+                                <!-- ------------------Làng Review------------------- -->
+                                <div class="container">
+                                    <div class="row row-small">
+
+                                        @{
+                                            Html.RenderAction("LangReview", "Home");
+                                        }
+                                    </div>
+                                </div>
+                                <div class="container-see-more3">
+                                    <div class="see-more-link">
+                                        <a href="@Url.Action("index", "news", new {category = "làng review"})" class="button primary is-underline">
+                                            <span>
+                                                Xem
+                                                thêm!
+                                            </span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gap" style="display: block; padding: 8px;"></div>
+        </div>
+    </div>
+    <div class="row row-banner mt-5">
+        <div class="col col-md-12">
+            <div class="col-banner">
+                <div class="container container-banner">
+                    <div class="banner">
+                        <div class="banner-inner fill">
+                            <a href="#" class="fill">
+                                <div class="fill"></div>
+                            </a>
+                            <div class="banner-text">
+                                <div class="banner-text-box">
+                                    <div class="text-inner text-center">
+                                        <h3 class="text-uppercase mb-2">
+                                            <span style="color: #ffff00;">
+                                                <b>
+                                                    bạn đang cần hỗ trợ phát triển thương hiệu kinh doanh
+                                                    hướng đến sinh viên
+                                                </b>
+                                            </span>
+                                        </h3>
+                                        <a href="#" class="button primary is-shade">
+                                            <span style="font-size: 13px;">
+                                                XEM DỊCH VỤ CỦA CHÚNG
+                                                TÔI
+                                            </span><i class="fas fa-check ml-2"
+                                                      style="font-size: 13px;"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

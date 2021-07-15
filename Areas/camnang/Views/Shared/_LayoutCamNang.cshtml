@@ -1,0 +1,155 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cẩm nang Làng đại học | Cộng đồng sinh viên Việt Nam</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+          integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/Content/main/css/cam-nang.css" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <header>
+            <div class="header-wrapper">
+                <div class="top-bar d-flex align-items-center">
+                    <div class="container">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="left">
+                                <strong class="text-uppercase">Chào mừng các bạn đến với langf.vn</strong>
+                            </div>
+                            <div class="right">
+                                <a href="" class=""> <i class="fab fa-facebook-f"></i></a>
+                                <a href="" class=""> <i class="far fa-envelope"></i></a>
+                                <a href="" class=""> <i class="fa fa-phone-alt"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="masthead">
+                    <div class="container d-flex justify-content-between">
+                        <!-- --------------------------------------------------Logo-------------------------------------- -->
+                        <div id="logo" class="flex-column d-flex justify-content-center">
+                            <a href="/camnang">
+                                <img src="~/Content/main/img/langf.png" width="80" height="80" class="header-logo" />
+                            </a>
+                        </div>
+                        <!-- --------------------------------------------------Menu----------------------------------------- -->
+                        @{
+                            Html.RenderAction("MenuHeader", "Home");
+                        }
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!------------------------------------------------------- Main ------------------------------------->
+        <main id="main">
+            @RenderBody()
+        </main>
+        <footer id="footer" class="footer-wrapper mt-5">
+            <div class="container">
+                <div class="row row-dark">
+                    <div class="col-md-4">
+                        <span>Giới thiệu</span>
+                        <div class="is-divider-text"
+                             style="background-color: rgba(255,255,255,0.3); margin: 10px 0 16px;"></div>
+                        <p>Công ty THHH Công nghệ HAT</p>
+                        <div class="row" style="width: 100%; height: 70%;">
+                            <div class="col col-12">
+                                <div class="col-footer text-center">
+                                    <div class="fb-root">
+                                        <div class="fb"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <span>Liên hệ</span>
+                        <div class="is-divider-text"
+                             style="background-color: rgba(255,255,255,0.3); margin: 10px 0 16px;"></div>
+                        <p>Λ 948 Phạm Hùng, Long Toàn, Bà Rịa, Bà Rịa - Vũng Tàu</p>
+                        <p>Λ Phòng I.007, Khu Công nghệ Phần mềm, Linh Trung, Thủ Đức, TP.Hồ Chí Minh</p>
+                        <p>∏ 72ecomltd@gmail.com</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span>Thống kê truy cập</span>
+                        <div class="is-divider-text"
+                             style="background-color: rgba(255,255,255,0.3); margin: 10px 0 16px;"></div>
+                        <p> <b>Đang online: </b>1</p>
+                        <p> <b>Hôm nay: </b>123</p>
+                        <p> <b>Tổng truy cập: </b>1000</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="absolute-footer text-center">
+                <b>Copyright 2021 © </b>
+                <a href="">HAT.vn</a>
+            </div>
+        </footer>
+        <div class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                // scroll show button back to top
+                if (this.scrollY > 500) {
+                    $(".back-to-top").addClass("show");
+                } else {
+                    $(".back-to-top").removeClass("show");
+                }
+            });
+            // back to top
+            $(".back-to-top").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
+            });
+            var mySwiper = new Swiper(".swiper-container", {
+                // Các Parameters
+                loop: true,
+                slidesPerView: 12, //đối tác
+                spaceBetween: 30, //khoảng cách
+                autoplay: {
+                    delay: 2000,
+                },
+                // Nếu cần navigation
+                navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                }
+            });
+            //active banner
+            $(function () {
+                $('.carousel-item')[0].classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

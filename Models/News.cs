@@ -24,7 +24,7 @@ namespace langfvn.Models
 
         public int? TotalView { get; set; }
 
-        public DateTime? CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
 
         public virtual Account Account { get; set; }
 

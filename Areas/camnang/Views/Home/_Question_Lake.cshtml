@@ -1,0 +1,18 @@
+﻿@model IEnumerable<langfvn.Models.News>
+
+@foreach (var item in Model)
+{
+    <div class="col-md-6">
+        <div class="card card-inner" style="width: 13rem">
+            <a href="@Url.Action("details", "news",  new { id = item.NewsID, name = item.Title})">
+                <img class="card-img-top"
+                     src="@item.Image">
+                <div class="card-body">
+                    <h5 class="card-text text-center">
+                        @item.Title
+                    </h5>
+                </div>
+            </a>
+        </div>
+    </div>
+}

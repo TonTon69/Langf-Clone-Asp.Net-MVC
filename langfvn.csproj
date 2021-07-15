@@ -158,6 +158,9 @@
     <Compile Include="Areas\admin\Controllers\ReviewsController.cs" />
     <Compile Include="Areas\admin\Controllers\RolesController.cs" />
     <Compile Include="Areas\admin\Controllers\StoresController.cs" />
+    <Compile Include="Areas\camnang\camnangAreaRegistration.cs" />
+    <Compile Include="Areas\camnang\Controllers\HomeController.cs" />
+    <Compile Include="Areas\camnang\Controllers\NewsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1895,7 +1898,7 @@
     <Content Include="Content\main\img\Ảnh-chụp-Màn-hình-2020-11-19-lúc-16.23.55-2048x1370.png" />
     <Content Include="Content\main\img\Ảnh-chụp-Màn-hình-2020-11-24-lúc-18.01.39-300x183.png" />
     <Content Include="Content\main\img\B1-300x225.jpg" />
-    <Content Include="Content\main\img\bangvan-4.jpg" />
+    <Content Include="Content\main\img\bangvang-4.jpg" />
     <Content Include="Content\main\img\bangvang-1.png" />
     <Content Include="Content\main\img\bangvang-2.jpg" />
     <Content Include="Content\main\img\bangvang-3.jpg" />
@@ -2555,6 +2558,29 @@
     <Content Include="Content\admin\fonts\poppins\Poppins-ThinItalic.ttf" />
     <Content Include="Areas\admin\Views\Accounts\Update.cshtml" />
     <Content Include="Areas\admin\Views\Accounts\ChangePassword.cshtml" />
+    <Content Include="Areas\camnang\Views\web.config" />
+    <Content Include="Areas\camnang\Views\Shared\_LayoutCamNang.cshtml" />
+    <Content Include="Areas\camnang\Views\Shared\_LayoutNews.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\Index.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Banner.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_GhostStory.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_HandBook.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_HotBlog.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_LangReview.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_MenuHeaderCon.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_PartnerLogo.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Question_Discount.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Question_Food.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Question_Fun.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Question_KTX.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Question_Lake.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Question_Need.cshtml" />
+    <Content Include="Areas\camnang\Views\News\Details.cshtml" />
+    <Content Include="Areas\camnang\Views\News\Index.cshtml" />
+    <Content Include="Areas\camnang\Views\News\_HotBlogNews.cshtml" />
+    <Content Include="Areas\camnang\Views\News\_RelatedPosts.cshtml" />
+    <Content Include="Areas\camnang\Views\News\_SlideNews.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_MenuHeader.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2584,6 +2610,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\admin\Data\" />
+    <Folder Include="Areas\camnang\Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\admin\scss\navs\_global.scss" />
