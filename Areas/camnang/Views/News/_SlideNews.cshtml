@@ -3,7 +3,7 @@
 <div id="carouselExampleIndicators"
      class="carousel slide box-shadow-1"
      data-ride="carousel"
-     data-interval="3000">
+     data-interval="30000">
     <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators"
             data-slide-to="0"
@@ -18,7 +18,7 @@
         {
             <div class="carousel-item">
                 <a href="@Url.Action("details", "news", new { name = item.Title })">
-                    <img class="d-block w-100" src="@item.Image" />
+                    <img class="d-block" src="@item.Image" />
                     <div class="carousel-caption d-none d-md-block">
                         <span class="cat-label">
                             @item.KindOfNew.CategoryNew.CNewsName @item.KindOfNew.KonName
@@ -62,3 +62,14 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<style>
+    .from_the_blog_excerpt h1, .from_the_blog_excerpt h1 span {
+        color: #f1f1f1 !important;
+        font-size: 1em;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        text-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+        line-height: 1.5;
+    }
+</style>

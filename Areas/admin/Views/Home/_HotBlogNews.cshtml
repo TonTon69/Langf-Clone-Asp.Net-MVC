@@ -1,0 +1,35 @@
+﻿@model IEnumerable<langfvn.Models.News>
+
+@foreach (var item in Model)
+{
+<div class="row mb-3 m-0">
+    <div class="col-xs-12 col-sm-12 col-md-2 p-0">
+        <a href="@Url.Action("details", "news", new { id = item.NewsID })">
+            <div class="d-block mb-1">
+                <img style="object-fit: cover" src="@item.Image" width="80" height="80" />
+            </div>
+            <span>(@item.TotalView)</span>
+        </a>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-10">
+        <a href="@Url.Action("details", "news", new { id = item.NewsID })">
+            <h6 style="color: #800100"><b>@item.Title</b></h6>
+            <span>Đăng tải: @item.CreatedDate.ToString("MMM d, yyyy")</span>
+            <div class="text-justify">
+                @if (item.Content.Length <= 150)
+                {
+@Html.Raw(@item.Content) }
+else
+{
+@Html.Raw(@item.Content.ToString().Substring(0, 150) + "...")}
+            </div>
+        </a>
+    </div>
+</div>}
+<style>
+    .text-justify h1, .text-justify h1 span {
+        font-size: 1em;
+        color: #333 !important;
+        line-height: 1.5;
+    }
+</style>

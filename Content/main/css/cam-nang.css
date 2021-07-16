@@ -1097,8 +1097,8 @@ div.slides {
 }
 
 div.slide img {
+    width: 772.5px;
     height: 500px;
-    width: 100%;
     object-fit: cover;
 }
 

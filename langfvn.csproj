@@ -2581,6 +2581,8 @@
     <Content Include="Areas\camnang\Views\News\_RelatedPosts.cshtml" />
     <Content Include="Areas\camnang\Views\News\_SlideNews.cshtml" />
     <Content Include="Areas\camnang\Views\Home\_MenuHeader.cshtml" />
+    <Content Include="Areas\admin\Views\Home\_HotBlogNews.cshtml" />
+    <Content Include="Areas\admin\Views\Home\_PromotionStore.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

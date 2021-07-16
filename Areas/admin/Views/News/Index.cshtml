@@ -99,6 +99,12 @@
                                     @Html.Raw(@item.Content.ToString().Substring(0, 50) + "...")
                                 }
                             </td>
+                            <style>
+                                td h1, td h1 span {
+                                    font-size: 1em;
+                                    color: #333 !important;
+                                }
+                            </style>
                             <td>
                                 @Html.DisplayFor(modelItem => item.TotalView)
                             </td>
