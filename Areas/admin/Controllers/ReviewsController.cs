@@ -11,6 +11,7 @@ using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ReviewsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();

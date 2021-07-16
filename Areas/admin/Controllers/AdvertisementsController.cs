@@ -10,6 +10,7 @@ using langfvn.Models;
 
 namespace langfvn.Areas.admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdvertisementsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();

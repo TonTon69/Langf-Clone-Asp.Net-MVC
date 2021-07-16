@@ -19,8 +19,11 @@ namespace langfvn.Models
                 return new String[] { account.Role.RoleName };
             }
             else
+            {
                 return new String[] { };
+            }
         }
+
 
         public override string ApplicationName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 

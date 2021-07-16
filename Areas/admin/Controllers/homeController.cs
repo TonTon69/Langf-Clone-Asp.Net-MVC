@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace langfvn.Areas.admin.Controllers
 {
+    [Authorize(Roles = "Admin, AdminBranch1, AdminBranch2")]
     public class HomeController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
@@ -14,10 +15,6 @@ namespace langfvn.Areas.admin.Controllers
         // GET: admin/home
         public ActionResult Index()
         {
-            if (Session["AdId"] == null)
-            {
-                return RedirectToAction("login", "accounts");
-            }
             return View();
         }
 

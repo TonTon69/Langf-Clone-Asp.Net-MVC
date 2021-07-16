@@ -8,17 +8,18 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using langfvn.Models;
 using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
     public class AccountsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Accounts
+        [Authorize(Roles = "Admin")]
         public ActionResult Index(int? page, string search)
         {
             if (TempData["success"] != null)
@@ -58,6 +59,7 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // GET: admin/Accounts/Edit/id
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -77,6 +79,7 @@ namespace langfvn.Areas.admin.Controllers
         // POST: admin/Accounts/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(Account account)
         {
             if (ModelState.IsValid)
@@ -91,6 +94,7 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // GET: admin/Accounts/Delete/id
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +112,7 @@ namespace langfvn.Areas.admin.Controllers
         // POST: admin/Accounts/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Account account = db.Accounts.Find(id);
@@ -157,7 +162,9 @@ namespace langfvn.Areas.admin.Controllers
                 var ad = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(f_password) && x.Role.RoleName != "Member").FirstOrDefault();
                 if (ad != null)
                 {
+                    FormsAuthentication.SetAuthCookie(ad.Email, false);
                     Session["AdId"] = ad.UserID;
+                    Session["Email"] = ad.Email;
                     Session["FullName"] = ad.FullName;
                     return RedirectToAction("index", "home");
                 }
