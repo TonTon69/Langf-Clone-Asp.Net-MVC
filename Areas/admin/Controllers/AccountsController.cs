@@ -166,6 +166,7 @@ namespace langfvn.Areas.admin.Controllers
                     Session["AdId"] = ad.UserID;
                     Session["Email"] = ad.Email;
                     Session["FullName"] = ad.FullName;
+                    Session["Role"] = ad.Role.RoleName;
                     return RedirectToAction("index", "home");
                 }
                 else
@@ -235,7 +236,7 @@ namespace langfvn.Areas.admin.Controllers
 
         public ActionResult Logout()
         {
-            Session.Clear();
+            FormsAuthentication.SignOut();
             return RedirectToAction("login", "accounts");
         }
     }
