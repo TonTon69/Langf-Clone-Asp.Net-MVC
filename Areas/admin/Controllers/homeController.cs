@@ -43,24 +43,25 @@ namespace langfvn.Areas.admin.Controllers
             return PartialView("_CountStore", countStore);
         }
 
-        // Đếm số lượng món ăn
+        // Đếm số lượng tổng lượt xem các bài viết
         public PartialViewResult CountView()
         {
-            var countView = db.Views.ToList();
+            var countView = db.News.Select(x => x.TotalView).Sum();
+            ViewBag.CountView = countView;
             return PartialView("_CountView", countView);
         }
 
         //Partial Hot Blog
         public PartialViewResult HotBlogNews()
         {
-            var hotBlog = db.News.OrderByDescending(x => x.TotalView).Take(5).ToList();
+            var hotBlog = db.News.OrderByDescending(x => x.TotalView).Take(3).ToList();
             return PartialView("_HotBlogNews", hotBlog);
         }
 
         //Partial Promotion Store
         public PartialViewResult PromotionStore()
         {
-            var promotionStore = db.Stores.Where(x => x.NoteDiscount != null).OrderByDescending(x => x.StoreID).Take(5).ToList();
+            var promotionStore = db.Stores.Where(x => x.NoteDiscount != null).OrderByDescending(x => x.StoreID).Take(3).ToList();
             return PartialView("_PromotionStore", promotionStore);
         }
 

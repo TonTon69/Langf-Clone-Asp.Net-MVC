@@ -215,12 +215,6 @@
     <Content Include="Content\admin\vendor\chart.js\Chart.bundle.min.js" />
     <Content Include="Content\admin\vendor\chart.js\Chart.js" />
     <Content Include="Content\admin\vendor\chart.js\Chart.min.js" />
-    <Content Include="Content\admin\vendor\datatables\dataTables.bootstrap4.css" />
-    <Content Include="Content\admin\vendor\datatables\dataTables.bootstrap4.js" />
-    <Content Include="Content\admin\vendor\datatables\dataTables.bootstrap4.min.css" />
-    <Content Include="Content\admin\vendor\datatables\dataTables.bootstrap4.min.js" />
-    <Content Include="Content\admin\vendor\datatables\jquery.dataTables.js" />
-    <Content Include="Content\admin\vendor\datatables\jquery.dataTables.min.js" />
     <Content Include="Content\admin\vendor\fontawesome-free\attribution.js" />
     <Content Include="Content\admin\vendor\fontawesome-free\css\all.css" />
     <Content Include="Content\admin\vendor\fontawesome-free\css\all.min.css" />
