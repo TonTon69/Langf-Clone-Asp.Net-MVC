@@ -17,10 +17,12 @@
                     <div class="from-blog">
                         @if (item.Content.Length <= 100)
                         {
-        @Html.Raw(@item.Content) }
-    else
-    {
-@Html.Raw(@item.Content.ToString().Substring(0, 100) + "...")}
+                            @Html.Raw(@item.Content)
+                         }
+                        else
+                        {
+                            @Html.Raw(@item.Content.ToString().Substring(0, 100) + "...")
+                        }
                     </div>
                 </div>
             </div>
