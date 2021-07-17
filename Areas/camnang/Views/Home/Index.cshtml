@@ -1,19 +1,13 @@
 ﻿
-@{
-    ViewBag.Title = "index";
-    Layout = "~/Areas/camnang/Views/Shared/_LayoutCamNang.cshtml";
-}
+@{ ViewBag.Title = "index";
+    Layout = "~/Areas/camnang/Views/Shared/_LayoutCamNang.cshtml"; }
 
 <div id="content" role="main" class="content-area">
     <!--------------------------------------------------- Slide Banner---------------------------------- -->
-    @{
-        Html.RenderAction("Banner", "Home");
-    }
+    @{ Html.RenderAction("Banner", "Home"); }
     <!-- ------------------------------------------------------End Slide Banner----------------------------------------->
     <!-- -------------------------------------------------------Slider Partner------------------------------ -->
-    @{
-        Html.RenderAction("PartnerLogo", "Home");
-    }
+    @{ Html.RenderAction("PartnerLogo", "Home"); }
     <!-- -----------------------------------------End Slide Partner---------------------------- -->
     <!------------------------------------------------ Bảng vàng----------------------------- -->
     <div class="section-content">
@@ -152,9 +146,7 @@
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                              data-parent="#accordion">
                             <div class="row accordion-inner">
-                                @{
-                                    Html.RenderAction("Question_KTX", "Home");
-                                }
+                                @{ Html.RenderAction("Question_KTX", "Home"); }
                             </div>
                         </div>
                     </div>
@@ -169,9 +161,7 @@
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                              data-parent="#accordion">
                             <div class="row accordion-inner">
-                                @{
-                                    Html.RenderAction("Question_Food", "Home");
-                                }
+                                @{ Html.RenderAction("Question_Food", "Home"); }
                             </div>
                         </div>
                     </div>
@@ -187,9 +177,7 @@
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                              data-parent="#accordion">
                             <div class="row accordion-inner">
-                                @{
-                                    Html.RenderAction("Question_Need", "Home");
-                                }
+                                @{ Html.RenderAction("Question_Need", "Home"); }
                             </div>
                         </div>
                     </div>
@@ -205,9 +193,7 @@
                         <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
                              data-parent="#accordion">
                             <div class="row accordion-inner">
-                                @{
-                                    Html.RenderAction("Question_Fun", "Home");
-                                }
+                                @{ Html.RenderAction("Question_Fun", "Home"); }
                             </div>
                         </div>
                     </div>
@@ -223,9 +209,7 @@
                         <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
                              data-parent="#accordion">
                             <div class="row accordion-inner">
-                                @{
-                                    Html.RenderAction("Question_Lake", "Home");
-                                }
+                                @{ Html.RenderAction("Question_Lake", "Home"); }
                             </div>
                         </div>
                     </div>
@@ -241,9 +225,7 @@
                         <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
                              data-parent="#accordion">
                             <div class="row accordion-inner">
-                                @{
-                                    Html.RenderAction("Question_Discount", "Home");
-                                }
+                                @{ Html.RenderAction("Question_Discount", "Home"); }
                             </div>
                         </div>
                     </div>
@@ -255,7 +237,7 @@
                     <div class="img-has-hover">
                         <a href="">
                             <div class="img-inner">
-                                <img  src="~/Content/main/img/123.png">
+                                <img src="~/Content/main/img/123.png">
                             </div>
                         </a>
                     </div>
@@ -285,9 +267,7 @@
                 <!-- ------------------------BLog News------------ -->
                 <div class="container">
                     <div class="row row-small">
-                        @{
-                            Html.RenderAction("HotBlog", "Home");
-                        }
+                        @{ Html.RenderAction("HotBlog", "Home"); }
 
                     </div>
                 </div>
@@ -319,9 +299,7 @@
                 <!-- ------------------------BLog Cẩm nang Sinh Viên------------ -->
                 <div class="container">
                     <div class="row row-small">
-                        @{
-                            Html.RenderAction("HandBook", "Home");
-                        }
+                        @{ Html.RenderAction("HandBook", "Home"); }
                     </div>
                 </div>
                 <div class="see-more-link">
@@ -694,9 +672,7 @@
                                 </div>
 
                                 <div class="row row-small-post" style="position: relative;">
-                                    @{
-                                        Html.RenderAction("GhostStory", "Home");
-                                    }
+                                    @{ Html.RenderAction("GhostStory", "Home"); }
                                 </div>
                             </div>
                             <div class="container-see-more">
@@ -849,9 +825,7 @@
                                 <div class="container">
                                     <div class="row row-small">
 
-                                        @{
-                                            Html.RenderAction("LangReview", "Home");
-                                        }
+                                        @{ Html.RenderAction("LangReview", "Home"); }
                                     </div>
                                 </div>
                                 <div class="container-see-more3">
@@ -909,3 +883,17 @@
         </div>
     </div>
 </div>
+
+<style>
+    .from-blog h1, .from-blog h1 span {
+        font-size: 1em !important;
+        opacity: 0.9;
+        color: #000000 !important;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+        .box.text-center:hover span,.from-blog h1:hover, .from-blog h1 span:hover {
+            color: #aa0b0b !important;
+        }
+</style>

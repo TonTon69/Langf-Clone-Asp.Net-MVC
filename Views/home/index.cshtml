@@ -1,9 +1,4 @@
-﻿
-
-
-@{Html.RenderAction("Ad", "Home");}
-
-<section class="news">
+﻿<section class="news">
     <div class="container-fluid">
         <a href="">
             <h2 class="section-title">Tin tức</h2>
@@ -2605,7 +2600,7 @@
     <script>
         $(document).ready(function () {
             setTimeout(function () {
-                $(".ad-overlay").css("display", "block");
+                $(".ad-overlay").css("opacity", "1");
                 $("#carouselAd").css("opacity", "1");
                 $("#carouselAd .carousel-item")[0].classList.add('active');
             }, 10000);
