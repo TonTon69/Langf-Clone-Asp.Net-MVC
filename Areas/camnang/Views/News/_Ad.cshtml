@@ -1,0 +1,12 @@
+﻿@model IEnumerable<langfvn.Models.Advertisement>
+
+@foreach (var item in Model)
+{
+<div class="post-sidebar mb-4">
+    <span class="widget-title">@item.AdTitle</span>
+    <div class="is-divider"></div>
+    <a href="@item.AdUrl">
+        <img src="@item.Image" />
+    </a>
+</div>
+}

@@ -75,5 +75,12 @@ namespace langfvn.Areas.camnang.Controllers
             var hotBlog = db.News.OrderByDescending(x => x.TotalView).Take(10).ToList();
             return PartialView("_HotBlogNews", hotBlog);
         }
+
+        //Ad
+        public PartialViewResult Ad()
+        {
+            var ad = db.Advertisements.Where(a => a.Visible == true).ToList();
+            return PartialView("_Ad", ad);
+        }
     }
 }
