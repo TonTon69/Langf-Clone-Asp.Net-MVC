@@ -64,7 +64,8 @@ namespace langfvn.Areas.camnang.Controllers
         //Bài viết liên quan
         public PartialViewResult RelatedPosts(int id)
         {
-            var relatedPost = db.News.OrderByDescending(x => Guid.NewGuid()).Where(x => x.NewsID != id && x.KonID == id).Take(3).ToList();
+            var news = db.News.Find(id);
+            var relatedPost = db.News.Where(x => x.NewsID != id && x.KonID == news.KonID).OrderByDescending(x => x.NewsID).Take(3).ToList();
             return PartialView("_RelatedPosts", relatedPost);
         }
 

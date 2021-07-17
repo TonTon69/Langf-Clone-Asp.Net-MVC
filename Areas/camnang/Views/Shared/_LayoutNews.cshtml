@@ -145,6 +145,9 @@
                 <a href="">HAT.vn</a>
             </div>
         </footer>
+        <div class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </div>
     </div>
 
     <!-----------------load script----------------->
@@ -159,7 +162,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <!--bootstrap js-->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- nhúng Jquery-->
 
     <script>
@@ -167,6 +170,18 @@
             //active banner
             $(function () {
                 $('.carousel-item')[0].classList.add('active');
+            });
+            $(window).scroll(function () {
+                // scroll show button back to top
+                if (this.scrollY > 500) {
+                    $(".back-to-top").addClass("show");
+                } else {
+                    $(".back-to-top").removeClass("show");
+                }
+            });
+            // back to top
+            $(".back-to-top").click(function () {
+                $("html, body").animate({ scrollTop: 0 }, "slow");
             });
         });
         const urlParams = new URLSearchParams(window.location.search);

@@ -1,9 +1,7 @@
 ﻿@model langfvn.Models.News
 
-@{
-    ViewBag.Title = "Details";
-    Layout = "~/Areas/camnang/Views/Shared/_LayoutNews.cshtml";
-}
+@{ ViewBag.Title = "Details";
+                Layout = "~/Areas/camnang/Views/Shared/_LayoutNews.cshtml"; }
 
 <div class="col-lg-9 box-shadow-1">
     <header class="entry-header" style="position: unset">
@@ -29,10 +27,8 @@
     </header>
     <div class="entry-content">
         @Html.Raw(Model.Content)
-       
-        @{
-            Html.RenderAction("RelatedPosts", "News", new { id = Model.KonID});
-        }
+
+        @{ Html.RenderAction("RelatedPosts", "News", new { id = Model.NewsID }); }
     </div>
 
     <div class="fb-background" style="position:center !important">
