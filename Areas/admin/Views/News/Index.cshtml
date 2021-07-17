@@ -89,7 +89,7 @@
                                     @(item.Title.ToString().Substring(0, 20) + "...")
                                 }
                             </td>
-                            <td>
+                            <td style="width: 300px;">
                                 @if (item.Content.Length <= 50)
                                 {
                                     @Html.Raw(@item.Content)
@@ -100,9 +100,16 @@
                                 }
                             </td>
                             <style>
-                                td h1, td h1 span {
+                                td h1, td h1 span,
+                                td h2, td h2 span,
+                                td h3, td h3 span,
+                                td h4, td h4 span,
+                                td h5, td h5 span,
+                                td h6, td h6 span,
+                                td strong, td strong span {
                                     font-size: 1em;
                                     color: #333 !important;
+                                    text-transform: initial;
                                 }
                             </style>
                             <td>

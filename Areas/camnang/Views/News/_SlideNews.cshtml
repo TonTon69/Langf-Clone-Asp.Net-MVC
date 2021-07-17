@@ -11,39 +11,36 @@
         <li data-target="#carouselExampleIndicators"
             data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators"
-            data-slide-to="2"></li> 
+            data-slide-to="2"></li>
     </ol>
     <div class="carousel-inner">
         @foreach (var item in Model)
         {
-            <div class="carousel-item">
-                <a href="@Url.Action("details", "news", new { name = item.Title })">
-                    <img class="d-block" src="@item.Image" />
-                    <div class="carousel-caption d-none d-md-block">
-                        <span class="cat-label">
-                            @item.KindOfNew.CategoryNew.CNewsName @item.KindOfNew.KonName
-                        </span>
-                        <h5 class="post-title-1">
-                            @item.Title
-                        </h5>
-                        <div class="from_the_blog_excerpt">
-                            @if (item.Content.Length <= 70)
-                            {
-                                @Html.Raw(@item.Content)
-                            }
-                            else
-                            {
-                                @Html.Raw(@item.Content.ToString().Substring(0, 70) + "...")
-                            }
-                        </div>
-                        <a href="@Url.Action("details", "news", new { name = item.Title })" class="btn btn-outline-light">
-                            Continue reading
-                            <span class="meta-nav">→</span>
-                        </a>
-                    </div>
-                </a>
+<div class="carousel-item">
+    <a href="@Url.Action("details", "news", new { name = item.Title })">
+        <img class="d-block" src="@item.Image" />
+        <div class="carousel-caption d-none d-md-block">
+            <span class="cat-label">
+                @item.KindOfNew.CategoryNew.CNewsName @item.KindOfNew.KonName
+            </span>
+            <h5 class="post-title-1">
+                @item.Title
+            </h5>
+            <div class="from_the_blog_excerpt">
+                @if (item.Content.Length <= 70)
+                {
+                    @Html.Raw(@item.Content) }
+                else
+                {
+                    @Html.Raw(@item.Content.ToString().Substring(0, 70) + "...")}
             </div>
-        }
+            <a href="@Url.Action("details", "news", new { name = item.Title })" class="btn btn-outline-light">
+                Continue reading
+                <span class="meta-nav">→</span>
+            </a>
+        </div>
+    </a>
+</div>}
     </div>
     <a class="carousel-control-prev"
        href="#carouselExampleIndicators"
@@ -64,12 +61,18 @@
 </div>
 
 <style>
-    .from_the_blog_excerpt h1, .from_the_blog_excerpt h1 span {
+    .from_the_blog_excerpt h1, .from_the_blog_excerpt h1 span,
+    .from_the_blog_excerpt h2, .from_the_blog_excerpt h2 span,
+    .from_the_blog_excerpt h3, .from_the_blog_excerpt h3 span,
+    .from_the_blog_excerpt h4, .from_the_blog_excerpt h4 span,
+    .from_the_blog_excerpt h5, .from_the_blog_excerpt h5 span,
+    .from_the_blog_excerpt h6, .from_the_blog_excerpt h6 span {
         color: #f1f1f1 !important;
         font-size: 1em;
         font-weight: 400;
         margin-bottom: 1rem;
         text-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+        text-transform: initial;
         line-height: 1.5;
     }
 </style>

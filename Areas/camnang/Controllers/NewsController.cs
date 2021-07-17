@@ -42,7 +42,7 @@ namespace langfvn.Areas.camnang.Controllers
         //Partial Slide
         public PartialViewResult SlideNews()
         {
-            var list = db.News.OrderBy(x => Guid.NewGuid()).Take(3); //Randow chọn bài trong table news
+            var list = db.News.OrderBy(x => Guid.NewGuid()).Take(3).ToList(); //Randow chọn bài trong table news
             return PartialView("_SlideNews", list);
         }
 
