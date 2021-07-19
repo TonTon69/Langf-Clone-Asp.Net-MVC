@@ -23,7 +23,6 @@
         public string FullName { get; set; }
 
         [StringLength(100)]
-        [EmailAddress(ErrorMessage = "E-mail không hợp lệ")]
         public string Email { get; set; }
 
         [StringLength(100)]

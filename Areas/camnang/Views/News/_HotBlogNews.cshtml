@@ -15,10 +15,20 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-8">
         <a href="@Url.Action("details", "news", new { name = item.Title })">
-            <h6>
+            <h6 class="title-news-hot">
                 @item.Title
             </h6>
             <span>@item.CreatedDate.ToString("MMM d, yyyy")</span>
         </a>
     </div>
 </div>}
+
+<style>
+    .title-news-hot {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+    }
+</style>
