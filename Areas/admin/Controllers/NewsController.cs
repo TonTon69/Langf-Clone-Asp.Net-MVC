@@ -24,6 +24,8 @@ namespace langfvn.Areas.admin.Controllers
                 ViewBag.SuccessMsg = TempData["success"];
             }
             var news = from n in db.News select n;
+
+            //search
             ViewBag.CurrentFilter = search;
             ViewBag.KonID = new SelectList(db.KindOfNews, "KonID", "KonName");
             if (!string.IsNullOrEmpty(search))
@@ -31,6 +33,8 @@ namespace langfvn.Areas.admin.Controllers
                 news = news.Where(n => n.Title.Contains(search) || n.Content.Contains(search)
                 || n.KindOfNew.KonName.Contains(search) || n.KindOfNew.CategoryNew.CNewsName.Contains(search));
             }
+
+            // pagination
             int pageSize = 6;
             int pageNumber = (page ?? 1);
             if (loai_tin != null)
@@ -45,6 +49,7 @@ namespace langfvn.Areas.admin.Controllers
             }
         }
 
+        // lọc tin theo loại tin
         public PartialViewResult KindOfNews()
         {
             return PartialView("_KindOfNews", db.KindOfNews.ToList());

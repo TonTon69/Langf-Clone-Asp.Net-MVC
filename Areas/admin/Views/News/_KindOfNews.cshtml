@@ -1,18 +1,38 @@
 ﻿@model IEnumerable<langfvn.Models.KindOfNew>
 
-<select class="custom-select" onchange="location = this.value;">
-    <option value="none">Lọc tin theo</option>
-    @foreach (var item in Model)
-    {
-        <option value="@Url.Action("index","news",new { page=1, loai_tin = @item.KonName})">@item.KonName</option>
-    }
-</select>
+@*<div class="dropdown ">
+        <button class="btn btn-secondary dropdown-toggle custom-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Lọc tin theo
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @foreach (var item in Model)
+            {
+                <a class="dropdown-item" href="@Url.Action("index","news",new { page=1, loai_tin = @item.KonName})">@item.KonName</a>
+            }
+
+        </div>
+    </div>*@
+
+<div class="dropdown">
+    <button class="btn btn-default dropdown-toggle custom-select" type="button" data-toggle="dropdown">
+        <span>Lọc tin theo</span>
+    </button>
+    <ul class="dropdown-menu">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a class="dropdown-item" href="@Url.Action("index","news",new { page=1, loai_tin = @item.KonName})">@item.KonName</a>
+            </li>
+        }
+    </ul>
+</div>
 
 <style>
     .custom-select {
         border-radius: unset;
         border: 1px solid #ededed !important;
         padding: 6px 20px !important;
+        background: #fff;
     }
 
         .custom-select:focus {
@@ -20,3 +40,4 @@
             box-shadow: 0 0 0 0.2rem rgb(165 128 109 / 25%) !important;
         }
 </style>
+

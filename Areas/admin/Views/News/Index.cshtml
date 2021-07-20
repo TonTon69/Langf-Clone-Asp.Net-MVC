@@ -140,15 +140,20 @@
 </div>
 
 @section Scripts{
-    <script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            const urlParams = new URLSearchParams(window.location.search);
-            console.log(urlParams);
-            const myParam = urlParams.get('loai_tin');
-            console.log(myParam);
-            if (myParam !== null) {
-                document.getElementById(myParam).setAttribute('selected', true);
-            }
+    <script>
+        //const urlParams = new URLSearchParams(window.location.search);
+        //console.log(urlParams);
+        //const myParam = urlParams.get('loai_tin');
+        //console.log(myParam);
+        //if (myParam !== null) {
+        //    document.getElementById(myParam).setAttribute("selected", true);
+        //}
+
+        $(document).ready(function () {
+            $(".dropdown-menu li a").click(function (e) {
+                $(this).parents(".dropdown").find(".btn span").html($(this).text());
+            });
         })
+        
     </script>
 }
