@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login V1</title>
+    <title>Login Admin</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="~/Content/admin/img/langf.png" />
@@ -69,14 +69,23 @@
                         </button>
                     </div>
 
-                    <div class="text-center p-t-12">
-                        <a class="txt1" href="#">
+                    <div class="text-center p-t-12 mt-4">
+                        <button type="button" class="txt1" data-container="body" data-toggle="popover" data-placement="bottom" 
+                                data-content="Liên hệ e-mail: hoanghuynh0609@gmail.com để được cấp lại mật khẩu! Cám ơn ^^">
                             Quên mật khẩu?
-                        </a>
+                        </button>
                     </div>
                 }
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    </script>
 </body>
 </html>
