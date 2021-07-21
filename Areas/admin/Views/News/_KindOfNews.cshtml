@@ -1,18 +1,5 @@
 ﻿@model IEnumerable<langfvn.Models.KindOfNew>
 
-@*<div class="dropdown ">
-        <button class="btn btn-secondary dropdown-toggle custom-select" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Lọc tin theo
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            @foreach (var item in Model)
-            {
-                <a class="dropdown-item" href="@Url.Action("index","news",new { page=1, loai_tin = @item.KonName})">@item.KonName</a>
-            }
-
-        </div>
-    </div>*@
-
 <div class="dropdown">
     <button class="btn btn-default dropdown-toggle custom-select" type="button" data-toggle="dropdown">
         <span>Lọc tin theo</span>
