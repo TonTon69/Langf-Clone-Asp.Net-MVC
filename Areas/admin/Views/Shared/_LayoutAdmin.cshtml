@@ -64,160 +64,77 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
-            @if (Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "AdminBranch1")
-            {
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Quản lý
-                </div>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
-                       aria-expanded="true" aria-controls="collapseOne">
-                        <i class="fas fa-bars"></i>
-                        <span>Thể loại tin</span>
-                    </a>
-                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="/admin/categorynews">Danh sách</a>
-                            <a class="collapse-item" href="/admin/categorynews/create">Thêm mới</a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                       aria-expanded="true" aria-controls="collapseTwo">
-                        <i class="far fa-caret-square-down"></i>
-                        <span>Loại tin</span>
-                    </a>
-                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                         data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="/admin/kindofnews">Danh sách</a>
-                            <a class="collapse-item" href="/admin/kindofnews/create">Thêm mới</a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                       aria-expanded="true" aria-controls="collapseThree">
-                        <i class="far fa-newspaper"></i>
-                        <span>Tin tức</span>
-                    </a>
-                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                         data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="/admin/news">Danh sách</a>
-                            <a class="collapse-item" href="/admin/news/create">Thêm mới</a>
-                        </div>
-                    </div>
-                </li>
-            }
-            @if (Session["Role"].ToString() == "Admin")
-            {
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
-                       aria-expanded="true" aria-controls="collapseFour">
-                        <i class="fas fa-user-cog"></i>
-                        <span>Người dùng</span>
-                    </a>
-                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                         data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item" href="/admin/accounts">Danh sách</a>
-                            <a class="collapse-item" href="@Url.Action("profileadmin", "accounts", new { id = @Session["AdId"] })">Hồ sơ admin</a>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/roles">
-                        <i class="fas fa-user-shield"></i>
-                        <span>Phân quyền</span>
-                    </a>
-                </li>
-            }
             <!-- Divider -->
             <hr class="sidebar-divider">
-            @if (Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "AdminBranch2")
-            {
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Đối tác
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Quản trị
+            </div>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOne"
+                   aria-expanded="true" aria-controls="collapseOne">
+                    <i class="far fa-file-alt"></i>
+                    <span>&nbsp;Danh mục</span>
+                </a>
+                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/admin/categorynews">Thể loại tin</a>
+                        <a class="collapse-item" href="/admin/kindofnews">Loại tin</a>
+                        <a class="collapse-item" href="/admin/news">Tin tức</a>
+                    </div>
                 </div>
+            </li>
 
-                <!-- Nav Item - Charts -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/places">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Khu vực</span>
-                    </a>
-                </li>
-
-                <!-- Nav Item - Tables -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/stores">
-                        <i class="fas fa-store"></i>
-                        <span>Cửa hàng</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/categoryfoods">
-                        <i class="fas fa-cloud-meatball"></i>
-                        <span>Thể loại món ăn</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/kindoffoods">
-                        <i class="fas fa-pizza-slice"></i>
-                        <span>Loại món ăn</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/foods">
-                        <i class="fas fa-hamburger"></i>
-                        <span>Món ăn</span>
-                    </a>
-                </li>
-            }
-            @if (Session["Role"].ToString() == "Admin")
-            {
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/reviews">
-                        <i class="fas fa-search-location"></i>
-                        <span>Review</span>
-                    </a>
-                </li>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider d-none d-md-block">
-
-                <div class="sidebar-heading">
-                    Khác
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                   aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-list"></i>
+                    <span>Giao diện</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/admin/banners">Banner</a>
+                        <a class="collapse-item" href="/admin/advertisements">Quảng cáo</a>
+                    </div>
                 </div>
+            </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/banners">
-                        <i class="fab fa-slideshare"></i>
-                        <span>Banner</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/advertisements">
-                        <i class="fab fa-adversal"></i>
-                        <span>Quảng cáo</span>
-                    </a>
-                </li>
-            }
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+                   aria-expanded="true" aria-controls="collapseThree">
+                    <i class="far fa-handshake"></i>
+                    <span>Đối tác</span>
+                </a>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/admin/places">Khu vực</a>
+                        <a class="collapse-item" href="/admin/stores">Cửa hàng</a>
+                        <a class="collapse-item" href="/admin/categoryfoods">Thể loại món ăn</a>
+                        <a class="collapse-item" href="/admin/kindoffoods">Loại món ăn</a>
+                        <a class="collapse-item" href="/admin/foods">Món ăn</a>
+                        <a class="collapse-item" href="/admin/reviews">Review</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+                   aria-expanded="true" aria-controls="collapseFour">
+                    <i class="fas fa-user-cog"></i>
+                    <span>Cấu hình người dùng</span>
+                </a>
+                <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                     data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/admin/roles">Phân quyền</a>
+                        <a class="collapse-item" href="/admin/accounts">Quản lý người dùng</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

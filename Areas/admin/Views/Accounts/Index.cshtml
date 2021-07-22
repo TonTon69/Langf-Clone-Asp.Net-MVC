@@ -7,11 +7,11 @@
 }
 
 <h1 class="h3 mb-2 text-gray-800">QUẢN LÝ NGƯỜI DÙNG</h1>
-<div class="mb-4">
-    <a href="@Url.Action("profileadmin","accounts",new { id = @Session["AdId"] })" class="btn btn-info">
-        <i class="fas fa-user-shield"></i>
-        Hồ sơ admin
-    </a>
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Thêm mới người dùng bằng cách tạo tài khoản ở trang này. <a href="/account/login" target="_blank" class="text-danger">Nhấn vào đây!</a></strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 @if (ViewBag.SuccessMsg != null)
 {
