@@ -154,7 +154,7 @@ namespace langfvn.Areas.admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(string email, string password)
+        public ActionResult Login(string email, string password, string returnUrl)
         {
             if (ModelState.IsValid)
             {

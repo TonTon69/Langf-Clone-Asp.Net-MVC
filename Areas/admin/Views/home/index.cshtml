@@ -41,31 +41,25 @@
 
     <!-- Area Chart -->
     <div class="col-xl-8 col-lg-7">
-        @if (Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "AdminBranch1")
-        {
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold" style="color: #800100">BÀI VIẾT NỔI BẬT</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    @{ Html.RenderAction("HotBlogNews", "Home"); }
-                </div>
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold" style="color: #800100">BÀI VIẾT NỔI BẬT</h6>
             </div>
-        }
+            <!-- Card Body -->
+            <div class="card-body">
+                @{ Html.RenderAction("HotBlogNews", "Home"); }
+            </div>
+        </div>
 
-        @if (Session["Role"].ToString() == "Admin" || Session["Role"].ToString() == "AdminBranch2")
-        {
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold" style="color: #800100">CỬA HÀNG KHUYẾN MÃI</h6>
-                </div>
-                <div class="card-body">
-                    @{ Html.RenderAction("PromotionStore", "Home"); }
-                </div>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold" style="color: #800100">CỬA HÀNG KHUYẾN MÃI</h6>
             </div>
-        }
+            <div class="card-body">
+                @{ Html.RenderAction("PromotionStore", "Home"); }
+            </div>
+        </div>
     </div>
     <!-- Pie Chart -->
     <div class="col-xl-4 col-lg-5">
