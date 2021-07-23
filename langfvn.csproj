@@ -292,11 +292,9 @@
     <Content Include="Areas\camnang\Views\home\_Question_Fun.cshtml" />
     <Content Include="Areas\camnang\Views\home\_Question_Lake.cshtml" />
     <Content Include="Areas\camnang\Views\home\_Question_Discount.cshtml" />
-    <Content Include="Areas\camnang\Views\home\_LangStory.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_HotNews.cshtml" />
     <Content Include="Areas\camnang\Views\home\_HandBook.cshtml" />
     <Content Include="Areas\camnang\Views\home\_GhostStory.cshtml" />
-    <Content Include="Areas\camnang\Views\home\_LangReview.cshtml" />
-    <Content Include="Areas\camnang\Views\home\_ReviewFood.cshtml" />
     <Content Include="Areas\camnang\Views\Shared\_LayoutNews.cshtml" />
     <Content Include="Areas\camnang\Views\News\Index.cshtml" />
     <Content Include="Areas\camnang\Views\News\_SlideNews.cshtml" />
@@ -304,6 +302,7 @@
     <Content Include="Areas\camnang\Views\News\_RelatedPosts.cshtml" />
     <Content Include="Areas\camnang\Views\home\_HotBlog.cshtml" />
     <Content Include="Areas\camnang\Views\News\_HotBlogNews.cshtml" />
+    <Content Include="Areas\camnang\Views\home\_Search.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

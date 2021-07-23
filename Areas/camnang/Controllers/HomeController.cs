@@ -17,9 +17,18 @@ namespace langfvn.Areas.camnang.Controllers
         // GET: camnang/home
         public ActionResult Index()
         {
+           
             return View();
         }
 
+        //Partial search
+        public PartialViewResult Search(string search) 
+        {
+            var result = db.News.Where(x => x.Title.ToLower().Contains(search.ToLower())).Take(5).ToList();
+            ViewBag.search= search;
+            return PartialView("_Search", result);
+        }
+        
         // Partial banner
         public PartialViewResult Banner()
         {
@@ -99,10 +108,10 @@ namespace langfvn.Areas.camnang.Controllers
         }
 
         //Partial Chuyện làng
-        public PartialViewResult LangStory()
+        public PartialViewResult HotNews()
         {
-            var lists = db.News.Where(m => m.KonID == 3).Take(8).ToList();
-            return PartialView("_LangStory", lists);
+            var lists = db.News.OrderByDescending(x => x.CreatedDate).Where(m => m.KindOfNew.CNewsID == 1).Take(8).ToList();
+            return PartialView("_HotNews", lists);
         }
 
         //Partial Cẩm nang sinh viên
@@ -117,21 +126,6 @@ namespace langfvn.Areas.camnang.Controllers
         {
             var lists = db.News.Where(m => m.KonID == 12).Take(6).ToList();
             return PartialView("_GhostStory", lists);
-        }
-
-
-        //Partial Làng Review
-        public PartialViewResult LangReview()
-        {
-            var lists = db.News.Where(m => m.KindOfNew.CategoryNew.CNewsID == 3).Take(8).ToList();
-            return PartialView("_LangReview", lists);
-        }
-
-        //Partial Review ăn - uống
-        public PartialViewResult ReviewFood()
-        {
-            var ListNews = db.News.Where(x => x.KonID == 7).Take(8).ToList();
-            return PartialView("_ReviewFood", ListNews);
         }
     }
 }

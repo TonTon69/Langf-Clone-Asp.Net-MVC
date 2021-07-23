@@ -304,23 +304,23 @@
         <!-- ----------------------------End Devide------------------------ -->
     </div>
 
-    <!-- -------------------------------Chuyện làng------------------------ -->
+    <!-- -------------------------------Tin tức mới nhất------------------------ -->
     <div class="section-news">
         <div class="content">
             <div class="col small text-center">
 
-                <!-- -----------------Title chuyện làng---------------- -->
+                <!-- -----------------Title---------------- -->
                 <div class="col-inner text-center" style="padding-bottom: 45px">
                     <h2 style="text-align: center">
-                        <strong style="font-size: 170%">CHUYỆN LÀNG</strong>
+                        <strong style="font-size: 170%">TIN TỨC MỚI NHẤT</strong>
                     </h2>
                 </div>
 
-                <!-- ------------------------BLog Chuyện Làng------------ -->
+                <!-- ------------------------BLog------------ -->
                 <div class="container">
                     <div class="row row-small">
                         @{
-                            Html.RenderAction("LangStory", "Home");
+                            Html.RenderAction("HotNews", "Home");
                         }
                     </div>
                 </div>
@@ -890,106 +890,39 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col col-md-12">
-                            <div class="col-inner-pages" style="top: 50px">
-                                <div class="container section-title-container">
-                                    <h2 class="section-title">
-                                        <b></b>
-                                        <span class="title">
-                                            <i class="fas fa-map-marker-alt"></i>LÀNG
-                                            REVIEW
-                                        </span>
-                                        <b></b>
-                                    </h2>
-                                </div>
-                                <!-- ------------------Làng Review------------------- -->
-                                <div class="container">
-                                    <div class="row row-small">
-
-                                        @{
-                                            Html.RenderAction("LangReview", "Home");
-                                        }
-                                    </div>
-                                </div>
-                                <div class="container-see-more3">
-                                    <div class="see-more-link">
-                                        <a href="@Url.Action("index", "news", new {category = "làng review"})" class="button primary is-underline">
-                                            <span>
-                                                Xem
-                                                thêm!
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <!-- -----------------------Review Ăn - Uống --------------------->
-                        <div class="col col-md-12 col-food mt-5">
-                            <div class="col-inner-pages">
-                                <div class="container section-title-container">
-                                    <h2 class="section-title">
-                                        <b></b>
-                                        <span class="title">
-                                            <i class="fas fa-map-marker-alt"></i>REVIEW ĂN -
-                                            UỐNG
-                                        </span>
-                                        <b></b>
-                                    </h2>
-                                </div>
-                                <div class="container">
-                                    <div class="row">
-                                        @{
-                                            Html.RenderAction("ReviewFood", "Home");
-                                        }
-                                    </div>
-                                </div>
-                                <div class="container-see-more3">
-                                    <div class="see-more-link">
-                                        <a href="@Url.Action("index", "news", new {category = "làng review", kon = "quán ăn - uống"})" class="button primary is-underline">
-                                            <span>
-                                                Xem
-                                                thêm!
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="gap" style="display: block; padding: 8px;"></div>
                     </div>
                 </div>
-            </div>
-            <div class="gap" style="display: block; padding: 8px;"></div>
-        </div>
-    </div>
-    <div class="row row-banner">
-        <div class="col col-md-12">
-            <div class="col-banner">
-                <div class="container container-banner">
-                    <div class="banner">
-                        <div class="banner-inner fill">
-                            <a href="#" class="fill">
-                                <div class="fill"></div>
-                            </a>
-                            <div class="banner-text">
-                                <div class="banner-text-box">
-                                    <div class="text-inner text-center">
-                                        <h3 class="text-uppercase mb-2">
-                                            <span style="color: #ffff00;">
-                                                <b>
-                                                    bạn đang cần hỗ trợ phát triển thương hiệu kinh doanh
-                                                    hướng đến sinh viên
-                                                </b>
-                                            </span>
-                                        </h3>
-                                        <a href="#" class="button primary is-shade">
-                                            <span style="font-size: 13px;">
-                                                XEM DỊCH VỤ CỦA CHÚNG
-                                                TÔI
-                                            </span><i class="fas fa-check ml-2"
-                                                      style="font-size: 13px;"></i>
+                <div class="row row-banner">
+                    <div class="col col-md-12">
+                        <div class="col-banner">
+                            <div class="container container-banner">
+                                <div class="banner">
+                                    <div class="banner-inner fill">
+                                        <a href="#" class="fill">
+                                            <div class="fill"></div>
                                         </a>
+                                        <div class="banner-text">
+                                            <div class="banner-text-box">
+                                                <div class="text-inner text-center">
+                                                    <h3 class="text-uppercase mb-2">
+                                                        <span style="color: #ffff00;">
+                                                            <b>
+                                                                bạn đang cần hỗ trợ phát triển thương hiệu kinh doanh
+                                                                hướng đến sinh viên
+                                                            </b>
+                                                        </span>
+                                                    </h3>
+                                                    <a href="#" class="button primary is-shade">
+                                                        <span style="font-size: 13px;">
+                                                            XEM DỊCH VỤ CỦA CHÚNG
+                                                            TÔI
+                                                        </span><i class="fas fa-check ml-2"
+                                                                  style="font-size: 13px;"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

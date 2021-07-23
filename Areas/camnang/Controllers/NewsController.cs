@@ -18,7 +18,7 @@ namespace langfvn.Areas.camnang.Controllers
             //Tạo biến quy định số bài viết ở mỗi trang
             int pageSize = 9;
             //Biến số trang
-            int pageNum = (page ?? 1);
+            int pageNum = (page ?? 1);//Nếu page = null thì mặc định là 1 khác null thì sẽ lấy giá trị của page
 
             if (category != null && kon != null)
             {
@@ -37,8 +37,10 @@ namespace langfvn.Areas.camnang.Controllers
                 var categoryNews = db.News.OrderByDescending(x => x.CreatedDate).ToList();
                 return View(categoryNews.ToPagedList(pageNum, pageSize));
             }
+           
         }
 
+      
         //Partial Slide
         public PartialViewResult SlideNews()
         {
