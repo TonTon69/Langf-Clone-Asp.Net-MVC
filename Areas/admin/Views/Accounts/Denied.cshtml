@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Denied";
+    Layout = "~/Areas/admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card shadow access-denied" style="width: 50rem; height: 20rem; margin: 120px auto;">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/Content/admin/img/id-card.svg" width="200" />
+            </div>
+            <div class="col-md-8">
+                <div>
+                    <h2>Truy cập bị từ chối</h2>
+                    <p>Xin lỗi, nhưng bạn không có quyền truy cập vào trang này!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .access-denied .col-md-4, .col-md-8 {
+        height: calc(20rem - 40px);
+        align-items: center;
+        justify-content: center;
+        display: flex;
+    }
+</style>

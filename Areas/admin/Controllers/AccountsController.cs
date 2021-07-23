@@ -19,7 +19,7 @@ namespace langfvn.Areas.admin.Controllers
         private LangfvnContext db = new LangfvnContext();
 
         // GET: admin/Accounts
-        [Authorize(Roles = "Admin")]
+        [AccessDeniedAuthorize(Roles = "Admin")]
         public ActionResult Index(int? page, string search)
         {
             if (TempData["success"] != null)
@@ -59,7 +59,7 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // GET: admin/Accounts/Edit/id
-        [Authorize(Roles = "Admin")]
+        [AccessDeniedAuthorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,7 +79,7 @@ namespace langfvn.Areas.admin.Controllers
         // POST: admin/Accounts/Edit/id
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [AccessDeniedAuthorize(Roles = "Admin")]
         public ActionResult Edit(Account account)
         {
             if (ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace langfvn.Areas.admin.Controllers
         }
 
         // GET: admin/Accounts/Delete/id
-        [Authorize(Roles = "Admin")]
+        [AccessDeniedAuthorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,7 +112,7 @@ namespace langfvn.Areas.admin.Controllers
         // POST: admin/Accounts/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [AccessDeniedAuthorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Account account = db.Accounts.Find(id);
@@ -238,6 +238,11 @@ namespace langfvn.Areas.admin.Controllers
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("login", "accounts");
+        }
+
+        public ActionResult Denied()
+        {
+            return View();
         }
     }
 }

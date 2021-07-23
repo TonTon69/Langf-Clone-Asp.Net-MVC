@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace langfvn.Areas.admin.Controllers
 {
-    [Authorize(Roles = "Admin, AdminBranch1, AdminBranch2")]
+    [AccessDeniedAuthorize(Roles = "Admin, AdminBranch1, AdminBranch2")]
     public class HomeController : Controller
     {
         private LangfvnContext db = new LangfvnContext();

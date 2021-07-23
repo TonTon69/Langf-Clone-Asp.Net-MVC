@@ -56,7 +56,7 @@ namespace langfvn.Models
             throw new NotImplementedException();
         }
 
-        public override bool IsUserInRole(string username, string roleName)
+        public override bool IsUserInRole(string email, string roleName)
         {
             throw new NotImplementedException();
         }

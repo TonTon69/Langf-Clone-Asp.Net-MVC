@@ -166,6 +166,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccessDeniedAuthorizeAttribute.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Banner.cs" />
@@ -192,6 +193,7 @@
     <Content Include="Content\admin\css\sb-admin-2.css" />
     <Content Include="Content\admin\css\sb-admin-2.min.css" />
     <Content Include="Content\admin\css\style.css" />
+    <Content Include="Content\admin\img\id-card.svg" />
     <Content Include="Content\admin\img\login.png" />
     <Content Include="Content\admin\img\langf.png" />
     <Content Include="Content\admin\img\logo.png" />
@@ -2560,6 +2562,7 @@
     <Content Include="Areas\admin\Views\Home\_HotBlogNews.cshtml" />
     <Content Include="Areas\admin\Views\Home\_PromotionStore.cshtml" />
     <Content Include="Areas\camnang\Views\News\_Ad.cshtml" />
+    <Content Include="Areas\admin\Views\Accounts\Denied.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

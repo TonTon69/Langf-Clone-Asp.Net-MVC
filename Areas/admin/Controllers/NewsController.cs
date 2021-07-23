@@ -11,7 +11,7 @@ using PagedList;
 
 namespace langfvn.Areas.admin.Controllers
 {
-    [Authorize(Roles = "Admin, AdminBranch1")]
+    [AccessDeniedAuthorize(Roles = "Admin, AdminBranch1")]
     public class NewsController : Controller
     {
         private LangfvnContext db = new LangfvnContext();
