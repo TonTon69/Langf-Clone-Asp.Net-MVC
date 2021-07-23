@@ -1,12 +1,11 @@
-﻿@using langfvn.Common
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cẩm nang Làng Đại Học</title>
-    <link rel="shortcut icon" href="~/Content/main/img/langf.png" type="image/png">
+    <link rel="icon" href="~/Content/main/img/logo.png" type="image/png">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -16,14 +15,14 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="~/Content/main/css/style.css">
     <link rel="stylesheet" href="~/Content/main/css/responsive.css">
-    <link rel="stylesheet" href="~/Common/CommonConstaints.cs">
-   
+    <!--a jax jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="app">
         <!--header-->
         <div class="header">
-            <div class="navbar">
+            <div class="navbar sticky">
                 <div class="container">
                     <div class="logo">
                         <a href="/">
@@ -36,46 +35,18 @@
                                 <a class="nav-link" href="/">trang chủ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/camnang" target="_blank">tin tức</a>
+                                <a class="nav-link" href="#">tin tức</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/camnang" target="_blank">ăn chơi sinh viên</a>
+                                <a class="nav-link" href="#">ăn chơi sinh viên</a>
                             </li>
                         </ul>
                     </nav>
                     <div class="gap"></div>
                     <div class="icon-wrap pc">
-                        @if (Session.Contents["USER_SESSION"] != null)
-                        {
-                            <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="far fa-user-circle" style="color:aliceblue"></i>
-                                    <span style="color:aliceblue">@((Session.Contents["USER_SESSION"] as UserLogin).UserName.ToString())</span>
-                                    <style>
-                                        .dropdown-toggle::after {
-                                            color: aliceblue;
-                                        }
-
-                                        .header .icon-wrap a:hover {
-                                            color: darkred;
-                                        }
-                                    </style>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/account/personalinformation">Thông tin cá nhân</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/home/logout">Đăng xuất  <i class="fas fa-sign-out-alt"></i></a>
-                                </div>
-                            </div>
-                        }
-                        else
-                        {
-                            <a href="/account/login">
-                                <img src="~/Content/main/img/login.png" width="25">
-                            </a>
-                        }
-                        @* cú pháp lấy ra session:  @((Session["Key"] as ObjectName).Property) *@
-
+                        <a href="/account/login">
+                            <img src="~/Content/main/img/logo.png" width="25">
+                        </a>
                     </div>
                     <!-- mobile -->
                     <label for="nav-mobile-input" class="nav-bars-btn">
@@ -104,34 +75,12 @@
                     </nav>
                 </div>
             </div>
-            <div class="banner">
-                <div class="bg"></div>
-                <div class="overlay"></div>
-            </div>
-            <form action="/Home/FindStoreByKOFNameResult" method="post">
-                <div class="search">
-                    <div class="left"></div>
-                    <div class="container">
-                        <div class="input-group">
-                            <input class="form-control" type="text" name="valueOfFindButton" placeholder="TÌM KIẾM MỌI THỨ...">
-                            <div class="input-group-icon">
-                                <button type="submit" class="btn btn-secondary">
-                                    <img src="~/Content/main/img/search.png">
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="right"></div>
-                </div>
-            </form>
         </div>
         <!--header-->
 
         @RenderBody()
 
         <!--footer-->
-
         <footer class="font-small">
             <div class="container text-center text-md-left mt-5">
                 <div class="row mt-3">
@@ -195,8 +144,6 @@
         <!--footer-->
 
     </div>
-    <!--a jax jquery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--Script-->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<langfvn.Models.News>
+@using langfvn.Models;
+<section class="news">
+    <div class="container-fluid">
+        <a href="">
+            <h2 class="section-title">Tin tức</h2>
+        </a>
+        @{
+            News[] listNews = ViewData["listNews"] as News[];
+        }
+        <div class="row">
+            @for (int i = 0; i < 2; i++)
+            {
+                <div class="p-2 col-md-6 col-12">
+                    <a href="/camnang/news/details?name=@listNews[i].Title" class="item" style="background-image: url(@listNews[i].Image);">
+                        <div class="wrap">
+                            <h5 class="name">
+                                @listNews[i].Title
+                            </h5>
+                            <div class="desc">
+                                @if (@listNews[i].Content.Length <= 250)
+                                {
+                                    @Html.Raw(@listNews[i].Content)
+                                }
+                                else
+                                {
+                                    @Html.Raw(@listNews[i].Content.ToString().Substring(0, 250) + "...")
+                                }
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+            @for (int i = 2; i < 5; i++)
+            {
+                <div class="p-2 col-md-4 col-12">
+                    <a href="/camnang/news/details?name=@listNews[i].Title" class="item" style="background-image: url(@listNews[i].Image);">
+                        <div class="wrap">
+                            <h5 class="name">
+                                @listNews[i].Title
+                            </h5>
+                            <div class="desc">
+                                @if (@listNews[i].Content.Length <= 250)
+                                {
+                                    @Html.Raw(@listNews[i].Content)
+                                }
+                                else
+                                {
+                                    @Html.Raw(@listNews[i].Content.ToString().Substring(0, 250) + "...")
+                                }
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+            }
+
+        </div>
+    </div>
+    <div class="text-right">
+        <a href="/camnang" class="btn btn-primary">Xem thêm</a>
+    </div>
+</section>
+<style>
+    .desc h1, .desc h1 span,
+    .desc h2, .desc h2 span,
+    .desc h3, .desc h3 span,
+    .desc h4, .desc h4 span,
+    .desc h5, .desc h5 span,
+    .desc h6, .desc h6 span,
+    .desc strong, .desc strong span {
+        font-size: 1em;
+        font-weight: 400;
+        color: #fff !important;
+        text-transform: initial;
+        line-height: 1.5em;
+        height: 3em;
+    }
+</style>

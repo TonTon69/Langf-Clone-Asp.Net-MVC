@@ -1,0 +1,71 @@
+﻿@using langfvn.Models;
+@{
+    List<Store> newStore = ViewData["newStore"] as List<Store>;
+}
+<section class="mt-5 mb-5 my-5">
+    <div class="container">
+        <div class="text-center title mb-4">
+            <h2>Quán mới tham gia</h2>
+        </div>
+        <div class="slide-store">
+            <button class="left-button">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="row">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach (var store in newStore)
+                        {
+                            <div class="swiper-slide col p-2">
+                                <a href="/store?name=@store.StoreName">
+                                    <div class="slider-box">
+                                        <div class="logo"
+                                             style="background-image: url('@store.Image'),url('~/Content/main/img/default-cover.png');">
+                                            <div class="mask">
+                                                <div class="slot e-member"></div>
+                                                <div class="slot order"></div>
+                                                <div class="slot delivery"></div>
+                                                <div class="mb-1 rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>5</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <div class="position">
+                                                @store.Place.PlaceName
+                                            </div>
+                                            <div class="stitle">
+                                                @store.StoreName
+                                            </div>
+                                            <div class="address">
+                                                @store.Address
+                                            </div>
+                                            <div class="review mt-3">
+                                                <!-- <i>Chua co review nao!</i> -->
+                                                <div class="d-flex align-items-center">
+                                                    <div class="badge mr-2">
+                                                        <span>5</span>
+                                                    </div>
+                                                    <div class="cmt">
+                                                        Chất lượng Ok
+                                                        nhưng hơi ngonn
+                                                        á nha shop ơi
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <button class="right-button">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+</section>

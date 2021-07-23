@@ -161,8 +161,12 @@
     <Compile Include="Areas\camnang\camnangAreaRegistration.cs" />
     <Compile Include="Areas\camnang\Controllers\HomeController.cs" />
     <Compile Include="Areas\camnang\Controllers\NewsController.cs" />
+    <Compile Include="Common\CommonConstaints.cs" />
+    <Compile Include="Common\Encryptor.cs" />
+    <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -179,12 +183,15 @@
     <Compile Include="Models\KindOfNew.cs" />
     <Compile Include="Models\Langf.cs" />
     <Compile Include="Models\LangfvnContext.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Place.cs" />
+    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\UserDao.cs" />
     <Compile Include="Models\View.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2583,10 +2590,24 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\PersonalInformation.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\UpdateInformation.cshtml" />
+    <Content Include="Views\Home\FindStoreByKOFNameResult.cshtml" />
+    <Content Include="Views\Home\FindStoreResult.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Area.cshtml" />
+    <Content Include="Views\Shared\_Dishes.cshtml" />
+    <Content Include="Views\Shared\_FeaturedNews.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Shared\_ListStore.cshtml" />
+    <Content Include="Views\Shared\_NewStore.cshtml" />
+    <Content Include="Views\Shared\_RecentReview.cshtml" />
+    <Content Include="Views\Shared\_SaleOff.cshtml" />
+    <Content Include="Views\Store\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

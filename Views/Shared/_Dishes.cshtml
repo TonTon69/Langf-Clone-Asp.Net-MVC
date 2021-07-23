@@ -1,0 +1,26 @@
+﻿@using langfvn.Models;
+@{
+    List<CategoryFood> listCategoryFood = ViewData["listCategoryFood"] as List<CategoryFood>;
+}
+<section class="dishes mt-5 mb-5">
+    <div class="container-fluid">
+        <div class="row align-items-center justify-content-center">
+            <div class="col-lg-8 col-12">
+                <div class="text-center title">
+                    <h2>Hôm nay ăn gì?</h2>
+                </div>
+                <div class="content">
+                    @foreach (CategoryFood cateFood in listCategoryFood)
+                    {
+                        <a href="/home/findstoreresult?categoryfoodid=@cateFood.CFoodID" class="item">
+                            <div class="icon">
+                                <img src="@cateFood.Image" alt="@cateFood.CFoodName" />
+                            </div>
+                            <div class="name">@cateFood.CFoodName</div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

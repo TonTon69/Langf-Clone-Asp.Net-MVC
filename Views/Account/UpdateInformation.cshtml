@@ -1,0 +1,121 @@
+﻿@model langfvn.Models.Account
+@{
+    ViewBag.Title = "UpdateInformation";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<div class="profile">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="row mb-2">
+                    <div class="col-12 text-center">
+                        <img src="~/Content/main/img/user.svg"
+                             alt=""
+                             class="rounded-pill m-3" />
+                    </div>
+                    <div class="col-12 text-center">
+                        <h2 style="color: #c33332"> @Model.FullName </h2>
+                    </div>
+                    <div class="col-12">
+                        @if (Model.Unit == null && Model.Address == null)
+                        {
+                            <div class="alert alert-warning"
+                                 role="alert">
+                                Chưa điền đầy đủ thông tin!
+                            </div>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="row mb-2">
+                    <div class="col">
+                        @if (ViewBag.result != null)
+                        {
+                            <div id="updateResutl" class="alert alert-success" role="alert">
+                            @ViewBag.result
+                             </div>
+                        }
+
+                        <!-------------------------------------------------->
+                        @using (Html.BeginForm("updateinformation", "account"))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(m => m.UserID)
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.FullName)
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.FullName)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Email)
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Phone)
+                                @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Phone)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Address)
+                                @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Address)
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Unit)
+                                @Html.TextBoxFor(m => m.Unit, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Unit)
+                            </div>
+                            <button type="submit" value="Save" class="btn btn-primary">Lưu</button>
+                        }
+
+
+
+                        <!-------------------------------------------------->
+                        @* <form>
+            <div class="form-group">
+                <label for="name">Họ và tên</label>
+                <input type="text"
+                       class="form-control"
+                       id="name" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email"
+                       class="form-control"
+                       id="email" />
+            </div>
+            <div class="form-group">
+                <label for="phone">Số điện thoại</label>
+                <input type="text"
+                       class="form-control"
+                       id="phone" />
+            </div>
+            <div class="form-group">
+                <label for="address">Nơi ở hiện tại</label>
+                <input type="text"
+                       class="form-control"
+                       id="address" />
+            </div>
+            <div class="form-group">
+                <label for="unit">Trường/Đơn vị</label>
+                <input type="text"
+                       class="form-control"
+                       id="unit" />
+            </div>
+            <button type="submit"
+                    class="btn btn-primary">
+                Lưu
+            </button>
+        </form>*@
+                        <!-------------------------------------------------->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

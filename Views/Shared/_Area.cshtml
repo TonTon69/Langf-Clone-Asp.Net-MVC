@@ -1,0 +1,78 @@
+﻿@model langfvn.Models.Place
+@using langfvn.Models
+@{
+    List<Place> listPlace = ViewData["listPlace"] as List<Place>;
+    List<Store> allStore = ViewData["allStore"] as List<Store>;
+}
+<section class="areas mb-5">
+    <div class="container">
+        <div class="text-center title mb-4">
+            <h2>Khu vực</h2>
+        </div>
+        <div class="row">
+            <div class="d-none d-md-block col-md-4 col-lg-3">
+                <div class="list-group">
+                    <a href="" class="list-group-item btn-area active" id="0">Tất cả</a>
+                    @foreach (var place in listPlace)
+                    {
+                        <a href="" class="list-group-item btn-area" id="@place.PlaceID">@place.PlaceName</a>
+                    }
+                </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-9">
+                <div class="row" id="container-area">
+                    @foreach (var store in allStore)
+                    {
+                        <div class="swiper-slide col-6 col-lg-3 p-2">
+                            <a href="/store?name=@store.StoreName">
+                                <div class="slider-box">
+                                    <div class="logo" style="background-image: url('@store.Image'), url('~/Content/main/img/default-cover.png')";>
+                                        <div class="mask">
+                                            <div class="slot e-member"></div>
+                                            <div class="slot order"></div>
+                                            <div class="slot delivery"></div>
+                                            <div class="mb-1 rating">
+                                                <i class="fas fa-star"></i>
+                                                <span>5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <div class="position">
+                                            @store.Place.PlaceName
+                                        </div>
+                                        <div class="stitle">
+                                            @store.StoreName
+                                        </div>
+                                        <div class="address">
+                                            @store.Address
+                                        </div>
+                                        <div class="review mt-3">
+                                            <!-- <i>Chua co review nao!</i> -->
+                                            <div class="
+                                                            d-flex
+                                                            align-items-center
+                                                        ">
+                                                <div class="badge mr-2">
+                                                    <span>5</span>
+                                                </div>
+                                                <div class="cmt">
+                                                    Chất lượng Ok nhưng
+                                                    hơi ngonn á nha shop
+                                                    ơi
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                </div>
+                <div class="form-group text-center mt-3">
+                    <div class="btn btn-primary">Xem thêm</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

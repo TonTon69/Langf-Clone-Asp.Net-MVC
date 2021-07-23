@@ -16,6 +16,16 @@ namespace langfvn.Models
             Reviews = new HashSet<Review>();
         }
 
+        public Store(int StoreID, int PlaceID, String StoreName, String Address, String img, String note)
+        {
+            this.StoreID = StoreID;
+            this.PlaceID = PlaceID;
+            this.StoreName = StoreName;
+            this.Address = Address;
+            this.Image = img;
+            this.NoteDiscount = note;
+        }
+
         public int StoreID { get; set; }
 
         public int PlaceID { get; set; }

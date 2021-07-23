@@ -1,0 +1,54 @@
+﻿@using langfvn.Models;
+@{
+    List<Review> listReview = ViewData["listReview"] as List<Review>;
+}
+<section class="reviews">
+    <div class="container">
+        <div class="text-center title mb-4">
+            <h2>Review gần đây</h2>
+        </div>
+        <div class="row">
+
+            @foreach (var review in listReview)
+            {
+                <div class="col-12 col-md-6 col-lg-4 p-2 review-box">
+                    <a href="/store/index?storeID=@review.StoreID" class="card">
+                        <div class="card-body">
+                            <div class="mb-2 d-flex">
+                                <div class="mr-2">
+                                    <div class="user-avatar">
+                                        <span>L</span>
+                                    </div>
+                                </div>
+                                <div class="">
+                                    <div class="user-name mb-1">
+                                        <div class="">
+                                            <div class="badge">
+                                                <span>@review.Star</span>
+                                                <i class="fas fa-star"></i>
+                                            </div>
+                                            <i><span>@review.Account.FullName</span></i>
+                                        </div>
+                                        <span class="
+                                                        mt-2
+                                                        badge badge-primary
+                                                        text-wrap
+                                                    ">
+                                            @review.Store.StoreName
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                @review.Content
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
