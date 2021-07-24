@@ -10,6 +10,7 @@ namespace langfvn.Common
     {
         public int UserID { set; get; }
         public String UserName { set; get; }
+        public int RoleID { set; get; }
 
     }
 }

@@ -43,6 +43,7 @@
                          aria-labelledby="nav-login-tab">
                         @using (Html.BeginForm("register", "account", FormMethod.Post))
                         {
+                            @Html.AntiForgeryToken()
                             <div class="form-group">
                                 @Html.TextBoxFor(model => model.Email, new { @type = "email", @placeholder = "Email", @class = "form-control", @autofocus = "@autofocus" })
                                 <span style="color:red">

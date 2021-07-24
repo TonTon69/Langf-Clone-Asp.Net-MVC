@@ -17,6 +17,7 @@ namespace langfvn.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(RegisterModel registerModel)
         {
             if (ModelState.IsValid)
@@ -55,6 +56,7 @@ namespace langfvn.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
@@ -67,8 +69,9 @@ namespace langfvn.Controllers
                     var userSesion = new UserLogin();// tạo biến userlogin
                     userSesion.UserName = user.FullName;// lưu tên user vừa tìm được vào biến userlogin
                     userSesion.UserID = user.UserID;
+                    userSesion.RoleID = user.RoleID;
                     Session.Add(CommonConstaints.USER_SESSION, userSesion);//Session.Add("Tên_Biến","Giá trị khởi tạo");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("index", "home");
                     /* Lý thuyết về session
                      * cú pháp tạo biến Session:  Session.Add("Tên_Biến","Giá trị khởi tạo"); hoặc Session["Tên Biến"] = Giá trị;
                      * Cú pháp để đọc giá trị của một biến sesstion : Session.Contents[“Tên_Biến”] hoặc dùng chỉ số: Session.Contents[i]; hoặc  <Biến> = Session["Tên Biến"];
@@ -76,14 +79,10 @@ namespace langfvn.Controllers
                 }
                 else
                 {
-                    ViewBag.LoginFail = "Đăng nhập thất bại vui lòng thử lại";
+                    ViewBag.LoginFail = "Email hoặc mật khẩu sai. Vui lòng thử lại!";
                 }
             }
-            else
-            {
-
-            }
-            return View("Index");
+            return View();
         }
         public ActionResult Profile()
         {
@@ -105,6 +104,7 @@ namespace langfvn.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Update(Account account)
         {
             UserDao dao = new UserDao();

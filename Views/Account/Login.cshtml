@@ -34,32 +34,39 @@
                          aria-labelledby="nav-login-tab">
                         @using (Html.BeginForm("login", "account", FormMethod.Post))
                         {
-                        <div class="form-group">
+                            @Html.AntiForgeryToken()
+                            <div class="form-group">
 
-                            @if (ViewBag.SuccessMsg != null)
-                            {
-                                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>@ViewBag.SuccessMsg</strong> 
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                            }
+                                @if (ViewBag.SuccessMsg != null)
+                                {
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>@ViewBag.SuccessMsg</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                }
 
-                            @Html.TextBoxFor(model => model.UserName, new { @type = "email", @placeholder = "Email", @class = "form-control", @autofocus = "@autofocus" })
-                            <span style="color:red">
-                                @Html.ValidationMessageFor(m => m.UserName)
-                            </span>
-                        </div>
+                                @Html.TextBoxFor(model => model.UserName, new { @type = "email", @placeholder = "Email", @class = "form-control", @autofocus = "@autofocus" })
+                                <span style="color:red">
+                                    @Html.ValidationMessageFor(m => m.UserName)
+                                </span>
+                            </div>
                             <div class="form-group">
 
                                 @Html.TextBoxFor(model => model.Password, new { @type = "password", @class = "form-control", @placeholder = "Mật khẩu" })
                                 <span style="color:red">
                                     @Html.ValidationMessageFor(m => m.Password)
                                 </span>
-                                <span>
-                                    @ViewBag.LoginFail
-                                </span>
+                                @if (@ViewBag.LoginFail != null)
+                                {
+                                    <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert">
+                                        <strong>@ViewBag.LoginFail</strong>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                }
                             </div>
                             <div class="text-center">
                                 <button type="submit"
