@@ -25,6 +25,7 @@ namespace langfvn.Models
         public virtual DbSet<Review> Reviews { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<CountView> CountViews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

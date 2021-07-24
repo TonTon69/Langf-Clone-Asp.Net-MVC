@@ -132,7 +132,7 @@
                         <span>Thống kê truy cập</span>
                         <div class="is-divider-text"
                              style="background-color: rgba(255,255,255,0.3); margin: 10px 0 16px;"></div>
-                        <p> <b>Đang online: </b>1</p>
+                        <p> <b>Đang online: </b></p>
                         <p> <b>Hôm nay: </b>123</p>
                         <p> <b>Tổng truy cập: </b>1000</p>
                     </div>
@@ -180,6 +180,34 @@
             document.getElementById(myParam).classList.add('active');
         }
 
+         //Search
+        $(() => {
+            $('#search').on('keyup', () => {
+                if ($('#search').val() !== null) {
+                    getNews();
+                    $('.content-overplay').css("top", "30%");
+                    $('#grdNews').css("top", "32%");
+                }
+                else {
+                    $('.content-overplay').css("top", "50%");
+                }
+            });
+
+        });
+        function getNews() {
+            $.ajax({
+                url: '@Url.Action("Search", "Home")',
+                dataType: 'html',
+                method: 'GET',
+                data: { search: $('#search').val() },
+                success: function (res) {
+                    $('#grdNews').html('').html(res);
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+        }
     </script>
 </body>
 </html>
