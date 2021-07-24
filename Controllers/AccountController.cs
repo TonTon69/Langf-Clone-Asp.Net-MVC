@@ -25,17 +25,24 @@ namespace langfvn.Controllers
                 var dao = new UserDao();
                 if (dao.CheckEmail(registerModel.Email) == false)
                 {
-                    Account account = new Account();
-                    account.Email = registerModel.Email;
-                    account.Password = Encryptor.ToMD5(registerModel.Password);
-                    account.FullName = registerModel.FullName;
-                    account.Phone = registerModel.Phone;
-                    account.RoleID = 2;
-                    bool result = dao.Insert(account);
-                    if (result)
+                    if (dao.CheckPhone(registerModel.Phone) == false)
                     {
-                        TempData["success"] = "Tạo tài khoản thành công";
-                        return RedirectToAction("login", "account");
+                        Account account = new Account();
+                        account.Email = registerModel.Email;
+                        account.Password = Encryptor.ToMD5(registerModel.Password);
+                        account.FullName = registerModel.FullName;
+                        account.Phone = registerModel.Phone;
+                        account.RoleID = 2;
+                        bool result = dao.Insert(account);
+                        if (result)
+                        {
+                            TempData["success"] = "Tạo tài khoản thành công";
+                            return RedirectToAction("login", "account");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Số điện thoại này đã tồn tại");
                     }
                 }
                 else

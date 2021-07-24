@@ -36,17 +36,23 @@ namespace langfvn.Models
             return false;
 
         }
+
         public bool CheckEmail(String Email)
         {
             return db.Accounts.Count(x => x.Email == Email) > 0;
         }
+
+        public bool CheckPhone(String Phone)
+        {
+            return db.Accounts.Count(x => x.Phone == Phone) > 0;
+        }
+
         public bool Insert(Account newAccount)
         {
             db.Accounts.Add(newAccount);
             db.SaveChanges();
             return true;
         }
-
 
         public bool UpdateInformation(Account accountUpdate)
         {

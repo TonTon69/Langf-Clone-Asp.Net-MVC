@@ -10,80 +10,83 @@
         </div>
         <hr />
 
-        <div class="title mb-4">
-            <h4>Cửa hàng</h4>
-        </div>
-        <div class="slide-store">
-            <button class="left-button">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <div class="row">
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        @foreach (Store store in listStore)
-                        {
-                            <div class="store">
-                                <div class="swiper-slide col p-2">
-                                    <a href="/store?name=@store.StoreName">
-                                        <div class="slider-box">
-                                            <div class="logo"
-                                                 style="
+        @if (listStore != null)
+        {
+            <div class="title mb-4">
+                <h4>Cửa hàng</h4>
+            </div>
+            <div class="slide-store">
+                <button class="left-button">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="row">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            @foreach (Store store in listStore)
+                            {
+                                <div class="store">
+                                    <div class="swiper-slide col p-2">
+                                        <a href="/store?name=@store.StoreName">
+                                            <div class="slider-box">
+                                                <div class="logo"
+                                                     style="
                                                         background-image: url('@store.Image');
                                                     ">
-                                                <div class="mask">
-                                                    <div class="
+                                                    <div class="mask">
+                                                        <div class="
                                                                 slot
                                                                 e-member
                                                             "></div>
-                                                    <div class="slot order"></div>
-                                                    <div class="
+                                                        <div class="slot order"></div>
+                                                        <div class="
                                                                 slot
                                                                 delivery
                                                             "></div>
-                                                    <div class="mb-1 rating">
-                                                        <i class="
+                                                        <div class="mb-1 rating">
+                                                            <i class="
                                                                     fas
                                                                     fa-star
                                                                 "></i>
-                                                        <span>5</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="info">
-                                                <div class="position">
-                                                    @store.Place.PlaceName
-                                                </div>
-                                                <div class="stitle">
-                                                    @store.StoreName
-                                                </div>
-                                                <div class="address">
-                                                    @store.Address
-                                                </div>
-                                                <div class="review mt-3">
-                                                    <!-- <i>Chua co review nao!</i> -->
-                                                    <div class="d-flex align-items-center">
-                                                        <div class="badge mr-2">
                                                             <span>5</span>
                                                         </div>
-                                                        <div class="cmt">
-                                                            @store.NoteDiscount
+                                                    </div>
+                                                </div>
+                                                <div class="info">
+                                                    <div class="position">
+                                                        @store.Place.PlaceName
+                                                    </div>
+                                                    <div class="stitle">
+                                                        @store.StoreName
+                                                    </div>
+                                                    <div class="address">
+                                                        @store.Address
+                                                    </div>
+                                                    <div class="review mt-3">
+                                                        <!-- <i>Chua co review nao!</i> -->
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="badge mr-2">
+                                                                <span>5</span>
+                                                            </div>
+                                                            <div class="cmt">
+                                                                @store.NoteDiscount
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        }
+                            }
 
+                        </div>
                     </div>
                 </div>
+                <button class="right-button">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
-            <button class="right-button">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
+        }
     </div>
 </section>
 

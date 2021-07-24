@@ -88,9 +88,8 @@
                         <span>Thống kê truy cập</span>
                         <div class="is-divider-text"
                              style="background-color: rgba(255,255,255,0.3); margin: 10px 0 16px;"></div>
-                        <p> <b>Đang online: </b>1</p>
-                        <p> <b>Hôm nay: </b>123</p>
-                        <p> <b>Tổng truy cập: </b>1000</p>
+                        <p> <b>Đang online: </b>@HttpContext.Current.Application["SessionCount"]</p>
+                        <p> <b>Tổng truy cập: </b>@HttpContext.Current.Application["luottruycap"]</p>
                     </div>
                 </div>
 
@@ -143,6 +142,7 @@
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="~/Content/main/js/main.js"></script>
     <script>
         $(document).ready(function () {
             $(window).scroll(function () {
@@ -180,16 +180,12 @@
         //search
         $(() => {
             $('#search').on('keyup', () => {
-                if ($('#search').val() !== null) {
+                if ($('#search').val() != null) {
                     getNews();
                     $('.content-overplay').css("top", "30%");
                     $('#grdNews').css("top", "32%");
                 }
-                else {
-                    $('.content-overplay').css("top", "50%");
-                }
             });
-
         });
         function getNews() {
             $.ajax({

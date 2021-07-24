@@ -73,7 +73,7 @@
                 let html = '';
                 let containerArea = $("#container-area");
                 obj.forEach((data) => {
-                    if (data != null) {
+                    if (data != null) { 
                         html += `<div class="swiper-slide col-6 col-lg-3 p-2">
                         <a href="/store?name=${data.StoreName}">
                             <div class="slider-box">
@@ -120,7 +120,8 @@
                 if (obj.length == 0) {
                     html += `<div class="alert alert-primary" role="alert">
                                   <strong>Xin lỗi quý khách!</strong> Hiện tại khu vực này chưa có quán ăn!
-                                 </div>`
+                                 </div>`;
+                    $('#area-see-more').hide();
                 }
                 containerArea.html(html);
             }

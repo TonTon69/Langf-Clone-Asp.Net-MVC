@@ -14,7 +14,7 @@ namespace langfvn.Controllers
         public ActionResult Index(string name)
         {
             /*lấy ra cửa hàng*/
-            Store store = db.Stores.Single(s=>s.StoreName== name);
+            Store store = db.Stores.Single(s => s.StoreName == name);
             ViewData["store"] = store;
 
             /*lấy ra danh sách các loại món ăn cửa hàng*/
@@ -29,12 +29,12 @@ namespace langfvn.Controllers
                 foreach (Food food in listFoodTemp)
                 {
                     listFood.Add(food);
-                }    
+                }
             }
             ViewData["listFood"] = listFood;
 
             /*lấy ra các review về quán ăn*/
-            List<Review> listReview = db.Reviews.Where(r=>r.Store.StoreName == name).ToList();
+            List<Review> listReview = db.Reviews.Where(r => r.Store.StoreName == name).ToList();
             ViewData["listReview"] = listReview;
 
             return View();
@@ -42,6 +42,7 @@ namespace langfvn.Controllers
 
         public ActionResult Review(Review review)
         {
+            var checkStore = db.Stores.FirstOrDefault(x => x.StoreID == review.StoreID);
             Review newReview = new Review();
             newReview.UserID = review.UserID;
             newReview.StoreID = review.StoreID;
@@ -49,7 +50,7 @@ namespace langfvn.Controllers
             newReview.Content = review.Content;
             db.Reviews.Add(newReview);
             db.SaveChanges();
-            return RedirectToAction("index","store", new { storeID = newReview.StoreID});
+            return RedirectToAction("index", "store", new { name = checkStore.StoreName });
         }
     }
 }

@@ -74,7 +74,7 @@
                                 <div class="fb-page" data-href="https://www.facebook.com/langfvn/" data-tabs="timeline" data-width="247" data-height="135" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/langfvn/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/langfvn/"></a></blockquote></div>
                             </div>
                             @{
-                                Html.RenderAction("ad", "news");
+                                Html.RenderAction("Ad", "News");
                             }
 
                         </div>
@@ -82,7 +82,7 @@
                             <span class="widget-title">Bài nổi bật</span>
                             <div class="is-divider"></div>
                             @{
-                                Html.RenderAction("HotBlogNews", "news");
+                                Html.RenderAction("HotBlogNews", "News");
                             }
 
                         </div>
@@ -123,9 +123,8 @@
                         <span>Thống kê truy cập</span>
                         <div class="is-divider-text"
                              style="background-color: rgba(255,255,255,0.3); margin: 10px 0 16px;"></div>
-                        <p> <b>Đang online: </b>1</p>
-                        <p> <b>Hôm nay: </b>123</p>
-                        <p> <b>Tổng truy cập: </b>1000</p>
+                        <p> <b>Đang online: </b>@HttpContext.Current.Application["SessionCount"]</p>
+                        <p> <b>Tổng truy cập: </b>@HttpContext.Current.Application["luottruycap"]</p>
                     </div>
                 </div>
 
@@ -201,12 +200,39 @@
             $(".back-to-top").click(function () {
                 $("html, body").animate({ scrollTop: 0 }, "slow");
             });
+
+            //search
+            $(() => {
+                $('#search').on('keyup', () => {
+                    if ($('#search').val() != null) {
+                        getNews();
+                        $('.content-overplay').css("top", "30%");
+                        $('#grdNews').css("top", "32%");
+                    }
+                });
+
+            });
+            function getNews() {
+                $.ajax({
+                    url: '@Url.Action("Search", "Home")',
+                    dataType: 'html',
+                    method: 'GET',
+                    data: { search: $('#search').val() },
+                    success: function (res) {
+                        $('#grdNews').html('').html(res);
+                    },
+                    error: function (err) {
+                        console.log(err)
+                    }
+                })
+            }
         });
         const urlParams = new URLSearchParams(window.location.search);
         const myParam = urlParams.get('category');
         if (myParam !== null) {
             document.getElementById(myParam).classList.add('active');
         }
+
     </script>
 </body>
 </html>

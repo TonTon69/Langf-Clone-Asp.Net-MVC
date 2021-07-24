@@ -21,8 +21,8 @@ namespace langfvn.Controllers
             List<CategoryFood> listCategoryFood = db.CategoryFoods.OrderBy(s => s.CFoodID).ToList();
             ViewData["listCategoryFood"] = listCategoryFood;
 
-            /*lấy ra các review gần đây*/
-            List<Review> listReview = db.Reviews.OrderByDescending(s => s.ReviewID).ToList();
+            /*lấy ra 6 review gần đây*/
+            List<Review> listReview = db.Reviews.OrderByDescending(s => s.ReviewID).Take(6).ToList();
             ViewData["listReview"] = listReview;
 
             /*lấy ra các quán mới tham gia*/

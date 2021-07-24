@@ -673,6 +673,11 @@ a[aria-expanded="true"] {
 .post-title {
     font-size: 18.5px;
     margin: 4px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
     .post-title:nth-child(1) {
