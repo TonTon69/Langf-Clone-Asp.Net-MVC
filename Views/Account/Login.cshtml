@@ -1,6 +1,6 @@
 ﻿@model langfvn.Models.LoginModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 <style>
@@ -23,6 +23,8 @@
                            role="tab"
                            aria-controls="nav-login"
                            aria-selected="true">Đăng nhập</a>
+                        <a class="nav-item nav-link"
+                           href="/account/register">Tạo tài khoản</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -32,28 +34,29 @@
                          aria-labelledby="nav-login-tab">
                         @using (Html.BeginForm("login", "account", FormMethod.Post))
                         {
-                            <div class="form-group">
+                        <div class="form-group">
 
-                                @Html.TextBoxFor(model => model.UserName, new { @type = "email", @placeholder = "Email", @class = "form-control", @autofocus = "@autofocus" })
-                                <span style="color:red">
-                                    @Html.ValidationMessageFor(m => m.UserName)
-                                </span>
-                                @*<input type="email"
-                                    class="form-control"
-                                    placeholder="Email"
-                                    required />*@
-                            </div>
+                            @if (ViewBag.SuccessMsg != null)
+                            {
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>@ViewBag.SuccessMsg</strong> 
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            }
+
+                            @Html.TextBoxFor(model => model.UserName, new { @type = "email", @placeholder = "Email", @class = "form-control", @autofocus = "@autofocus" })
+                            <span style="color:red">
+                                @Html.ValidationMessageFor(m => m.UserName)
+                            </span>
+                        </div>
                             <div class="form-group">
 
                                 @Html.TextBoxFor(model => model.Password, new { @type = "password", @class = "form-control", @placeholder = "Mật khẩu" })
                                 <span style="color:red">
                                     @Html.ValidationMessageFor(m => m.Password)
                                 </span>
-
-                                @*<input type="password"
-                                    class="form-control"
-                                    placeholder="Mật khẩu"
-                                    required />*@
                                 <span>
                                     @ViewBag.LoginFail
                                 </span>
@@ -67,13 +70,6 @@
                         }
                         <hr />
 
-                        <div class="text-center">
-                            <a href="/account/register" class="btn btn-secondary" style="background-color: #28abe3;">
-                                Đăng ký tài khoản mới
-                            </a>
-                        </div>
-
-                        <hr />
                         <div class="text-center">hoặc</div>
                         <hr />
                         <div class="form-group text-center">

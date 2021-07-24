@@ -10,7 +10,7 @@ namespace langfvn.Controllers
 {
     public class AccountController : Controller
     {
-      
+
         public ActionResult Register()
         {
             return View();
@@ -19,39 +19,43 @@ namespace langfvn.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel registerModel)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                if(dao.CheckEmail(registerModel.Email)==false)
+                if (dao.CheckEmail(registerModel.Email) == false)
                 {
                     Account account = new Account();
                     account.Email = registerModel.Email;
-                    account.Password =  Encryptor.ToMD5(registerModel.Password);
+                    account.Password = Encryptor.ToMD5(registerModel.Password);
                     account.FullName = registerModel.FullName;
                     account.Phone = registerModel.Phone;
                     account.RoleID = 2;
                     bool result = dao.Insert(account);
-                    if(result)
+                    if (result)
                     {
-                        ViewBag.RegisterResult = "Đăng ký thành công";
+                        TempData["success"] = "Tạo tài khoản thành công";
+                        return RedirectToAction("login", "account");
                     }
-                 /*   return RedirectToAction("login", "account");*/
-                }   
+                }
                 else
                 {
-                    ModelState.AddModelError("", "Email đã tồn tại");
-                }    
-            }    
+                    ModelState.AddModelError("", "Email này đã tồn tại");
+                }
+            }
             return View();
         }
 
         public ActionResult Login()
         {
+            if (TempData["success"] != null)
+            {
+                ViewBag.SuccessMsg = TempData["success"];
+            }
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login (LoginModel model)
+        public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
             {
@@ -94,10 +98,10 @@ namespace langfvn.Controllers
             int id = (Session.Contents["USER_SESSION"] as UserLogin).UserID;
             var dao = new UserDao();//gọi lớp userDao
             Account account = dao.GetAccountById(id);
-            if (TempData["result"]!=null)
+            if (TempData["result"] != null)
             {
                 ViewBag.result = TempData["result"];
-            }    
+            }
             return View(account);
         }
 
@@ -108,7 +112,7 @@ namespace langfvn.Controllers
             UserDao dao = new UserDao();
             dao.UpdateInformation(account);
             TempData["result"] = "Cập nhật thông tin thành công!";
-            return RedirectToAction("updateinformation","account");
+            return RedirectToAction("updateinformation", "account");
         }
     }
 }

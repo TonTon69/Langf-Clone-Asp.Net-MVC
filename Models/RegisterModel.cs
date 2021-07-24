@@ -28,6 +28,7 @@ namespace langfvn.Models
 
         [Display(Name = "Số điện thoại")]
         [Required(ErrorMessage = "Vui lòng nhập số điện thoại")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Số điện thoại không hợp lệ")]
         public String Phone { get; set; }
     }
 }
