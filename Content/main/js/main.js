@@ -125,21 +125,6 @@
                 containerArea.html(html);
             }
         });
-        // Promise
-        /*$.post('/Home/DisplayListStory?AreaID=' + id)
-            .then(function (response) {
-                var obj = JSON.parse(response);
-                var res = [];
-                for (var i in obj)// đưa json vừa convert vào mảng res[]
-                {
-                    res.push(obj[i]);
-                }
-                for (var i of res) {
-                    console.log(i);
-                } )
-            .catch(function (err) {
-                console.log(err);
-            })*/
     }
     );
 });

@@ -143,11 +143,6 @@ namespace langfvn.Controllers
 
             return View();
         }
-        public ActionResult LogOut()
-        {
-            Session.RemoveAll();
-            return RedirectToAction("index", "home");
-        }
 
     }
 }

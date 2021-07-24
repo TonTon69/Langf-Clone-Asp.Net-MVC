@@ -1,0 +1,96 @@
+﻿@model langfvn.Models.Account
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+<div class="profile">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="mb-3 col-md-6 col-12">
+                <div class="text-center">
+                    <img src="~/Content/main/img/user.svg" width="250"
+                         class="rounded-pill m-3" />
+                </div>
+            </div>
+            <div class="col-md-6 col-12">
+                <div class="row mb-2">
+                    <div class="col">
+                        <div class="form-group">
+                            <labe for="name">Họ và tên</labe>
+                            <input type="text"
+                                   class="form-control"
+                                   id="name"
+                                   value="@Model.FullName"
+                                   disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email"
+                                   class="form-control"
+                                   id="email"
+                                   value="@Model.Email"
+                                   disabled />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại</label>
+                            <input type="text"
+                                   class="form-control"
+                                   id="phone"
+                                   value="@Model.Phone"
+                                   disabled />
+                        </div>
+                        @if (@Model.Address != null)
+                        {
+                            <div class="form-group">
+                                <label for="address">Nơi ở hiện tại</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="address"
+                                       value="@Model.Address"
+                                       disabled />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                <label for="address">Nơi ở hiện tại</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="address"
+                                       value="Chưa cập nhật"
+                                       style="color: red"
+                                       disabled />
+                            </div>
+                        }
+
+                        @if (@Model.Unit != null)
+                        {
+                            <div class="form-group">
+                                <label for="unit">Trường/Đơn vị</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="unit"
+                                       value="@Model.Unit"
+                                       disabled />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-group">
+                                <label for="unit">Trường/Đơn vị</label>
+                                <input type="text"
+                                       class="form-control"
+                                       id="unit"
+                                       value="Chưa cập nhật"
+                                       style="color: red"
+                                       disabled />
+                            </div>
+                        }
+                        <a type="button" class="btn btn-primary" href="/account/update">Chỉnh sủa thông tin cá nhân</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

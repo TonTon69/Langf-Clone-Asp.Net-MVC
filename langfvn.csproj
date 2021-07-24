@@ -2591,9 +2591,9 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\PersonalInformation.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\UpdateInformation.cshtml" />
+    <Content Include="Views\Account\Update.cshtml" />
     <Content Include="Views\Home\FindStoreByKOFNameResult.cshtml" />
     <Content Include="Views\Home\FindStoreResult.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />

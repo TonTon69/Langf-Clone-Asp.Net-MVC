@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="~/Content/main/css/style.css">
     <link rel="stylesheet" href="~/Content/main/css/responsive.css">
     <link rel="stylesheet" href="~/Common/CommonConstaints.cs">
-   
+
 </head>
 <body>
     <div class="app">
@@ -48,8 +48,9 @@
                         @if (Session.Contents["USER_SESSION"] != null)
                         {
                             <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="far fa-user-circle" style="color:aliceblue"></i>
+                                <a class="dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" style="text-decoration: none"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/main/img/user.svg" width="20" class="mr-2" />
                                     <span style="color:aliceblue">@((Session.Contents["USER_SESSION"] as UserLogin).UserName.ToString())</span>
                                     <style>
                                         .dropdown-toggle::after {
@@ -62,9 +63,11 @@
                                     </style>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/account/personalinformation">Thông tin cá nhân</a>
+                                    <a class="dropdown-item" href="/account/profile">
+                                        <i class="fas fa-cog"></i> Thông tin cá nhân
+                                    </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/home/logout">Đăng xuất  <i class="fas fa-sign-out-alt"></i></a>
+                                    <a class="dropdown-item" href="/account/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                                 </div>
                             </div>
                         }

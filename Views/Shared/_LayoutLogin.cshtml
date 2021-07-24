@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using langfvn.Common
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -44,10 +45,40 @@
                     </nav>
                     <div class="gap"></div>
                     <div class="icon-wrap pc">
-                        <a href="/account/login">
-                            <img src="~/Content/main/img/login.png" width="25">
-                        </a>
+                        @if (Session.Contents["USER_SESSION"] == null)
+                        {
+                            <a href="/account/login">
+                                <img src="~/Content/main/img/login.png" width="25">
+                            </a>
+                        }
+                        else
+                        {
+                            <div class="dropdown">
+                                <a class="dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" style="text-decoration: none"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/main/img/user.svg" width="20" class="mr-2" />
+                                    <span style="color:aliceblue">@((Session.Contents["USER_SESSION"] as UserLogin).UserName.ToString())</span>
+                                    <style>
+                                        .dropdown-toggle::after {
+                                            color: aliceblue;
+                                        }
+
+                                        .header .icon-wrap a:hover {
+                                            color: darkred;
+                                        }
+                                    </style>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/account/profile">
+                                        <i class="fas fa-cog"></i> Thông tin cá nhân
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/account/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                </div>
+                            </div>
+                        }
                     </div>
+
                     <!-- mobile -->
                     <label for="nav-mobile-input" class="nav-bars-btn">
                         <img src="~/Content/main/img/menu.svg" width="25">
@@ -86,7 +117,7 @@
                 <div class="row mt-3">
                     <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                         <h6 class="text-uppercase font-weight-bold">
-                            HAT 
+                            HAT
                         </h6>
                         <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-color: #fff">
                         <p>Công ty Cổ phần Công nghệ HAT</p>
@@ -134,7 +165,7 @@
                     </div>
                 </div>
                 <div class="footer-copyright text-center pb-3">
-                    COPYRIGHT © 2021 - HAT 
+                    COPYRIGHT © 2021 - HAT
                 </div>
             </div>
         </footer>

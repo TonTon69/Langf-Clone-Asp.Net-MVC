@@ -85,34 +85,38 @@ namespace langfvn.Controllers
             }
             return View("Index");
         }
-        public ActionResult PersonalInformation
-()
+        public ActionResult Profile()
         {
             int id = (Session.Contents["USER_SESSION"] as UserLogin).UserID;
             var dao = new UserDao();//gọi lớp userDao
             Account account = dao.GetAccountById(id);
             return View(account);
         }
-        public ActionResult UpdateInformation()
+        public ActionResult Update()
         {
             int id = (Session.Contents["USER_SESSION"] as UserLogin).UserID;
             var dao = new UserDao();//gọi lớp userDao
             Account account = dao.GetAccountById(id);
-            if (TempData["result"] != null)
+            if (TempData["success"] != null)
             {
-                ViewBag.result = TempData["result"];
+                ViewBag.result = TempData["success"];
             }
             return View(account);
         }
 
-
         [HttpPost]
-        public ActionResult UpdateInformation(Account account)
+        public ActionResult Update(Account account)
         {
             UserDao dao = new UserDao();
             dao.UpdateInformation(account);
-            TempData["result"] = "Cập nhật thông tin thành công!";
-            return RedirectToAction("updateinformation", "account");
+            TempData["success"] = "Cập nhật thông tin thành công";
+            return RedirectToAction("update", "account");
+        }
+
+        public ActionResult LogOut()
+        {
+            Session.RemoveAll();
+            return RedirectToAction("index", "home");
         }
     }
 }
