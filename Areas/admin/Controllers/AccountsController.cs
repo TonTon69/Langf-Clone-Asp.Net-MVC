@@ -9,6 +9,7 @@ using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using langfvn.Common;
 using langfvn.Models;
 using PagedList;
 
@@ -131,21 +132,6 @@ namespace langfvn.Areas.admin.Controllers
             base.Dispose(disposing);
         }
 
-        //create a string MD5
-        public static string GetMD5(string str)
-        {
-            MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] fromData = Encoding.UTF8.GetBytes(str);
-            byte[] targetData = md5.ComputeHash(fromData);
-            string byte2String = null;
-
-            for (int i = 0; i < targetData.Length; i++)
-            {
-                byte2String += targetData[i].ToString("x2");
-            }
-            return byte2String;
-        }
-
         //login
         public ActionResult Login()
         {
@@ -158,7 +144,7 @@ namespace langfvn.Areas.admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var f_password = GetMD5(password);
+                var f_password = Encryptor.ToMD5(password);
                 var ad = db.Accounts.Where(x => x.Email.Equals(email) && x.Password.Equals(f_password) && x.Role.RoleName != "Member").FirstOrDefault();
                 if (ad != null)
                 {
@@ -218,11 +204,11 @@ namespace langfvn.Areas.admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ChangePassword(ChangePasswordViewModel account)
         {
-            var oldPass = GetMD5(account.OldPassword);
+            var oldPass = Encryptor.ToMD5(account.OldPassword);
             var checkPass = db.Accounts.Where(x => x.Password == oldPass && x.Email == account.Email).FirstOrDefault();
             if (checkPass != null)
             {
-                checkPass.Password = GetMD5(account.NewPassword);
+                checkPass.Password = Encryptor.ToMD5(account.NewPassword);
                 db.SaveChanges();
                 TempData["success"] = "Cập nhật mật khẩu mới thành công";
                 return RedirectToAction("profileadmin", "accounts", new { id = Session["AdID"] });
