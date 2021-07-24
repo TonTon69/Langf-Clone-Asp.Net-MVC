@@ -58,8 +58,9 @@
                         @if (Session.Contents["USER_SESSION"] != null)
                         {
                             <div class="dropdown">
-                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="far fa-user-circle" style="color:aliceblue"></i>
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" style="text-decoration: none"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="~/Content/main/img/user.svg" width="20" class="mr-2" />
                                     <span style="color:aliceblue">@((Session.Contents["USER_SESSION"] as UserLogin).UserName.ToString())</span>
                                     <style>
                                         .dropdown-toggle::after {
@@ -72,9 +73,26 @@
                                     </style>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/account/personalinformation">Thông tin cá nhân</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="/home/logout">Đăng xuất  <i class="fas fa-sign-out-alt"></i></a>
+                                    @if ((Session.Contents["USER_SESSION"] as UserLogin).RoleID != 2)
+                                    {
+                                        <a class="dropdown-item" href="/admin" target="_blank">
+                                            <i class="fas fa-user-shield"></i> Admin
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/account/profile">
+                                            <i class="fas fa-cog"></i> Thông tin cá nhân
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/account/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="dropdown-item" href="/account/profile">
+                                            <i class="fas fa-cog"></i> Thông tin cá nhân
+                                        </a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/account/logout"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                    }
                                 </div>
                             </div>
                         }

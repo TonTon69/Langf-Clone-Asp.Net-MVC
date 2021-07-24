@@ -19,7 +19,10 @@ namespace langfvn.Areas.camnang.Controllers
         {
             return View();
         }
-
+        public ActionResult Introduce()
+        {
+            return View();
+        }
         // Partial banner
         public PartialViewResult Banner()
         {
@@ -111,7 +114,6 @@ namespace langfvn.Areas.camnang.Controllers
             var lists = db.News.Where(m => m.KonID == 12).Take(6).ToList();
             return PartialView("_GhostStory", lists);
         }
-
 
         //Partial Làng Review
         public PartialViewResult LangReview()

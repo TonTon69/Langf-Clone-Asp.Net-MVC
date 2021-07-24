@@ -1948,6 +1948,7 @@
     <Content Include="Content\main\img\logo-partner-4.jpg" />
     <Content Include="Content\main\img\logo.jpg" />
     <Content Include="Content\main\img\logo.png" />
+    <Content Include="Content\main\img\LOGO1-1.png" />
     <Content Include="Content\main\img\logopage1.png" />
     <Content Include="Content\main\img\logopage2.jpeg" />
     <Content Include="Content\main\img\logopage3.png" />
@@ -2570,6 +2571,7 @@
     <Content Include="Areas\admin\Views\Home\_PromotionStore.cshtml" />
     <Content Include="Areas\camnang\Views\News\_Ad.cshtml" />
     <Content Include="Areas\admin\Views\Accounts\Denied.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\Introduce.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

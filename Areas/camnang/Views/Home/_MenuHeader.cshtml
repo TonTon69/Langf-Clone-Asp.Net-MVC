@@ -1,11 +1,8 @@
 ﻿@model IEnumerable<langfvn.Models.CategoryNew>
 <div class="menu text-uppercase">
     <ul class="nav">
-        <li>
-            <a href="" id="gioithieu">Giới thiệu</a>
-        </li>
-        <li>
-            <a class="khuyenmai" href="" id="khuyenmai">Khuyến mãi</a>
+        <li id="dropdown" class="dropdown">
+            <a class="dropbtn" href="@Url.Action("introduce", "home",new { category = "giới thiệu"})" id="giới thiệu">Giới thiệu</a>
         </li>
         @foreach (var item in Model)
         {

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Tin tức</title>
+    <title>@ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/png" href="~/Content/main/img/langf.png" />
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -203,9 +203,7 @@
             });
         });
         const urlParams = new URLSearchParams(window.location.search);
-        console.log(urlParams);
         const myParam = urlParams.get('category');
-        console.log(myParam);
         if (myParam !== null) {
             document.getElementById(myParam).classList.add('active');
         }
