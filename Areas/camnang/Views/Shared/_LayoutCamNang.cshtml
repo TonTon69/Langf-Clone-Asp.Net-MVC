@@ -89,7 +89,6 @@
                         <div class="is-divider-text"
                              style="background-color: rgba(255,255,255,0.3); margin: 10px 0 16px;"></div>
                         <p> <b>Đang online: </b>@HttpContext.Current.Application["SessionCount"] </p>
-                        <p> <b>Hôm nay: </b>123</p>
                         <p> <b>Tổng truy cập: </b>@HttpContext.Current.Application["luottruycap"]</p>
 
                     </div>
@@ -157,6 +156,8 @@
 
         });
 
+
+        //Search
         $(() => {
             $('#search').on('keyup', () => {
                 if ($('#search').val() !== null) {
@@ -165,12 +166,10 @@
                     $('#grdNews').css("top", "32%");
                 }
                 else {
-                    $('#search').off('keyup');
                     $('.content-overplay').css("top", "50%");
                 }
             });
-
-
+        
         });
         function getNews() {
             $.ajax({

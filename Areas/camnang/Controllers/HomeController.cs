@@ -24,7 +24,7 @@ namespace langfvn.Areas.camnang.Controllers
         //Partial search
         public PartialViewResult Search(string search) 
         {
-            var result = db.News.Where(x => x.Title.ToLower().Contains(search.ToLower())).Take(5).ToList();
+            var result = db.News.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
             ViewBag.search= search;
             return PartialView("_Search", result);
         }

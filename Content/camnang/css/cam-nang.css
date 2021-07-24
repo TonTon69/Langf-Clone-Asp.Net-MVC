@@ -1297,7 +1297,10 @@ div.sidebar-bottom img {
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
+    height: 100%;
+    overflow-y: hidden;
 }
+
 
 .container-overplay {
     left: 0;
@@ -1319,6 +1322,7 @@ label {
     cursor: pointer;
 }
 
+
 .nav-input:checked ~ .nav-overplay {
     display: block;
     overflow-x: hidden;
@@ -1331,8 +1335,7 @@ label {
 }
 
 .nav-input:checked ~ body {
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 #search-lightbox {
@@ -1402,12 +1405,14 @@ input::placeholder {
         outline: none;
     }
 
-#grdNews{
-    position:absolute;
+#grdNews {
+    position: absolute;
     top: 55%;
     left: 30%;
     width: 40%;
     color: #f1f1f1;
+    overflow-y: auto;
+    height: 450px;
 }
 
 
@@ -1421,6 +1426,7 @@ input::placeholder {
     font-size: 1.15em;
 }
 
+
     .autocomplete-suggestion img {
         width: 40px;
         border-radius: 99px;
@@ -1428,6 +1434,7 @@ input::placeholder {
         display: inline-block;
         margin-right: 10px;
     }
+
 .autocomplete-suggestions a:hover {
     color: #f1f1f1;
 }
