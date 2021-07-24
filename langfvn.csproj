@@ -2572,6 +2572,7 @@
     <Content Include="Areas\camnang\Views\News\_Ad.cshtml" />
     <Content Include="Areas\admin\Views\Accounts\Denied.cshtml" />
     <Content Include="Areas\camnang\Views\Home\Introduce.cshtml" />
+    <Content Include="Areas\camnang\Views\Home\_Search.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -121,6 +121,12 @@ namespace langfvn.Areas.camnang.Controllers
             var lists = db.News.Where(m => m.KindOfNew.CategoryNew.CNewsID == 3).Take(8).ToList();
             return PartialView("_LangReview", lists);
         }
-
+        //Partial search
+        public PartialViewResult Search(string search)
+        {
+            var result = db.News.Where(x => x.Title.ToLower().Contains(search.ToLower())).ToList();
+            ViewBag.search = search;
+            return PartialView("_Search", result);
+        }
     }
 }

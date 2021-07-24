@@ -1269,6 +1269,7 @@ div.sidebar-bottom img {
 
 
 /*Search Box*/
+/*Search Box*/
 .nav-overplay {
     position: fixed;
     top: 0;
@@ -1278,16 +1279,18 @@ div.sidebar-bottom img {
     background-color: rgba(0, 0, 0, 0.5);
     display: none;
     height: 100%;
+    overflow-y: hidden;
 }
+
 
 .container-overplay {
     left: 0;
     top: 0;
-    bottom: 0;
-    right: 0;
     text-align: center;
     width: 100%;
     height: 100%;
+    padding: 30px;
+    cursor: auto;
 }
 
 .content-overplay {
@@ -1299,6 +1302,7 @@ div.sidebar-bottom img {
 label {
     cursor: pointer;
 }
+
 
 .nav-input:checked ~ .nav-overplay {
     display: block;
@@ -1312,8 +1316,7 @@ label {
 }
 
 .nav-input:checked ~ body {
-    overflow-x: hidden;
-    overflow-y: hidden;
+    overflow: hidden;
 }
 
 #search-lightbox {
@@ -1356,6 +1359,10 @@ input:not([type="submit"]) {
     color: #fff;
 }
 
+.search-field:focus-visible {
+    outline: none;
+}
+
 input::placeholder {
     color: #fff;
 }
@@ -1373,4 +1380,46 @@ input::placeholder {
     box-shadow: none;
     margin-right: 20px;
     cursor: pointer;
+}
+
+    .ux-search-submit:focus {
+        outline: none;
+    }
+
+#grdNews {
+    position: absolute;
+    top: 55%;
+    left: 30%;
+    width: 40%;
+    color: #f1f1f1;
+    overflow-y: auto;
+    height: 450px;
+}
+
+
+.autocomplete-suggestion {
+    cursor: pointer;
+    padding: 10px 0.75em;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    text-align: left;
+    font-size: 1.15em;
+}
+
+    .autocomplete-suggestion img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 10px;
+        object-fit: cover;
+    }
+
+.autocomplete-suggestions a:hover {
+    color: #f1f1f1;
+}
+
+.autocomplete-suggestion:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }

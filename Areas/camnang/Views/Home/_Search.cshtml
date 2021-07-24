@@ -1,0 +1,15 @@
+﻿@model IEnumerable<langfvn.Models.News>
+
+@foreach (var item in Model)
+{
+    <div class="autocomplete-suggestions">
+        <a href="@Url.Action("details", "news",  new { name = item.Title})">
+            <div class="autocomplete-suggestion">
+                <img class="search-img" src="@item.Image">
+                <div class="search-name">
+                    @item.Title
+                </div>
+            </div>
+        </a>
+    </div>
+}

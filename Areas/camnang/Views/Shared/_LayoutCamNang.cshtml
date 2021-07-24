@@ -176,6 +176,35 @@
                 $('.carousel-item')[0].classList.add('active');
             });
         });
+
+        //search
+        $(() => {
+            $('#search').on('keyup', () => {
+                if ($('#search').val() !== null) {
+                    getNews();
+                    $('.content-overplay').css("top", "30%");
+                    $('#grdNews').css("top", "32%");
+                }
+                else {
+                    $('.content-overplay').css("top", "50%");
+                }
+            });
+
+        });
+        function getNews() {
+            $.ajax({
+                url: '@Url.Action("Search", "Home")',
+                dataType: 'html',
+                method: 'GET',
+                data: { search: $('#search').val() },
+                success: function (res) {
+                    $('#grdNews').html('').html(res);
+                },
+                error: function (err) {
+                    console.log(err)
+                }
+            })
+        }
     </script>
 
 </body>
