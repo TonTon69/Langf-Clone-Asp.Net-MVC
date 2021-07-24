@@ -8,47 +8,48 @@
             <h2>Review gần đây</h2>
         </div>
         <div class="row">
-
             @foreach (var review in listReview)
             {
                 <div class="col-12 col-md-6 col-lg-4 p-2 review-box">
-                    <a href="/store/index?storeID=@review.StoreID" class="card">
+                    <a href="/store?name=@review.Store.StoreName" class="card" style="height: 200px">
                         <div class="card-body">
                             <div class="mb-2 d-flex">
                                 <div class="mr-2">
                                     <div class="user-avatar">
-                                        <span>L</span>
+                                        <span>@review.Account.FullName.Substring(0, 1)</span>
                                     </div>
                                 </div>
-                                <div class="">
+                                <div>
                                     <div class="user-name mb-1">
-                                        <div class="">
+                                        <div>
                                             <div class="badge">
                                                 <span>@review.Star</span>
                                                 <i class="fas fa-star"></i>
                                             </div>
                                             <i><span>@review.Account.FullName</span></i>
                                         </div>
-                                        <span class="
-                                                        mt-2
-                                                        badge badge-primary
-                                                        text-wrap
-                                                    ">
+                                        <span class="mt-2 badge badge-primary text-wrap">
                                             @review.Store.StoreName
                                         </span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="">
+                            <div class="review-content">
                                 @review.Content
                             </div>
+                            <style>
+                                .review-content {
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    -webkit-line-clamp: 3;
+                                    display: -webkit-box;
+                                    -webkit-box-orient: vertical;
+                                }
+                            </style>
                         </div>
                     </a>
                 </div>
             }
-
-
         </div>
     </div>
 </section>
-

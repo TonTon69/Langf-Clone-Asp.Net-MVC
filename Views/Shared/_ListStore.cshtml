@@ -2,10 +2,16 @@
 @{
     List<Store> listStore = ViewData["listStore"] as List<Store>;
 }
-<section class="mt-5 mb-5 my-5">
+<section class="mt-5 mb-5 my-5" style="min-height: 80vh">
     <div class="container">
-        <div class="text-center title mb-4">
-            <h2 style="text-transform: uppercase">@ViewBag.resultReport</h2>
+        <div class="title mb-4">
+            <i>Kết quả tìm kiếm cho</i>
+            <h3 class="m-0 mt-2">@ViewBag.resultReport</h3>
+        </div>
+        <hr />
+
+        <div class="title mb-4">
+            <h4>Cửa hàng</h4>
         </div>
         <div class="slide-store">
             <button class="left-button">
@@ -22,8 +28,7 @@
                                         <div class="slider-box">
                                             <div class="logo"
                                                  style="
-                                                        background-image: url('@store.Image'),
-                                                            url('~/Content/main/img/default-cover.png');
+                                                        background-image: url('@store.Image');
                                                     ">
                                                 <div class="mask">
                                                     <div class="
@@ -56,14 +61,8 @@
                                                 </div>
                                                 <div class="review mt-3">
                                                     <!-- <i>Chua co review nao!</i> -->
-                                                    <div class="
-                                                                d-flex
-                                                                align-items-center
-                                                            ">
-                                                        <div class="
-                                                                    badge
-                                                                    mr-2
-                                                                ">
+                                                    <div class="d-flex align-items-center">
+                                                        <div class="badge mr-2">
                                                             <span>5</span>
                                                         </div>
                                                         <div class="cmt">

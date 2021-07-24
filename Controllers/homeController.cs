@@ -13,7 +13,7 @@ namespace langfvn.Controllers
         LangfvnContext db = new LangfvnContext();
         public ActionResult Index()
         {
-            /*lấy ra danh sách các tin tức theo thứ tự giảm dần lượt xem*/ 
+            /*lấy ra danh sách các tin tức theo thứ tự giảm dần lượt xem*/
             News[] listNews = db.News.OrderByDescending(n => n.TotalView).ToArray();
             ViewData["listNews"] = listNews;
 
@@ -26,11 +26,11 @@ namespace langfvn.Controllers
             ViewData["listReview"] = listReview;
 
             /*lấy ra các quán mới tham gia*/
-            List<Store> newStore = db.Stores.OrderByDescending(s=>s.StoreID).ToList();
+            List<Store> newStore = db.Stores.OrderByDescending(s => s.StoreID).ToList();
             ViewData["newStore"] = newStore;
 
             /*lấy ra các quán sử dụng khuyến mãi*/
-            List<Store> saleOffStore = db.Stores.Where(s=>s.NoteDiscount!=null).ToList();
+            List<Store> saleOffStore = db.Stores.Where(s => s.NoteDiscount != null).ToList();
             ViewData["saleOffStore"] = saleOffStore;
 
             /*lấy ra list các place*/
@@ -41,46 +41,43 @@ namespace langfvn.Controllers
             List<Store> allStore = db.Stores.ToList();
             ViewData["allStore"] = allStore;
 
-            return View();  
+            return View();
         }
         public JsonResult DisplayListStory(int AreaID)
         {
             /*lấy ra danh sách store theo khu vực*/
-            
             var jsonListStore = "";
             List<Store> listStore = new List<Store>();
-            List<Store> listStoreToConvert  = new List<Store>();
-            if(AreaID==0)
+            List<Store> listStoreToConvert = new List<Store>();
+            if (AreaID == 0)
             {
                 listStore = db.Stores.ToList();
-            }    
+            }
             else
             {
                 listStore = db.Stores.Where(sto => sto.PlaceID == AreaID).ToList();
-            }    
+            }
             foreach (Store sto in listStore)
             {
                 listStoreToConvert.Add(new Store(sto.StoreID, sto.PlaceID, sto.StoreName, sto.Address, sto.Image, sto.NoteDiscount));
-            }    
+            }
 
-            if (listStore !=null)
-            {    
-                 /*jsonListStore = JsonConvert.SerializeObject(listStore);
-*/
-                 jsonListStore = JsonConvert.SerializeObject(listStoreToConvert, new JsonSerializerSettings()
+            if (listStore != null)
+            {
+                jsonListStore = JsonConvert.SerializeObject(listStoreToConvert, new JsonSerializerSettings()
                 {
                     PreserveReferencesHandling = PreserveReferencesHandling.Objects,
                     Formatting = Formatting.Indented
                 });
-            }    
+            }
             return Json(jsonListStore);
         }
-        public List<Store> FindStoreByCategoryFoodID(int CategoryFoodID)
+        public List<Store> FindStoreByCategoryFoodID(string name)
         {
             KindOfFood[] listkof = new KindOfFood[100];
             List<int> listStoreID = new List<int>();
             List<Store> listStore = new List<Store>();
-            listkof = db.KindOfFoods.Where(k => k.CFoodID == CategoryFoodID).ToArray();
+            listkof = db.KindOfFoods.Where(k => k.CategoryFood.CFoodName == name).ToArray();
             for (int i = 0; i < listkof.Length; i++)
             {
                 if (listStoreID.Contains(listkof[i].StoreID) == false) //list.Contains(<phần tử>) : kiểm tra phần tử có tồn tại hay không.
@@ -96,13 +93,15 @@ namespace langfvn.Controllers
 
             return listStore;
         }
-        public ActionResult FindStoreResult(int CategoryFoodID)
+        public ActionResult FindStoreResult(string name)
         {
-            
             List<Store> listStore = new List<Store>();
-            listStore = FindStoreByCategoryFoodID(CategoryFoodID);
+            listStore = FindStoreByCategoryFoodID(name);
             ViewData["listStore"] = listStore;
-
+            if (listStore.FirstOrDefault() == null)
+            {
+                ViewBag.resultReport = "Không tìm thấy kết quả phù hợp";
+            }
             return View();
         }
         public List<Store> FindStoreByKindOfkindFoodName(String kofName)
@@ -110,7 +109,7 @@ namespace langfvn.Controllers
             KindOfFood[] listkof = new KindOfFood[100];
             List<int> listStoreID = new List<int>();
             List<Store> listStore = new List<Store>();
-            listkof = db.KindOfFoods.Where(k => k.KofName.ToUpper().Contains(kofName.ToUpper())).ToArray();
+            listkof = db.KindOfFoods.Where(k => k.KofName.ToLower().Contains(kofName.ToLower())).ToArray();
             for (int i = 0; i < listkof.Length; i++)
             {
                 if (listStoreID.Contains(listkof[i].StoreID) == false) //list.Contains(<phần tử>) : kiểm tra phần tử có tồn tại hay không.
@@ -127,21 +126,21 @@ namespace langfvn.Controllers
             return listStore;
 
         }
-        public ActionResult FindStoreByKOFNameResult ()
+        public ActionResult FindStoreByKOFNameResult()
         {
             List<Store> listStore = new List<Store>();
             String kindOfFoodName = Request["valueOfFindButton"];
-            listStore =  FindStoreByKindOfkindFoodName(kindOfFoodName);
+            listStore = FindStoreByKindOfkindFoodName(kindOfFoodName);
             ViewData["listStore"] = listStore;
-            if (listStore.FirstOrDefault() ==null)
+            if (listStore.FirstOrDefault() == null)
             {
-                ViewBag.resultReport = "Không có quán bạn cần tìm !!!";
-            }    
+                ViewBag.resultReport = "Không tìm thấy kết quả phù hợp";
+            }
             else
             {
-                ViewBag.resultReport = "Kết quả tìm kiếm cho: "+ kindOfFoodName;
-            }    
-            
+                ViewBag.resultReport = kindOfFoodName;
+            }
+
             return View();
         }
         public ActionResult LogOut()
@@ -149,6 +148,6 @@ namespace langfvn.Controllers
             Session.RemoveAll();
             return RedirectToAction("index", "home");
         }
-      
+
     }
 }

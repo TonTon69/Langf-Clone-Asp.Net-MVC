@@ -3,130 +3,225 @@
 @using langfvn.Common
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
     Store store = ViewData["store"] as Store;
-    List<KindOfFood> listKindOfFood =  ViewData["listKindOfFood"] as List<KindOfFood>;
-    List<Food> listFood =   ViewData["listFood"] as List<Food>;
+    List<KindOfFood> listKindOfFood = ViewData["listKindOfFood"] as List<KindOfFood>;
+    List<Food> listFood = ViewData["listFood"] as List<Food>;
     List<Review> listReview = ViewData["listReview"] as List<Review>;
 }
-<style>
-</style>
-<div class="app store">
-    <div class="header">
-        <div class="banner">
-            <div class="bg" style=" background-image: url('http://thegioidohoa.com/wp-content/uploads/2015/10/thiet-ke-banner-mon-an-dep-cho-nha-hang.jpg'), url('./assets/img/default-cover.png'); "></div>
-            <div class="overlay"></div>
-        </div>
-    </div>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="logo-col col-md-6 col-lg-3 col-12">
-                    <div class="logo-wrapper">
-                        <div class="bg"></div>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cẩm nang Làng Đại Học</title>
+    <link rel="shortcut icon" href="~/Content/main/img/langf.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- swiper -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="~/Content/main/css/style.css">
+    <link rel="stylesheet" href="~/Content/main/css/responsive.css">
+    <link rel="stylesheet" href="~/Common/CommonConstaints.cs">
+
+</head>
+<body>
+    <div class="app store">
+        <div class="header">
+            <div class="navbar">
+                <div class="container">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="~/Content/main/img/logo.png" alt="logo" height="40">
+                        </a>
                     </div>
+                    <nav class="nav-pc">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/camnang" target="_blank">tin tức</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/camnang" target="_blank">ăn chơi sinh viên</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="gap"></div>
+                    <div class="icon-wrap pc">
+                        @if (Session.Contents["USER_SESSION"] != null)
+                        {
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="far fa-user-circle" style="color:aliceblue"></i>
+                                    <span style="color:aliceblue">@((Session.Contents["USER_SESSION"] as UserLogin).UserName.ToString())</span>
+                                    <style>
+                                        .dropdown-toggle::after {
+                                            color: aliceblue;
+                                        }
+
+                                        .header .icon-wrap a:hover {
+                                            color: darkred;
+                                        }
+                                    </style>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/account/personalinformation">Thông tin cá nhân</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/home/logout">Đăng xuất  <i class="fas fa-sign-out-alt"></i></a>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <a href="/account/login">
+                                <img src="~/Content/main/img/login.png" width="25">
+                            </a>
+                        }
+                        @* cú pháp lấy ra session:  @((Session["Key"] as ObjectName).Property) *@
+
+                    </div>
+                    <!-- mobile -->
+                    <label for="nav-mobile-input" class="nav-bars-btn">
+                        <img src="~/Content/main/img/menu.svg" width="25">
+                    </label>
+                    <input type="checkbox" hidden class="nav-mobile-input" id="nav-mobile-input">
+                    <label for="nav-mobile-input" class="nav-overlay"></label>
+                    <nav class="nav-mobile">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">trang chủ</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/camnang">tin tức</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/camnang">ăn chơi sinh viên</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/account/login"><img src="~/Content/main/img/login.png" width="25"></a>
+                            </li>
+                        </ul>
+                        <label for="nav-mobile-input" class="nav-mobile-close">
+                            <img src="~/Content/main/img/cancel.svg" width="20">
+                        </label>
+                    </nav>
                 </div>
-                <div class="title-col col-md-6 col-lg-5 col-12">
-                    <h1 class="title">
-                        @store.StoreName
-                    </h1>
-                    <div class="area">@store.Place.PlaceName</div>
-                </div>
-                <div class="other-col col-lg-4 col-12">
-                    <a href="" class="d-flex">
+            </div>
+            <div class="banner">
+                <div class="bg" style="background-image: url('../../Content/main/img/cover.jpg')"></div>
+                <div class="overlay"></div>
+            </div>
+        </div>
+        <section class="mb-5">
+            <div class="container">
+                <div class="row">
+                    <div class="logo-col col-md-6 col-lg-3 col-12">
+                        <div class="logo-wrapper">
+                            <div class="bg" style="background-image: url(@store.Image)"></div>
+                        </div>
+                    </div>
+                    <div class="title-col col-md-6 col-lg-5 col-12">
+                        <h1 class="title">
+                            @store.StoreName
+                        </h1>
+                        <div class="area">@store.Place.PlaceName</div>
+                    </div>
+                    <div class="other-col col-lg-4 col-12">
                         <i class="fas fa-map-signs mr-2"></i>
                         <span>
                             @store.Address
                         </span>
-                    </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="notice">
-            <div class="" id="result-stats">@store.NoteDiscount</div>
-        </div>
-        <div class="main container">
-            <div class="row" style="margin-top: -4.6em">
-                <div class="col-md-6 col-lg-8 col-12">
-                    <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="pills-menu-tab" data-toggle="pill" href="#pills-menu"
-                               role="tab" aria-controls="pills-menu" aria-selected="true">Thực đơn</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review"
-                               role="tab" aria-controls="pills-review" aria-selected="false">Review</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content mb-5" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-menu" role="tabpanel"
-                             aria-labelledby="pills-menu-tab">
-                            <div class="list-group">
-                                <!--danh sách các loại món ăn-->
-                                @foreach (var kof in listKindOfFood)
-                                {
-                                    int countFood = 0;
-                                    <div class="list-group-item">
-                                        <h5>@kof.KofName</h5>
-                                        <div class="list mb-4">
-                                            <!--danh sách các món ăn-->
-                                            @foreach (var food in listFood)
-                                            {
-
-                                                if (food.KofID == kof.KofID)
+            <div class="notice">
+                <div id="result-stats">@store.NoteDiscount</div>
+            </div>
+            <div class="main container">
+                <div class="row" style="margin-top: -4.6em">
+                    <div class="col-md-6 col-lg-8 col-12">
+                        <ul class="nav nav-pills mb-4" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-menu-tab" data-toggle="pill" href="#pills-menu"
+                                   role="tab" aria-controls="pills-menu" aria-selected="true">Thực đơn</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-review-tab" data-toggle="pill" href="#pills-review"
+                                   role="tab" aria-controls="pills-review" aria-selected="false">Review</a>
+                            </li>
+                        </ul>
+                        <div class="tab-content mb-5" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-menu" role="tabpanel"
+                                 aria-labelledby="pills-menu-tab">
+                                <div class="list-group">
+                                    <!--danh sách các loại món ăn-->
+                                    @foreach (var kof in listKindOfFood)
+                                    {
+                                        int countFood = 0;
+                                        <div class="list-group-item">
+                                            <h5>@kof.KofName</h5>
+                                            <div class="list mb-4">
+                                                <!--danh sách các món ăn-->
+                                                @foreach (var food in listFood)
                                                 {
-                                                    <div class="item">
-                                                        <div class="image">
-                                                            <div class="bg" style="
-                                                                background-image: url('@store.Image'),
-                                                                    url('./assets/img/banner.png');
-                                                            "></div>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p class="m-0">
-                                                                <b>@food.FoodName</b>
-                                                            </p>
-                                                            <div class="desc">
-                                                                @kof.KofName
+                                                    if (food.KofID == kof.KofID)
+                                                    {
+                                                        <div class="item">
+                                                            <div class="image">
+                                                                <div class="bg" style="background-image: url('../../Content/main/img/default-cover.png');"></div>
+                                                            </div>
+                                                            <div class="text">
+                                                                <p class="m-0">
+                                                                    <b>@food.FoodName</b>
+                                                                </p>
+                                                                <div class="desc">
+                                                                    @food.Description
+                                                                </div>
+                                                            </div>
+                                                            <div class="price">
+                                                                <div class="amount">
+                                                                    @String.Format("{0:0,0}", @food.FoodPrice) ₫
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                        <div class="price">
-                                                            <div class="amount">
-                                                                @food.FoodPrice
-                                                            </div>
-                                                        </div>
+                                                        countFood++;
+                                                    }
+
+                                                }
+                                                @if (countFood == 0)
+                                                {
+                                                    <div class="alert alert-primary" role="alert">
+                                                        Hiện tại các món ăn đang được cập nhật!
                                                     </div>
-                                                    countFood++;
                                                 }
 
-                                            }
-                                            @if (countFood == 0)
-                                            {
-                                                <div class="alert alert-primary" role="alert">
-                                                    Hiện tại các món ăn đang được cập nhật!
-                                                </div>
-                                            }
+                                                <!--danh sách các món ăn-->
 
-                                            <!--danh sách các món ăn-->
-
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                                <!--danh sách các loại món ăn-->
+                                    }
+                                    <!--danh sách các loại món ăn-->
 
 
+                                </div>
                             </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-review" role="tabpanel"
-                             aria-labelledby="pills-review-tab">
-                            <div class="content">
-                                <div class="list-group">
-                                    <!--hiển thị các review về quán-->
-                                    @foreach (var review in listReview)
-                                    {
-                                        <div class="list-group-item d-flex">
-                                            <div class="info mr-2">
-                                                <div class="badge" style="
+                            <div class="tab-pane fade" id="pills-review" role="tabpanel"
+                                 aria-labelledby="pills-review-tab">
+                                <div class="content">
+                                    <div class="list-group">
+                                        <!--hiển thị các review về quán-->
+                                        @foreach (var review in listReview)
+                                        {
+                                            <div class="list-group-item d-flex">
+                                                <div class="info mr-2">
+                                                    <div class="badge" style="
                                                             font-size: 1em;
                                                             color: white;
                                                             background-color: rgb(
@@ -135,132 +230,185 @@
                                                                 23
                                                             );
                                                         ">
-                                                    <span>@review.Star <i class="fas fa-star"></i></span>
+                                                        <span>@review.Star <i class="fas fa-star"></i></span>
+                                                    </div>
+                                                </div>
+                                                <div class="content">
+                                                    <div class="mb-2 text-justify">
+                                                        @review.Content
+                                                    </div>
+                                                    <div class="mb-2" style="font-size: 1em">
+                                                        <i>
+                                                            Đánh giá bởi:
+                                                            <span class="d-inline"><strong>@review.Account.FullName</strong></span>
+                                                        </i>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="content">
-                                                <div class="
-                                                            mb-2
-                                                            text-justify
-                                                        ">
-                                                    @review.Content
-                                                </div>
-                                                <div class="mb-2" style="font-size: 1em">
-                                                    <i>
-                                                        Đánh giá bởi:
-                                                        <span class="d-inline"><strong>@review.Account.FullName</strong></span>
-                                                    </i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    }
+                                        }
 
-                                    <!--hiển thị các review về quán-->
+                                        <!--hiển thị các review về quán-->
 
-                                </div>
-                                <div class="tool text-center my-3" data-toggle="modal" data-target="#reviewModal">
-                                    <button class="
+                                    </div>
+                                    <div class="tool text-center my-3" data-toggle="modal" data-target="#reviewModal">
+                                        <button class="
                                                     btn btn-primary
                                                     mr-auto
                                                     ml-auto
                                                 ">
-                                        REVIEW NGAY
-                                    </button>
-                                </div>
-                                <!--Review form-->
-                                @using (Html.BeginForm("review", "store"))
-                                {
+                                            REVIEW NGAY
+                                        </button>
+                                    </div>
+                                    <!--Review form-->
+                                    @using (Html.BeginForm("review", "store"))
+                                    {
 
-                                    <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
-                                         aria-labelledby="reviewModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="reviewModalLabel">
-                                                        Review mới
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    @if (Session.Contents["USER_SESSION"] == null)
-                                                    {
-                                                        <div class="
-                                                                alert alert-info
-                                                            " role="alert">
-                                                        Bạn chưa đăng nhập!
-                                                        Vui lòng đăng nhập
-                                                        để review.
-                                                        </div>
-                                                    }
-                                                    else if(Session.Contents["USER_SESSION"] != null)
-                                                    {
-                                                    <div class="form-group">
-                                                        @Html.HiddenFor(model => model.StoreID, new { Value = store.StoreID })
-                                                        @Html.HiddenFor(model => model.UserID, new { Value = (Session.Contents["USER_SESSION"] as UserLogin).UserID })
-                                                        @*(Session.Contents["USER_SESSION"] as UserLogin).UserID*@
-
-                                                        <label for="review">Đánh giá</label>
-                                                        @Html.TextBoxFor(model => model.Star, new { @class = "form-control" })
-                                                        @*<input class="
-                                                         form-control
-                                                         " id="review" />*@
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="content">Nội dung</label>
-                                                        @Html.TextBoxFor(model => model.Content, new { @class = "form-control" })
-                                                       @* <textarea class="
-                                                                    form-control
-                                                                " style="
-                                                                    resize: none;
-                                                                    overflow-y: scroll;
-                                                                    height: 62px;
-                                                                " id="content"></textarea>*@
-                                                    </div>
-                                                    }
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="
-                                                                btn
-                                                                btn-secondary
-                                                            " data-dismiss="modal">
-                                                        Cancel
-                                                    </button>
-                                                    @if (Session.Contents["USER_SESSION"] == null)
-                                                    {
-                                                        <button type="submit" class="btn btn-primary" disabled>
-                                                            OK
+                                        <div class="modal fade" id="reviewModal" tabindex="-1" role="dialog"
+                                             aria-labelledby="reviewModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="reviewModalLabel">
+                                                            Review mới
+                                                        </h5>
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
                                                         </button>
-                                                    }
-                                                    else
-                                                    {
-                                                        <button type="submit" class="btn btn-primary">
-                                                            OK
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        @if (Session.Contents["USER_SESSION"] == null)
+                                                        {
+                                                            <div class="alert alert-info" role="alert">
+                                                                Bạn chưa đăng nhập! Vui lòng đăng nhập để review.
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div class="form-group">
+                                                                @Html.HiddenFor(model => model.StoreID, new { Value = store.StoreID })
+                                                                @Html.HiddenFor(model => model.UserID, new { Value = (Session.Contents["USER_SESSION"] as UserLogin).UserID })
+                                                                <label for="review">Đánh giá</label>
+                                                                @Html.TextBoxFor(model => model.Star, new { @class = "form-control" })
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="content">Nội dung</label>
+                                                                @Html.TextBoxFor(model => model.Content, new { @class = "form-control" })
+                                                            </div>
+                                                        }
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                            Cancel
                                                         </button>
-                                                    }
-
+                                                        @if (Session.Contents["USER_SESSION"] == null)
+                                                        {
+                                                            <a href="/account/login" class="btn btn-primary">
+                                                                OK
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <button type="submit" class="btn btn-primary">
+                                                                OK
+                                                            </button>
+                                                        }
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                }
-                                <!--Review form-->
+                                    }
+                                    <!--Review form-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pt-0 pt-md-5 col-md-6 col-lg-4 col-12">
+                        <div class="mt-0 mt-md-4">
+                            <div class="ads mb-3">
+                                <a href="https://www.facebook.com/groups/anchoilangdaihoc/permalink/3400496643322683/" target="_blank">
+                                    <img src="~/Content/main/img/7529529.png" />
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="pt-0 pt-md-5 col-md-6 col-lg-4 col-12">
-                    <div class="mt-0 mt-md-4">
-                        <div class="ads mb-3">
-                            <a href="https://www.lazada.vn/" target="_blank">
-                                <img src="~/Content/main/img/7529529.png" />
-                            </a>
-                        </div>
+            </div>
+        </section>
+
+        <footer class="font-small">
+            <div class="container text-center text-md-left mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            ton ton
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-color: #fff">
+                        <p>Công ty Cổ phần Công nghệ TonTon</p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            sản phẩm
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-color: #fff">
+                        <p><a href="">Trang chủ</a></p>
+                        <p><a href="">Cơm hàng quán</a></p>
+                        <p><a href="">Cơm mẹ người ta nấu</a></p>
+                        <p><a href="">Tin tức</a></p>
+                    </div>
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase font-weight-bold">
+                            liên kết
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-color: #fff">
+                        <p><a href="">Facebook</a></p>
+                    </div>
+                    <div class="
+                                col-md-4 col-lg-3 col-xl-3
+                                mx-auto
+                                mb-md-0 mb-4
+                            ">
+                        <h6 class="text-uppercase font-weight-bold">
+                            liên hệ
+                        </h6>
+                        <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; border-color: #fff">
+                        <p>
+                            <i class="fa fa-home mr-2"></i>
+                            Phòng I.007, Khu Công nghệ Phần mềm, Linh Trung,
+                            Thủ Đức
+                        </p>
+                        <p>
+                            <i class="fa fa-home mr-2"></i>
+                            Ký túc xá khu B ĐHQG TPHCM, Đông Hòa Dĩ An, Bình
+                            Dương
+                        </p>
+                        <p>
+                            <i class="fa fa-envelope mr-2"></i>
+                            hoanghuynh0609@gmail.com
+                        </p>
                     </div>
                 </div>
+                <div class="footer-copyright text-center pb-3">
+                    COPYRIGHT © 2021 - TON TON
+                </div>
             </div>
+        </footer>
+        <div class="back-to-top show">
+            <i class="fas fa-arrow-up"></i>
         </div>
-    </section>
-</div>
+    </div>
+    <!--a jax jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--Script-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- swiperjs -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="~/Content/main/js/main.js"></script>
+    <!--Script-->
+</body>
+</html>
+

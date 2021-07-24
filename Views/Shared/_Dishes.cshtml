@@ -12,7 +12,7 @@
                 <div class="content">
                     @foreach (CategoryFood cateFood in listCategoryFood)
                     {
-                        <a href="/home/findstoreresult?categoryfoodid=@cateFood.CFoodID" class="item">
+                        <a href="/home/findstoreresult?name=@cateFood.CFoodName" class="item">
                             <div class="icon">
                                 <img src="@cateFood.Image" alt="@cateFood.CFoodName" />
                             </div>
