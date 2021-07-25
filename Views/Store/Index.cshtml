@@ -188,55 +188,53 @@
                                     }
                                     else
                                     {
-                                    foreach (var kof in listKindOfFood)
-                                    {
-                                        int countFood = 0;
-                                        <div class="list-group-item">
-                                            <h5>@kof.KofName</h5>
-                                            <div class="list mb-4">
-                                                <!--danh sách các món ăn-->
-                                                @foreach (var food in listFood)
-                                                {
-                                                    if (food.KofID == kof.KofID)
+                                        foreach (var kof in listKindOfFood)
+                                        {
+                                            int countFood = 0;
+                                            <div class="list-group-item">
+                                                <h5>@kof.KofName</h5>
+                                                <div class="list mb-4">
+                                                    <!--danh sách các món ăn-->
+                                                    @foreach (var food in listFood)
                                                     {
-                                                        <div class="item">
-                                                            <div class="image">
-                                                                <div class="bg" style="background-image: url('../../Content/main/img/default-cover.png');"></div>
-                                                            </div>
-                                                            <div class="text">
-                                                                <p class="m-0">
-                                                                    <b>@food.FoodName</b>
-                                                                </p>
-                                                                <div class="desc">
-                                                                    @food.Description
+                                                        if (food.KofID == kof.KofID)
+                                                        {
+                                                            <div class="item">
+                                                                <div class="image">
+                                                                    <div class="bg" style="background-image: url('../../Content/main/img/default-cover.png');"></div>
+                                                                </div>
+                                                                <div class="text">
+                                                                    <p class="m-0">
+                                                                        <b>@food.FoodName</b>
+                                                                    </p>
+                                                                    <div class="desc">
+                                                                        @food.Description
+                                                                    </div>
+                                                                </div>
+                                                                <div class="price">
+                                                                    <div class="amount">
+                                                                        @String.Format("{0:0,0}", @food.FoodPrice) ₫
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="price">
-                                                                <div class="amount">
-                                                                    @String.Format("{0:0,0}", @food.FoodPrice) ₫
-                                                                </div>
-                                                            </div>
+                                                            countFood++;
+                                                        }
+
+                                                    }
+                                                    @if (countFood == 0)
+                                                    {
+                                                        <div class="alert alert-primary" role="alert">
+                                                            Hiện tại các món ăn đang được cập nhật!
                                                         </div>
-                                                        countFood++;
                                                     }
 
-                                                }
-                                                @if (countFood == 0)
-                                                {
-                                                    <div class="alert alert-primary" role="alert">
-                                                        Hiện tại các món ăn đang được cập nhật!
-                                                    </div>
-                                                }
+                                                    <!--danh sách các món ăn-->
 
-                                                <!--danh sách các món ăn-->
-
+                                                </div>
                                             </div>
-                                        </div>
-                                    }
+                                        }
                                     }
                                     <!--danh sách các loại món ăn-->
-
-
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-review" role="tabpanel"
@@ -252,11 +250,12 @@
                                         }
                                         else
                                         {
-                                            foreach (var review in listReview)
-                                            {
-                                                <div class="list-group-item d-flex">
-                                                    <div class="info mr-2">
-                                                        <div class="badge" style="
+                                            <div class="list-group-item">
+                                                @foreach (var review in listReview)
+                                                {
+                                                    <div class="d-flex">
+                                                        <div class="info mr-2">
+                                                            <div class="badge" style="
                                                             font-size: 1em;
                                                             color: white;
                                                             background-color: rgb(
@@ -265,27 +264,29 @@
                                                                 23
                                                             );
                                                         ">
-                                                            <span>@review.Star <i class="fas fa-star"></i></span>
+                                                                <span>@review.Star <i class="fas fa-star"></i></span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="content">
+                                                            <div class="mb-2 text-justify">
+                                                                @review.Content
+                                                            </div>
+                                                            <div class="mb-2" style="font-size: 0.9em">
+                                                                <i>
+                                                                    Đánh giá bởi:
+                                                                    <span class="d-inline"><strong>@review.Account.FullName</strong></span>
+                                                                </i>
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                    <div class="content">
-                                                        <div class="mb-2 text-justify">
-                                                            @review.Content
-                                                        </div>
-                                                        <div class="mb-2" style="font-size: 1em">
-                                                            <i>
-                                                                Đánh giá bởi:
-                                                                <span class="d-inline"><strong>@review.Account.FullName</strong></span>
-                                                            </i>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
+                                                    <hr />
+                                                }
+                                            </div>
                                         }
 
-                                            <!--hiển thị các review về quán-->
+                                        <!--hiển thị các review về quán-->
 
-                                        </div>
+                                    </div>
                                     <div class="tool text-center my-3" data-toggle="modal" data-target="#reviewModal">
                                         <button class="
                                                     btn btn-primary

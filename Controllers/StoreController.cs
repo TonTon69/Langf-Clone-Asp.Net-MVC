@@ -34,7 +34,7 @@ namespace langfvn.Controllers
             ViewData["listFood"] = listFood;
 
             /*lấy ra các review về quán ăn*/
-            List<Review> listReview = db.Reviews.Where(r => r.Store.StoreName == name).ToList();
+            List<Review> listReview = db.Reviews.Where(r => r.Store.StoreName == name).OrderByDescending(r => r.Star).ToList();
             ViewData["listReview"] = listReview;
 
             return View();
