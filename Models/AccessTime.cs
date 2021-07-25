@@ -7,7 +7,7 @@ namespace langfvn.Models
     using System.Data.Entity.Spatial;
 
     [Table("View")]
-    public partial class View
+    public partial class AccessTime
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

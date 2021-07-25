@@ -192,7 +192,7 @@
     <Compile Include="Models\Store.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\UserDao.cs" />
-    <Compile Include="Models\View.cs" />
+    <Compile Include="Models\AccessTime.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -27,7 +27,7 @@ namespace langfvn.Models
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<View> Views { get; set; }
+        public virtual DbSet<AccessTime> AccessTimes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
