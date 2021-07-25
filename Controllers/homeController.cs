@@ -118,6 +118,10 @@ namespace langfvn.Controllers
             {
                 ViewBag.resultReport = "Không tìm thấy kết quả phù hợp";
             }
+            else
+            {
+                ViewBag.resultReport = name;
+            }
             return View();
         }
         public List<Store> FindStoreByKindOfkindFoodName(String kofName)
