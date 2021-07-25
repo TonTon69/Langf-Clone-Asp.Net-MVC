@@ -33,13 +33,17 @@
                                                         <div class="slot e-member"></div>
                                                         <div class="slot order"></div>
                                                         <div class="slot delivery"></div>
-                                                        @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) != null)
-                                                        {
-                                                            <div class="mb-1 rating">
-                                                                <i class="fas fa-star"></i>
+                                                        <div class="mb-1 rating">
+                                                            <i class="fas fa-star"></i>
+                                                            @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) != null)
+                                                            {
                                                                 <span>@store.Reviews.OrderByDescending(r => r.StoreID).FirstOrDefault(r => r.StoreID == store.StoreID).Star</span>
-                                                            </div>
-                                                        }
+                                                            }
+                                                            else
+                                                            {
+                                                                <span>_</span>
+                                                            }
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="info">
@@ -55,7 +59,7 @@
                                                     <div class="review mt-3">
                                                         <!-- <i>Chua co review nao!</i> -->
                                                         <div class="d-flex align-items-center">
-                                   
+
                                                             <div class="cmt">
                                                                 @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) == null)
                                                                 {

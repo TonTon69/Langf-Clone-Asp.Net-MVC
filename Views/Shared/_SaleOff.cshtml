@@ -26,13 +26,17 @@
                                                 <div class="slot e-member"></div>
                                                 <div class="slot order"></div>
                                                 <div class="slot delivery"></div>
-                                                @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) != null)
-                                                {
-                                                    <div class="mb-1 rating">
-                                                        <i class="fas fa-star"></i>
+                                                <div class="mb-1 rating">
+                                                    <i class="fas fa-star"></i>
+                                                    @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) != null)
+                                                    {
                                                         <span>@store.Reviews.OrderByDescending(r => r.StoreID).FirstOrDefault(r => r.StoreID == store.StoreID).Star</span>
-                                                    </div>
-                                                }
+                                                    }
+                                                    else
+                                                    {
+                                                        <span>_</span>
+                                                    }
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="info">

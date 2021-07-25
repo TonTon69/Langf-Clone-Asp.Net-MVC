@@ -40,7 +40,7 @@
             prevEl: ".left-button",
         },
     });
-   
+
     $('.btn-area').click(function (e) {
         let id = $(this).attr("id");
         //callback
@@ -55,10 +55,7 @@
                 obj.forEach((data) => {
                     if (data != null) {
                         var resultOfView = data.Review == "" ? "Chưa có review nào" : `<div class="badge mr-2 "><span>${data.StarOfReview}</span></div> ${data.Review}`;
-                        var resultOfStar = data.Review != "" ? ` <div class="mb-1 rating">
-                                                                    <i class="fas fa-star"></i>
-                                                                    <span>${data.StarOfReview}</span>
-                                                                </div>` : "";
+                        var resultOfStar = data.Review != "" ? `<span>${data.StarOfReview}</span>` : `<span>_</span>`;
                         html += `<div class="swiper-slide col-6 col-lg-3 p-2">
                         <a href="/store/index?storeID=${data.StoreID}">
                             <div class="slider-box">
@@ -67,7 +64,10 @@
                                         <div class="slot e-member"></div>
                                         <div class="slot order"></div>
                                         <div class="slot delivery"></div>
-                                        ${resultOfStar}
+                                        <div class="mb-1 rating">
+                                            <i class="fas fa-star"></i>
+                                            ${resultOfStar}
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="info">
@@ -99,6 +99,9 @@
                                   <strong>Xin lỗi quý khách!</strong> Hiện tại khu vực này chưa có quán ăn!
                                  </div>`;
                     $('#area-see-more').hide();
+                }
+                else {
+                    $('#area-see-more').show();
                 }
                 containerArea.html(html);
             }
