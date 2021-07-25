@@ -111,7 +111,7 @@ namespace langfvn.Areas.camnang.Controllers
         //Partial Chuyện ma
         public PartialViewResult GhostStory()
         {
-            var lists = db.News.Where(m => m.KonID == 12).Take(6).ToList();
+            var lists = db.News.Where(m => m.KonID == 12).Take(4).ToList();
             return PartialView("_GhostStory", lists);
         }
 

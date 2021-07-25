@@ -28,17 +28,19 @@
         $(this).addClass("active").siblings().removeClass("active");
     });
     // slider
-    var swiper = new Swiper(".swiper-container", {
+    var mySwiper = new Swiper(".swiper-container", {
+        // Các Parameters
         loop: true,
         slidesPerView: 5,
-        spaceBetween: 0,
+        spaceBetween: 0, //khoảng cách
         autoplay: {
             delay: 4000,
         },
+        // Nếu cần navigation
         navigation: {
             nextEl: ".right-button",
             prevEl: ".left-button",
-        },
+        }
     });
 
     $('.btn-area').click(function (e) {

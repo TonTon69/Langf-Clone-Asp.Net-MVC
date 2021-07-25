@@ -22,7 +22,7 @@ namespace langfvn.Controllers
             ViewData["listCategoryFood"] = listCategoryFood;
 
             /*lấy ra 6 review gần đây*/
-            List<Review> listReview = db.Reviews.OrderByDescending(s => s.ReviewID).Take(6).ToList();
+            List<Review> listReview = db.Reviews.OrderByDescending(s => s.Star).Take(6).ToList();
             ViewData["listReview"] = listReview;
 
             /*lấy ra các quán mới tham gia*/
@@ -38,7 +38,7 @@ namespace langfvn.Controllers
             ViewData["listPlace"] = listPlaces;
 
             /*lấy ra tất cả các cửa hàng*/
-            List<Store> allStore = db.Stores.ToList();
+            List<Store> allStore = db.Stores.Take(12).ToList();
             ViewData["allStore"] = allStore;
 
             return View();
