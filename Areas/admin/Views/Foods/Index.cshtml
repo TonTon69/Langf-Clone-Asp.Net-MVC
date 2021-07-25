@@ -59,6 +59,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>STT</th>
                         <th>ID</th>
                         <th>
                             Cửa hàng
@@ -82,9 +83,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @{int count = 1;}
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@(count++)</td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.FoodID)
                             </td>
@@ -103,7 +106,7 @@
                             <td>
                                 @String.Format("{0:0,0}", item.FoodPrice) đ
                             </td>
-                            <td style="width: 300px">
+                            <td style="width: 250px">
                                 @Html.DisplayFor(modelItem => item.Description)
                             </td>
                             <td>

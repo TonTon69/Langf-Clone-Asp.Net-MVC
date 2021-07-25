@@ -43,6 +43,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>STT</th>
                         <th>ID</th>
                         <th>Người dùng</th>
                         <th>Nội dung</th>
@@ -52,9 +53,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @{int count = 1;}
                     @foreach (var item in Model)
                     {
                         <tr>
+                            <td>@(count++)</td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.ReviewID)
                             </td>
