@@ -55,9 +55,9 @@
                 obj.forEach((data) => {
                     if (data != null) {
                         var resultOfView = data.Review == "" ? "Chưa có review nào" : `<div class="badge mr-2 "><span>${data.StarOfReview}</span></div> ${data.Review}`;
-                        var resultOfStar = data.Review != "" ? `<span>${data.StarOfReview}</span>` : `<span>_</span>`;
+                        var resultOfStar = data.Review != "" ? `<span>${data.AverageStar}</span>` : `<span>_</span>`;
                         html += `<div class="swiper-slide col-6 col-lg-3 p-2">
-                        <a href="/store/index?storeID=${data.StoreID}">
+                        <a href="/store?name=${data.StoreName}">
                             <div class="slider-box">
                                 <div class="logo" style="background-image: url('${data.Image}');">
                                     <div class="mask" >

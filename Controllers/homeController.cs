@@ -52,26 +52,28 @@ namespace langfvn.Controllers
             List<StoreView> listStoreToConvert = new List<StoreView>();
             if (AreaID == 0)
             {
-                listStore = db.Stores.ToList();
+                listStore = db.Stores.Take(12).ToList();
             }
             else
             {
-                listStore = db.Stores.Where(sto => sto.PlaceID == AreaID).ToList();
+                listStore = db.Stores.Where(sto => sto.PlaceID == AreaID).Take(12).ToList();
             }
-
 
             foreach (Store sto in listStore)
             {
                 String review = "";
                 int? star = null;
+                double? averageStar = null;
                 if (db.Reviews.Where(r => r.StoreID == sto.StoreID).OrderByDescending(r => r.ReviewID).FirstOrDefault() != null)
                 {
                     review = db.Reviews.Where(r => r.StoreID == sto.StoreID).OrderByDescending(r => r.ReviewID).FirstOrDefault().Content;
                     star = db.Reviews.Where(r => r.StoreID == sto.StoreID).OrderByDescending(r => r.ReviewID).FirstOrDefault().Star;
+                    averageStar = db.Reviews.Where(r => r.StoreID == sto.StoreID).Average(r => r.Star);
                 }
 
                 String place = sto.Place.PlaceName.ToString();
-                listStoreToConvert.Add(new StoreView(sto.StoreID, sto.PlaceID, sto.StoreName, sto.Address, sto.Image, sto.NoteDiscount, star, review, place));
+                listStoreToConvert.Add(new StoreView(sto.StoreID, sto.PlaceID, sto.StoreName, sto.Address, sto.Image, 
+                    sto.NoteDiscount, star, averageStar, review, place));
             }
 
             if (listStore != null)

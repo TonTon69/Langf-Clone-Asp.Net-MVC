@@ -12,7 +12,7 @@ namespace langfvn.Models
         {
 
         }
-        public StoreView(int storeID, int placeID, String storeName, String address, String img, String note, int? star, String review, String place)
+        public StoreView(int storeID, int placeID, String storeName, String address, String img, String note, int? star, double? averageStar, String review, String place)
         {
             this.StoreID = storeID;
             this.PlaceID = placeID;
@@ -21,9 +21,9 @@ namespace langfvn.Models
             this.Image = img;
             this.NoteDiscount = note;
             this.StarOfReview = star;
+            this.AverageStar = averageStar;
             this.Review = review;
             this.Place = place;
-
         }
 
 
@@ -43,7 +43,11 @@ namespace langfvn.Models
         public string NoteDiscount { get; set; }
 
         public int? StarOfReview { get; set; }
+
+        public double? AverageStar { get; set; }
+
         public string Review { get; set; }
+
         public string Place { get; set; }
     }
 

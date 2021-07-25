@@ -29,7 +29,7 @@
                                                     <i class="fas fa-star"></i>
                                                     @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) != null)
                                                     {
-                                                        <span>@store.Reviews.OrderByDescending(r => r.StoreID).FirstOrDefault(r => r.StoreID == store.StoreID).Star</span>
+                                                        <span>@store.Reviews.Where(r => r.StoreID == store.StoreID).Average(r => r.Star)</span>
                                                     }
                                                     else
                                                     {
