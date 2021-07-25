@@ -190,6 +190,7 @@
     <Compile Include="Models\Review.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\Store.cs" />
+    <Compile Include="Models\StoreView.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\UserDao.cs" />
     <Compile Include="Models\AccessTime.cs" />

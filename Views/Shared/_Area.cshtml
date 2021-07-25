@@ -31,10 +31,13 @@
                                             <div class="slot e-member"></div>
                                             <div class="slot order"></div>
                                             <div class="slot delivery"></div>
-                                            <div class="mb-1 rating">
-                                                <i class="fas fa-star"></i>
-                                                <span>5</span>
-                                            </div>
+                                            @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) != null)
+                                            {
+                                                <div class="mb-1 rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <span>@store.Reviews.OrderByDescending(r => r.StoreID).FirstOrDefault(r => r.StoreID == store.StoreID).Star</span>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
                                     <div class="info">
@@ -50,13 +53,19 @@
                                         <div class="review mt-3">
                                             <!-- <i>Chua co review nao!</i> -->
                                             <div class="d-flex align-items-center">
-                                                <div class="badge mr-2">
-                                                    <span>5</span>
-                                                </div>
+                                                
                                                 <div class="cmt">
-                                                    Chất lượng Ok nhưng
-                                                    hơi ngonn á nha shop
-                                                    ơi
+                                                    @if (store.Reviews.FirstOrDefault(r => r.StoreID == store.StoreID) == null)
+                                                    {
+                                                        <span>Chưa có review nào</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <div class="badge mr-2">
+                                                            <span>@store.Reviews.OrderByDescending(r => r.StoreID).FirstOrDefault(r => r.StoreID == store.StoreID).Star</span>
+                                                        </div>
+                                                        @store.Reviews.OrderByDescending(r => r.StoreID).FirstOrDefault(r => r.StoreID == store.StoreID).Content
+                                                    }
                                                 </div>
                                             </div>
                                         </div>

@@ -46,9 +46,10 @@ namespace langfvn.Controllers
         public JsonResult DisplayListStory(int AreaID)
         {
             /*lấy ra danh sách store theo khu vực*/
+
             var jsonListStore = "";
             List<Store> listStore = new List<Store>();
-            List<Store> listStoreToConvert = new List<Store>();
+            List<StoreView> listStoreToConvert = new List<StoreView>();
             if (AreaID == 0)
             {
                 listStore = db.Stores.ToList();
@@ -57,13 +58,26 @@ namespace langfvn.Controllers
             {
                 listStore = db.Stores.Where(sto => sto.PlaceID == AreaID).ToList();
             }
+
+
             foreach (Store sto in listStore)
             {
-                listStoreToConvert.Add(new Store(sto.StoreID, sto.PlaceID, sto.StoreName, sto.Address, sto.Image, sto.NoteDiscount));
+                String review = "";
+                int? star = null;
+                if (db.Reviews.Where(r => r.StoreID == sto.StoreID).OrderByDescending(r => r.ReviewID).FirstOrDefault() != null)
+                {
+                    review = db.Reviews.Where(r => r.StoreID == sto.StoreID).OrderByDescending(r => r.ReviewID).FirstOrDefault().Content;
+                    star = db.Reviews.Where(r => r.StoreID == sto.StoreID).OrderByDescending(r => r.ReviewID).FirstOrDefault().Star;
+                }
+
+                String place = sto.Place.PlaceName.ToString();
+                listStoreToConvert.Add(new StoreView(sto.StoreID, sto.PlaceID, sto.StoreName, sto.Address, sto.Image, sto.NoteDiscount, star, review, place));
             }
 
             if (listStore != null)
             {
+                /*jsonListStore = JsonConvert.SerializeObject(listStore);
+*/
                 jsonListStore = JsonConvert.SerializeObject(listStoreToConvert, new JsonSerializerSettings()
                 {
                     PreserveReferencesHandling = PreserveReferencesHandling.Objects,

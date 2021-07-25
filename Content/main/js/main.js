@@ -40,27 +40,7 @@
             prevEl: ".left-button",
         },
     });
-    // load list story
-    $('#btnshowdata').click(function LoadData() {
-        $.ajax({
-            url: '/Home/DisplayListStory?AreaID=' + '1',
-            type: 'POST',
-            dataType: "json",
-            success: function (response) {
-                var obj = JSON.parse(response);
-                var res = [];
-                for (var i in obj)// đưa json vừa convert vào mảng res[]
-                {
-                    res.push(obj[i]);
-                }
-                for (var i of res) {
-                    console.log(i);
-                }
-
-            }
-        });
-    });
-    //Load data area 
+   
     $('.btn-area').click(function (e) {
         let id = $(this).attr("id");
         //callback
@@ -73,24 +53,26 @@
                 let html = '';
                 let containerArea = $("#container-area");
                 obj.forEach((data) => {
-                    if (data != null) { 
+                    if (data != null) {
+                        var resultOfView = data.Review == "" ? "Chưa có review nào" : `<div class="badge mr-2 "><span>${data.StarOfReview}</span></div> ${data.Review}`;
+                        var resultOfStar = data.Review != "" ? ` <div class="mb-1 rating">
+                                                                    <i class="fas fa-star"></i>
+                                                                    <span>${data.StarOfReview}</span>
+                                                                </div>` : "";
                         html += `<div class="swiper-slide col-6 col-lg-3 p-2">
-                        <a href="/store?name=${data.StoreName}">
+                        <a href="/store/index?storeID=${data.StoreID}">
                             <div class="slider-box">
-                                <div class="logo" style="background-image: url('${data.Image}')">
+                                <div class="logo" style="background-image: url('${data.Image}');">
                                     <div class="mask" >
                                         <div class="slot e-member"></div>
                                         <div class="slot order"></div>
                                         <div class="slot delivery"></div>
-                                        <div class="mb-1 rating">
-                                            <i class="fas fa-star"></i>
-                                            <span>5</span>
-                                        </div>
+                                        ${resultOfStar}
                                     </div>
                                 </div>
                                 <div class="info">
                                     <div class="position">
-                                        ${data}
+                                        ${data.Place}
                                     </div>
                                     <div class="stitle">
                                         ${data.StoreName}
@@ -101,13 +83,8 @@
                                     <div class="review mt-3">
                                         <!-- <i>Chua co review nao!</i> -->
                                         <div class="d-flex align-items-center">
-                                            <div class="badge mr-2">
-                                                <span>5</span>
-                                            </div>
                                             <div class="cmt">
-                                                Chất lượng Ok nhưng
-                                                hơi ngonn á nha shop
-                                                ơi
+                                                ${resultOfView}
                                             </div>
                                         </div>
                                     </div>

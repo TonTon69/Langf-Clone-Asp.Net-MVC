@@ -180,7 +180,15 @@
                                  aria-labelledby="pills-menu-tab">
                                 <div class="list-group">
                                     <!--danh sách các loại món ăn-->
-                                    @foreach (var kof in listKindOfFood)
+                                    @if (listKindOfFood.Count() == 0)
+                                    {
+                                        <div class="alert alert-primary" role="alert">
+                                            <strong>Chân thành xin lỗi quý khách!</strong>Menu của quán đang được cập nhật!
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                    foreach (var kof in listKindOfFood)
                                     {
                                         int countFood = 0;
                                         <div class="list-group-item">
@@ -225,6 +233,7 @@
                                             </div>
                                         </div>
                                     }
+                                    }
                                     <!--danh sách các loại món ăn-->
 
 
@@ -235,11 +244,19 @@
                                 <div class="content">
                                     <div class="list-group">
                                         <!--hiển thị các review về quán-->
-                                        @foreach (var review in listReview)
+                                        @if (listReview.Count() == 0)
                                         {
-                                            <div class="list-group-item d-flex">
-                                                <div class="info mr-2">
-                                                    <div class="badge" style="
+                                            <div class="alert alert-primary" role="alert">
+                                                Hiện tại chưa có Review nào!<strong>bạn là người bình luận đầu tiên</strong>. hãy cho quán những Review đầy yêu thương bạn nhé <i class="fas fa-heart" style="color:red;"></i>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            foreach (var review in listReview)
+                                            {
+                                                <div class="list-group-item d-flex">
+                                                    <div class="info mr-2">
+                                                        <div class="badge" style="
                                                             font-size: 1em;
                                                             color: white;
                                                             background-color: rgb(
@@ -248,26 +265,27 @@
                                                                 23
                                                             );
                                                         ">
-                                                        <span>@review.Star <i class="fas fa-star"></i></span>
+                                                            <span>@review.Star <i class="fas fa-star"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="mb-2 text-justify">
+                                                            @review.Content
+                                                        </div>
+                                                        <div class="mb-2" style="font-size: 1em">
+                                                            <i>
+                                                                Đánh giá bởi:
+                                                                <span class="d-inline"><strong>@review.Account.FullName</strong></span>
+                                                            </i>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="content">
-                                                    <div class="mb-2 text-justify">
-                                                        @review.Content
-                                                    </div>
-                                                    <div class="mb-2" style="font-size: 1em">
-                                                        <i>
-                                                            Đánh giá bởi:
-                                                            <span class="d-inline"><strong>@review.Account.FullName</strong></span>
-                                                        </i>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            }
                                         }
 
-                                        <!--hiển thị các review về quán-->
+                                            <!--hiển thị các review về quán-->
 
-                                    </div>
+                                        </div>
                                     <div class="tool text-center my-3" data-toggle="modal" data-target="#reviewModal">
                                         <button class="
                                                     btn btn-primary
